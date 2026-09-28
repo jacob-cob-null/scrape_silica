@@ -1,0 +1,9 @@
+praw
+google-api-python-client
+atproto
+httpx
+python-dotenv
+duckdb
+ftfy
+pyarrow
+pandas
