@@ -10,7 +10,28 @@ def parse_ndjson(file_path):
             try:
                 data = json.loads(line)
                 platform = data.get("platform", "facebook")
-                raw_content = data.get("node", {}).get("text", "No text found")
+                raw_content = ""
+                
+                kind = data.get("kind")
+                if kind in ["t1", "t3"]:
+                    platform = "reddit"
+                    reddit_data = data.get("data", {})
+                    
+                    if kind == "t3":
+                        title = reddit_data.get("title", "")
+                        selftext = reddit_data.get("selftext", "")
+                        raw_content = f"{title}\n{selftext}".strip()
+                    elif kind == "t1":
+                        raw_content = reddit_data.get("body", "")
+                        
+                    if raw_content in ["[deleted]", "[removed]", "[deleted]\n[deleted]", "[removed]\n[removed]"]:
+                        continue
+                else:
+                    raw_content = data.get("node", {}).get("text", "No text found")
+                
+                if not raw_content:
+                    continue
+
                 source_id = data.get("id", str(time.time()))
                 
                 bronze_record = {

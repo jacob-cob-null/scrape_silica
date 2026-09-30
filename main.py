@@ -4,16 +4,17 @@ from pathlib import Path
 
 from core.config import BRONZE_AUTO_DIR
 from core.database import get_connection
-from extractors import api_reddit, api_youtube, api_bluesky, api_hacker_news, parser_zeeschuimer
+from extractors import api_youtube, api_bluesky, api_hacker_news, parser_zeeschuimer, api_mastodon, api_rss
 from transforms.deduplicator import process_record
 from transforms.exporter import export_gold
 
 def ingest_automated():
     print("Running Automated API Ingestion...")
-    api_reddit.run()
     api_youtube.run()
     api_bluesky.run()
     api_hacker_news.run()
+    api_mastodon.run()
+    api_rss.run()
 
 def ingest_drop_folder():
     print("Running Drop Folder Ingestion...")

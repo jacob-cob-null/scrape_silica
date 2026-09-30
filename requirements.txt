@@ -1,4 +1,3 @@
-praw
 google-api-python-client
 atproto
 httpx
@@ -7,3 +6,6 @@ duckdb
 ftfy
 pyarrow
 pandas
+feedparser
+playwright
+playwright-stealth
