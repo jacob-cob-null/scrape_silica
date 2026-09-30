@@ -51,5 +51,6 @@ def parse_ndjson(file_path):
 def run():
     print("Watching Zeeschuimer drop folder for NDJSON files...")
     for file_path in BRONZE_DROP_DIR.glob("*.ndjson"):
-        parse_ndjson(file_path)
+        if "playwright" not in file_path.name:
+            parse_ndjson(file_path)
     print("Drop folder processing complete.")

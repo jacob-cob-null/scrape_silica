@@ -34,7 +34,7 @@ def clean_text(raw_content: str) -> str | None:
     tokens = text.split()
     chars = len(text)
     
-    root_words = {'kuryente', 'tubig', 'bpo', 'china', 'sahod'}
+    root_words = {'kuryente', 'tubig', 'bpo', 'china', 'sahod', 'benta', 'pinagbili', 'trabaho', 'kontraktuwal', 'polusyon', 'baha', 'kalikasan', 'aeta', 'amerikano', 'pogo', 'ofw'}
     has_root_word = any(word.lower() in root_words for word in tokens)
     
     if len(tokens) < 4 or chars < 20:

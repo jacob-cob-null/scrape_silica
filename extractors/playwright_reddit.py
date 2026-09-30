@@ -2,9 +2,9 @@ import time
 import json
 import random
 from playwright.sync_api import sync_playwright
-from core.config import BRONZE_DROP_DIR
+from core.config import BRONZE_DROP_DIR, TIER_1_BRAND, TIER_2_ANCHORS
 
-KEYWORDS = ["Pax Silica", "New Clark City"]
+PLAYWRIGHT_SAFE_KEYWORDS = list(TIER_1_BRAND) + list(TIER_2_ANCHORS)
 
 def run():
     print("Running Playwright Reddit Interceptor...")
@@ -37,7 +37,7 @@ def run():
 
         page.on("response", handle_response)
         
-        for keyword in KEYWORDS:
+        for keyword in PLAYWRIGHT_SAFE_KEYWORDS:
             print(f"Searching Reddit for: {keyword}")
             search_url = f"https://www.reddit.com/search/?q={keyword.replace(' ', '+')}"
             try:

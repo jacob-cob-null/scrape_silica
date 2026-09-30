@@ -9,3 +9,4 @@ pandas
 feedparser
 playwright
 playwright-stealth
+beautifulsoup4

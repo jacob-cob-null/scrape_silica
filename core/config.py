@@ -18,7 +18,72 @@ GOLD_DIR = DATA_DIR / "gold"
 for d in [BRONZE_AUTO_DIR, BRONZE_DROP_DIR, SILVER_DIR, GOLD_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
-# Tiers (Keywords)
-TIER_1_KEYWORDS = ["Pax Silica", "Golden Node", "#PaxSilica"]
-TIER_2_LOCATIONS = ["New Clark City", "Luzon Economic Corridor", "Tarlac", "BCDA"]
-TIER_2_TOPICS = ["semiconductor", "AI hub", "data center", "power grid", "water"]
+# ──────────────────────────────────────────────────────────────
+# TIER 1 — Brand / Project Identity (safe to search alone)
+#   Direct mentions of the project. Always high-signal.
+# ──────────────────────────────────────────────────────────────
+TIER_1_BRAND = [
+    "Pax Silica", "PaxSilica", "Pax-Silica",
+    "Pax Silica Economic Security Zone",
+]
+
+# ──────────────────────────────────────────────────────────────
+# TIER 2 — Location & Industry Anchors (safe to search alone)
+#   Specific enough to yield relevant results without pairing.
+# ──────────────────────────────────────────────────────────────
+TIER_2_ANCHORS = [
+    # Locations
+    "New Clark City", "Clark Freeport", "Clark Special Economic Zone",
+    "Luzon Economic Corridor", "Luzon corridor", "Tarlac",
+    # Agencies
+    "BCDA", "PEZA",
+    # Industry (Philippine-specific)
+    "AI industrial hub", "chip supply chain",
+    "critical minerals", "rare earth",
+]
+
+# ──────────────────────────────────────────────────────────────
+# TIER 3 — Context Terms (MUST be paired with a T1/T2 anchor)
+#   Too broad alone. Paired with anchors, they capture sentiment.
+# ──────────────────────────────────────────────────────────────
+TIER_3_CONTEXT = [
+    # Tech & Infrastructure (English)
+    "semiconductor", "foundry", "fab", "wafer",
+    "data center", "data centre", "AI hub", "power grid",
+    # Socio-Political (English)
+    "displacement", "farmers", "indigenous", "ancestral land",
+    "sovereignty", "foreign investors", "EDCA", "VFA",
+    "US military", "China", "Senate hearing", "jobs",
+    "agricultural land", "land use", "reclassification",
+    "water shortage", "power supply", "minimum wage",
+    # Socio-Political (Filipino)
+    "Aeta", "benta", "pinagbili", "kuryente", "tubig",
+    "Amerikano", "trabaho", "kontraktuwal", "polusyon",
+    "baha", "kalikasan", "base militar",
+    # Government & Policy
+    "Marcos", "DPWH", "OFW", "POGO", "deforestation",
+]
+
+# ──────────────────────────────────────────────────────────────
+# QUERY BUILDER — Generates the final search list
+# ──────────────────────────────────────────────────────────────
+
+# Step 1: All T1 and T2 terms are safe to search independently
+ALL_KEYWORDS = list(TIER_1_BRAND) + list(TIER_2_ANCHORS)
+
+# Step 2: Pair primary anchors with every T3 context term
+#   This creates queries like: "New Clark City" semiconductor
+#   which implicitly acts as an AND search on most platforms.
+_PRIMARY_ANCHORS = ["Pax Silica", "New Clark City", "Luzon Economic Corridor"]
+for anchor in _PRIMARY_ANCHORS:
+    for ctx in TIER_3_CONTEXT:
+        ALL_KEYWORDS.append(f'"{anchor}" {ctx}')
+
+# Deduplicate while preserving order
+_seen = set()
+_deduped = []
+for kw in ALL_KEYWORDS:
+    if kw not in _seen:
+        _seen.add(kw)
+        _deduped.append(kw)
+ALL_KEYWORDS = _deduped
