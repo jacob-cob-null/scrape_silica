@@ -28,7 +28,9 @@ def run():
             ).execute()
             
             for search_result in search_response.get('items', []):
-                video_id = search_result['id']['videoId']
+                video_id = search_result['id'].get('videoId')
+                if not video_id:
+                    continue
                 video_title = search_result['snippet']['title']
                 video_desc = search_result['snippet']['description']
                 

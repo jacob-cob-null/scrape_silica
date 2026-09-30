@@ -46,12 +46,21 @@ if __name__ == "__main__":
 
     ingest_parser = subparsers.add_parser("ingest")
     ingest_parser.add_argument("--track", choices=["automated", "drop_folder"], required=True)
+    ingest_parser.add_argument("--trial", action="store_true", help="Run with only 2 keywords for a quick test")
 
     transform_parser = subparsers.add_parser("transform")
 
     args = parser.parse_args()
 
     if args.command == "ingest":
+        if getattr(args, 'trial', False):
+            print("--- TRIAL MODE: Limiting to 2 keywords ---")
+            from core.config import ALL_KEYWORDS
+            from extractors import api_youtube, playwright_reddit
+            ALL_KEYWORDS[:] = ALL_KEYWORDS[:2]
+            api_youtube.YOUTUBE_SAFE_KEYWORDS[:] = api_youtube.YOUTUBE_SAFE_KEYWORDS[:2]
+            playwright_reddit.PLAYWRIGHT_SAFE_KEYWORDS[:] = playwright_reddit.PLAYWRIGHT_SAFE_KEYWORDS[:2]
+            
         if args.track == "automated":
             ingest_automated()
         elif args.track == "drop_folder":

@@ -6,7 +6,7 @@ from core.config import BRONZE_AUTO_DIR, ALL_KEYWORDS
 
 def run():
     print("Running Bluesky API Extractor...")
-    handle = os.getenv('BLUESKY_HANDLE')
+    handle = os.getenv('BLUESKY_HANDLE', '').strip().lstrip('@')
     password = os.getenv('BLUESKY_PASSWORD')
 
     if not handle or not password:
