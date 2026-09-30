@@ -16,6 +16,7 @@ def run():
             viewport={"width": 1280, "height": 720}
         )
         page = context.new_page()
+        page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         
         captured_payloads = []
         
