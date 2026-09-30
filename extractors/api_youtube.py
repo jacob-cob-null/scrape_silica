@@ -19,13 +19,19 @@ def run():
         
         for keyword in YOUTUBE_SAFE_KEYWORDS:
             print(f"Searching YouTube for: {keyword}")
-            # Search for videos
-            search_response = youtube.search().list(
-                q=keyword,
-                part='id,snippet',
-                maxResults=50,
-                type='video'
-            ).execute()
+            
+            # We'll pull up to 2 pages (100 videos) per keyword to stay under the 10,000 quota
+            next_page_token = None
+            for page in range(2):
+                search_response = youtube.search().list(
+                    q=keyword,
+                    part='id,snippet',
+                    maxResults=50,
+                    pageToken=next_page_token,
+                    type='video'
+                ).execute()
+                
+                next_page_token = search_response.get('nextPageToken')
             
             for search_result in search_response.get('items', []):
                 video_id = search_result['id'].get('videoId')
@@ -74,6 +80,9 @@ def run():
                 except Exception:
                     # Video might have comments disabled
                     pass
+                
+                if not next_page_token:
+                    break
                 
     except Exception as e:
         print(f"Error during YouTube extraction: {e}")

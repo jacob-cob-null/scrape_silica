@@ -30,8 +30,8 @@ def run():
         
         for keyword in ALL_KEYWORDS:
             try:
-                # Search posts
-                res = client.app.bsky.feed.search_posts({'q': keyword, 'limit': 25})
+                # Search posts - maximized to 100 for deep harvesting
+                res = client.app.bsky.feed.search_posts({'q': keyword, 'limit': 100})
                 for post in res.posts:
                     source_id = f"bsky_{post.uri.split('/')[-1]}"
                     data = {

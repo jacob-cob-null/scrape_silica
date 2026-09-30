@@ -6,6 +6,7 @@ from core.config import BRONZE_AUTO_DIR
 from core.database import get_connection
 from extractors import api_youtube, api_bluesky, api_hacker_news, parser_zeeschuimer, parser_playwright, api_mastodon, api_rss, scraper_forums
 from transforms.deduplicator import process_record
+from transforms import ai_filter
 from transforms.exporter import export_gold
 
 def ingest_automated():
@@ -38,6 +39,10 @@ def transform_data():
         conn.close()
         
     print(f"Processed {processed_count} records into Silver layer.")
+    
+    # Run the AI Semantic Filter
+    ai_filter.run()
+    
     export_gold()
 
 if __name__ == "__main__":

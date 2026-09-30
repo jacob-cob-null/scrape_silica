@@ -10,7 +10,8 @@ def run():
     print("Running Playwright Reddit Interceptor...")
     
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        # Launching visibly (headless=False) looks much more human to Cloudflare
+        browser = p.chromium.launch(headless=False)
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             viewport={"width": 1280, "height": 720}
@@ -44,10 +45,13 @@ def run():
             try:
                 page.goto(search_url, wait_until="domcontentloaded", timeout=15000)
                 
-                # Simulate human scrolling with delays for rate limiting compliance
-                for i in range(3):
+                # Slower, more human-like scrolling
+                for i in range(15):
                     page.evaluate("window.scrollBy(0, 1000)")
-                    time.sleep(random.uniform(2.0, 4.0))
+                    time.sleep(random.uniform(3.0, 6.0))
+                    
+                # Pause between keyword searches so we don't hammer the server
+                time.sleep(random.uniform(5.0, 10.0))
             except Exception as e:
                 print(f"Timeout or error on {keyword}: {e}")
                 

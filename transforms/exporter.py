@@ -10,8 +10,9 @@ def export_gold():
     conn = get_connection()
     
     try:
-        # Query the Silver DuckDB database. Select ONLY platform and cleaned_content columns
-        query = "SELECT platform, cleaned_content AS content FROM silver_records"
+        # Only export records that passed the AI filter threshold (elastic scoring)
+        # You can change '60' to '80' if you need strict accuracy, or '40' for more volume.
+        query = "SELECT platform, cleaned_content AS content FROM silver_records WHERE relevance_score >= 60 OR relevance_score IS NULL"
         df = conn.execute(query).df()
         
         if df.empty:
