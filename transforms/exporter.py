@@ -10,9 +10,9 @@ def export_gold():
     conn = get_connection()
     
     try:
-        # Only export records that passed the AI filter threshold (elastic scoring)
-        # You can change '60' to '80' if you need strict accuracy, or '40' for more volume.
-        query = "SELECT platform, cleaned_content AS content FROM silver_records WHERE relevance_score >= 60 OR relevance_score IS NULL"
+        # Export the relevance_score so the Professor/Data Scientist can filter it themselves!
+        # We only drop the absolute garbage (relevance_score = 0).
+        query = "SELECT platform, relevance_score, cleaned_content AS content FROM silver_records WHERE relevance_score > 0 OR relevance_score IS NULL"
         df = conn.execute(query).df()
         
         if df.empty:
