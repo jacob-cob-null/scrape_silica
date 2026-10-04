@@ -42,12 +42,21 @@ def scrape_comments(page, post):
     # Ensure we hit the comment page, not a crosspost or external link
     if not url.startswith("https://www.reddit.com"):
         url = "https://www.reddit.com" + url if url.startswith("/r/") else None
+        
+    # Append ?sort=new to grab fresh comments that we haven't seen before
+    if url and "?" not in url:
+        url += "?sort=new"
     if not url:
         return comments
 
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=20000)
-        page.wait_for_timeout(2000)
+        # Wait for comments to actually render (up to 10s)
+        try:
+            page.wait_for_selector("shreddit-comment", timeout=10000)
+        except Exception:
+            pass  # No comments on this post, continue gracefully
+        page.wait_for_timeout(1000)  # Brief settle time after comments appear
 
         # Light scroll to reveal more comments
         for _ in range(5):
@@ -56,18 +65,27 @@ def scrape_comments(page, post):
 
         comment_els = page.locator("shreddit-comment").all()
 
+        if not comment_els:
+            print(f"    [debug] No comment elements found. Title: {page.title()}, URL: {page.url[:80]}")
+
+
         for el in comment_els:
             depth = el.get_attribute("depth") or "0"
-            # Only capture depth 0 (top-level) and depth 1 (direct replies)
-            if int(depth) > 1:
+            # Capture depth 0-3 (top-level through nested replies)
+            if int(depth) > 3:
                 continue
 
             author = el.get_attribute("author") or "unknown"
             score = el.get_attribute("score") or ""
+            thing_id = el.get_attribute("thingid") or ""
 
-            # Comment body lives inside the slot content
-            body_el = el.locator("[slot='comment-content'] p").all()
-            body = " ".join(p.text_content().strip() for p in body_el if p.text_content()).strip()
+            # Comment body: grab all <p> tags directly inside the comment element
+            body_el = el.locator("p").all()
+            body = " ".join(
+                p.text_content().strip() 
+                for p in body_el 
+                if p.text_content() and p.text_content().strip()
+            ).strip()
 
             if body:
                 comments.append({
@@ -81,6 +99,7 @@ def scrape_comments(page, post):
                     "author": author,
                     "score": score,
                     "body": body[:1000],
+                    "thing_id": thing_id,
                     "scraped_at": int(time.time())
                 })
 
@@ -114,7 +133,8 @@ def run():
             comments = scrape_comments(page, post)
             all_comments.extend(comments)
             print(f"  → {len(comments)} comments (total: {len(all_comments)})")
-            time.sleep(random.uniform(2.0, 4.0))
+            # Increased wait time to 6-12 seconds to prevent Reddit IP bans (CAPTCHAs)
+            time.sleep(random.uniform(6.0, 12.0))
 
         browser.close()
 

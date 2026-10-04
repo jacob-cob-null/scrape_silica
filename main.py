@@ -24,7 +24,7 @@ def ingest_drop_folder():
     parser_zeeschuimer.run()
     parser_playwright.run()
 
-def transform_data():
+def transform_data(skip_ai=False):
     print("Running Transform (Silver Cleaning and Gold Export)...")
     ingest_drop_folder() # Ensure drop folder data is converted to JSON first
     conn = get_connection()
@@ -41,9 +41,12 @@ def transform_data():
         
     print(f"Processed {processed_count} records into Silver layer.")
     
-    # Run the AI Semantic Filter
-    ai_filter.run()
-    
+    if not skip_ai:
+        # Run the AI Semantic Filter
+        ai_filter.run()
+    else:
+        print("Skipping AI Semantic Filter as requested.")
+        
     export_gold()
 
 if __name__ == "__main__":
@@ -55,6 +58,7 @@ if __name__ == "__main__":
     ingest_parser.add_argument("--trial", action="store_true", help="Run with only 2 keywords for a quick test")
 
     transform_parser = subparsers.add_parser("transform")
+    transform_parser.add_argument("--skip-ai", action="store_true", help="Skip the AI semantic filter stage")
 
     args = parser.parse_args()
 
@@ -72,6 +76,6 @@ if __name__ == "__main__":
         elif args.track == "drop_folder":
             ingest_drop_folder()
     elif args.command == "transform":
-        transform_data()
+        transform_data(skip_ai=getattr(args, 'skip_ai', False))
     else:
         parser.print_help()

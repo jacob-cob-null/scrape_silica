@@ -13,7 +13,7 @@ python main.py ingest --track drop_folder
 if ($LASTEXITCODE -ne 0) { Write-Host "Stage 3 failed. Aborting." -ForegroundColor Red; exit 1 }
 
 Write-Host "`n=== [4/4] Transform + export ===" -ForegroundColor Cyan
-python main.py transform
+python main.py transform --skip-ai
 if ($LASTEXITCODE -ne 0) { Write-Host "Stage 4 failed. Aborting." -ForegroundColor Red; exit 1 }
 
 Write-Host "`n✅ Pipeline complete!" -ForegroundColor Green
