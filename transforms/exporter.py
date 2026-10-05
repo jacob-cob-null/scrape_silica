@@ -11,8 +11,8 @@ def export_gold():
     
     try:
         # Export the relevance_score so the Professor/Data Scientist can filter it themselves!
-        # We only drop the absolute garbage (relevance_score = 0).
-        query = "SELECT platform, relevance_score, cleaned_content AS content FROM silver_records WHERE relevance_score > 0 OR relevance_score IS NULL"
+        # Export EVERYTHING so you can see all AI ratings.
+        query = "SELECT platform, decision_rating, confidence, cleaned_content AS content FROM silver_records"
         df = conn.execute(query).df()
         
         if df.empty:

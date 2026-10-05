@@ -30,29 +30,21 @@ def clean_text(raw_content: str) -> str | None:
     
     text = text.strip()
 
-    # 4. Length Floor
+    # 4. Length Floor (Relaxed to allow short comments)
     tokens = text.split()
     chars = len(text)
     
-    root_words = {'kuryente', 'tubig', 'bpo', 'china', 'sahod', 'benta', 'pinagbili', 'trabaho', 'kontraktuwal', 'polusyon', 'baha', 'kalikasan', 'aeta', 'amerikano', 'pogo', 'ofw'}
-    has_root_word = any(word.lower() in root_words for word in tokens)
-    
-    if len(tokens) < 4 or chars < 20:
-        if not (len(tokens) >= 2 and has_root_word):
-            return None
+    if len(tokens) < 1 or chars == 0:
+        return None # Only drop completely empty comments
 
-    # 5. Lexical Diversity
-    if len(tokens) == 0:
-        return None
-    unique_tokens = len(set(tokens))
-    if (unique_tokens / len(tokens)) < 0.35:
-        return None
+    # 5. Lexical Diversity (Removed)
+    # Social media comments are often short or repetitive ("wow wow wow").
+    # We no longer drop them for low lexical diversity.
 
-    # 6. Alphabetic Density
-    if chars == 0:
-        return None
+    # 6. Alphabetic Density (Relaxed)
+    # We allow heavy emoji use, but still drop comments that are 100% pure punctuation
     alphanumeric_chars = sum(c.isalnum() for c in text)
-    if (alphanumeric_chars / chars) < 0.50:
+    if alphanumeric_chars == 0:
         return None
 
     return text

@@ -2,50 +2,55 @@ import httpx
 import time
 from core.database import get_connection
 
-def score_text(text: str, model="laya") -> int:
+def score_text(text: str, model="laya") -> tuple[int, int]:
     prompt = f"""You are an intelligence analyst evaluating a dataset. 
 Read the following text. How relevant is it to geopolitics, semiconductors, economic zones, infrastructure development, US/China relations, or local community displacement in the Philippines? 
 
-Score its relevance from 0 to 100, where 0 is completely irrelevant and 100 is highly relevant.
-Answer strictly with only the integer number and nothing else.
+Respond strictly with valid JSON containing two keys:
+- "decision_rating": an integer from 0 to 100 (0 = completely irrelevant, 100 = highly relevant).
+- "confidence": an integer from 0 to 100 indicating your confidence in this rating.
 
 Text: "{text[:1500]}"
-Score:"""
+"""
 
     try:
         response = httpx.post("http://localhost:11434/api/generate", json={
             "model": model,
             "prompt": prompt,
             "stream": False,
+            "format": "json",
             "options": {
-                "num_predict": 4, # Only need a few tokens for a number like "100"
                 "temperature": 0.0 
             }
         }, timeout=15.0)
         
         if response.status_code == 200:
-            result_str = response.json().get('response', '').strip()
-            # Extract just the digits in case it outputs something like "85%" or "Score: 85"
-            digits = ''.join(filter(str.isdigit, result_str))
-            if digits:
-                score = int(digits)
-                return min(max(score, 0), 100) # Clamp between 0 and 100
+            import json
+            result_str = response.json().get('response', '{}').strip()
+            data = json.loads(result_str)
+            decision = int(data.get("decision_rating", 100))
+            confidence = int(data.get("confidence", 100))
+            return min(max(decision, 0), 100), min(max(confidence, 0), 100)
     except Exception as e:
         pass 
-    return 100 # Default to 100 (keep) if error
+    return 100, 100 # Default if error
 
 def run():
     print("Running AI Semantic Scorer via Local Ollama...")
     conn = get_connection()
     
-    # We add a relevance_score integer column. We use TRY/EXCEPT so it doesn't crash if it already exists.
+    # We add the columns if they don't exist
     try:
-        conn.execute("ALTER TABLE silver_records ADD COLUMN relevance_score INTEGER")
+        conn.execute("ALTER TABLE silver_records ADD COLUMN decision_rating INTEGER")
+    except Exception:
+        pass
+    try:
+        conn.execute("ALTER TABLE silver_records ADD COLUMN confidence INTEGER")
     except Exception:
         pass
         
     # Get unprocessed records
-    unprocessed = conn.execute("SELECT content_hash, cleaned_content FROM silver_records WHERE relevance_score IS NULL").fetchall()
+    unprocessed = conn.execute("SELECT content_hash, cleaned_content FROM silver_records WHERE decision_rating IS NULL").fetchall()
     
     if not unprocessed:
         print("No new records to filter.")
@@ -59,9 +64,9 @@ def run():
     for row in unprocessed:
         content_hash, text = row
         
-        score = score_text(text, model="laya") 
+        decision, confidence = score_text(text, model="laya") 
         
-        conn.execute("UPDATE silver_records SET relevance_score = ? WHERE content_hash = ?", (score, content_hash))
+        conn.execute("UPDATE silver_records SET decision_rating = ?, confidence = ? WHERE content_hash = ?", (decision, confidence, content_hash))
         processed_count += 1
             
         if processed_count % 100 == 0:
