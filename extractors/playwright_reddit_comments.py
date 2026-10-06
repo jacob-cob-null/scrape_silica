@@ -13,6 +13,8 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 from core.config import BRONZE_DROP_DIR
 
+CHECKPOINT_FILE = Path(".reddit_checkpoint.txt")
+
 def load_posts():
     """Load all unique post URLs from reddit_posts_*.ndjson files."""
     posts = []
@@ -115,11 +117,31 @@ def run():
         print("[Reddit Comments] No post files found. Run playwright_reddit.py first.")
         return
 
-    print(f"[Reddit Comments] Found {len(posts)} unique posts to visit...")
+    # --- CHECKPOINT LOGIC ---
+    completed_urls = set()
+    if CHECKPOINT_FILE.exists():
+        with open(CHECKPOINT_FILE, "r", encoding="utf-8") as cf:
+            completed_urls = set(line.strip() for line in cf if line.strip())
+            
+    posts = [p for p in posts if p["url"] not in completed_urls]
+    
+    if not posts:
+        print("[Reddit Comments] All posts have already been processed (based on checkpoint).")
+        # Clean up checkpoint so the next fresh run starts from scratch
+        CHECKPOINT_FILE.unlink(missing_ok=True)
+        return
+
+    if completed_urls:
+        print(f"[Reddit Comments] Resuming from checkpoint. Skipped {len(completed_urls)} already processed posts.")
+        
+    print(f"[Reddit Comments] Found {len(posts)} posts left to visit...")
 
     all_comments = []
-
-    with sync_playwright() as p:
+    
+    # Open file at the start to stream results and prevent data loss on crash
+    out_file = BRONZE_DROP_DIR / f"reddit_comments_{int(time.time())}.ndjson"
+    
+    with sync_playwright() as p, open(out_file, "w", encoding="utf-8") as f:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -132,6 +154,16 @@ def run():
             print(f"[{i}/{len(posts)}] {post['title'][:70]}...")
             comments = scrape_comments(page, post)
             all_comments.extend(comments)
+            
+            # Save immediately to prevent data loss!
+            for c in comments:
+                f.write(json.dumps(c) + "\n")
+            f.flush()
+            
+            # Record this URL in the checkpoint file so we don't visit it again if we crash
+            with open(CHECKPOINT_FILE, "a", encoding="utf-8") as cf:
+                cf.write(post["url"] + "\n")
+            
             print(f"  → {len(comments)} comments (total: {len(all_comments)})")
             # Increased wait time to 6-12 seconds to prevent Reddit IP bans (CAPTCHAs)
             time.sleep(random.uniform(6.0, 12.0))
@@ -139,13 +171,17 @@ def run():
         browser.close()
 
     if all_comments:
-        out_file = BRONZE_DROP_DIR / f"reddit_comments_{int(time.time())}.ndjson"
-        with open(out_file, "w", encoding="utf-8") as f:
-            for c in all_comments:
-                f.write(json.dumps(c) + "\n")
         print(f"\n[Reddit Comments] Done. Saved {len(all_comments)} comments → {out_file}")
     else:
         print("[Reddit Comments] No comments captured.")
+        # Clean up empty file
+        if out_file.exists():
+            out_file.unlink()
+            
+    # If we reached the end successfully, delete the checkpoint file
+    # so tomorrow's run starts fresh.
+    if CHECKPOINT_FILE.exists():
+        CHECKPOINT_FILE.unlink()
 
 
 if __name__ == "__main__":
