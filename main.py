@@ -4,7 +4,12 @@ from pathlib import Path
 
 from core.config import BRONZE_AUTO_DIR
 from core.database import get_connection
-from extractors import api_youtube, api_bluesky, api_hacker_news, parser_zeeschuimer, parser_playwright, api_mastodon, api_rss, scraper_forums, playwright_reddit
+from extractors import (
+    api_youtube, api_bluesky, api_hacker_news, 
+    parser_zeeschuimer, parser_playwright, 
+    api_mastodon, api_rss, scraper_forums, 
+    playwright_reddit, api_gdelt, api_youtube_transcripts
+)
 from transforms.deduplicator import process_record
 from transforms import ai_filter
 from transforms.exporter import export_gold
@@ -17,6 +22,8 @@ def ingest_automated():
     api_mastodon.run()
     api_rss.run()
     scraper_forums.run()
+    api_gdelt.run()
+    api_youtube_transcripts.run()
     playwright_reddit.run()
 
 def ingest_drop_folder():
@@ -24,7 +31,7 @@ def ingest_drop_folder():
     parser_zeeschuimer.run()
     parser_playwright.run()
 
-def transform_data(skip_ai=False):
+def transform_data(skip_ai=False, ai_limit=None):
     print("Running Transform (Silver Cleaning and Gold Export)...")
     ingest_drop_folder() # Ensure drop folder data is converted to JSON first
     conn = get_connection()
@@ -43,7 +50,7 @@ def transform_data(skip_ai=False):
     
     if not skip_ai:
         # Run the AI Semantic Filter
-        ai_filter.run()
+        ai_filter.run(limit=ai_limit)
     else:
         print("Skipping AI Semantic Filter as requested.")
         
@@ -59,6 +66,7 @@ if __name__ == "__main__":
 
     transform_parser = subparsers.add_parser("transform")
     transform_parser.add_argument("--skip-ai", action="store_true", help="Skip the AI semantic filter stage")
+    transform_parser.add_argument("--ai-limit", type=int, help="Limit the number of records the AI processes in this run")
 
     args = parser.parse_args()
 
@@ -66,16 +74,13 @@ if __name__ == "__main__":
         if getattr(args, 'trial', False):
             print("--- TRIAL MODE: Limiting to 2 keywords ---")
             from core.config import ALL_KEYWORDS
-            from extractors import api_youtube, playwright_reddit
             ALL_KEYWORDS[:] = ALL_KEYWORDS[:2]
-            api_youtube.YOUTUBE_SAFE_KEYWORDS[:] = api_youtube.YOUTUBE_SAFE_KEYWORDS[:2]
-            playwright_reddit.PLAYWRIGHT_SAFE_KEYWORDS[:] = playwright_reddit.PLAYWRIGHT_SAFE_KEYWORDS[:2]
             
         if args.track == "automated":
             ingest_automated()
         elif args.track == "drop_folder":
             ingest_drop_folder()
     elif args.command == "transform":
-        transform_data(skip_ai=getattr(args, 'skip_ai', False))
+        transform_data(skip_ai=getattr(args, 'skip_ai', False), ai_limit=getattr(args, 'ai_limit', None))
     else:
         parser.print_help()

@@ -2,12 +2,10 @@ import time
 import json
 import random
 from playwright.sync_api import sync_playwright
-from core.config import BRONZE_DROP_DIR, TIER_1_BRAND, TIER_2_ANCHORS
-
-PLAYWRIGHT_SAFE_KEYWORDS = list(TIER_1_BRAND) + list(TIER_2_ANCHORS)
+from core.config import BRONZE_DROP_DIR, ALL_KEYWORDS
 
 def run():
-    print(f"[Reddit Posts] Starting scrape for {len(PLAYWRIGHT_SAFE_KEYWORDS)} keywords...")
+    print(f"[Reddit Posts] Starting scrape for {len(ALL_KEYWORDS)} keywords...")
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -21,9 +19,11 @@ def run():
         seen_urls = set()
         captured_posts = []
 
-        for i, keyword in enumerate(PLAYWRIGHT_SAFE_KEYWORDS, 1):
-            print(f"[{i}/{len(PLAYWRIGHT_SAFE_KEYWORDS)}] Searching: {keyword}")
-            search_url = f"https://www.reddit.com/search/?q={keyword.replace(' ', '+')}&sort=relevance&t=all"
+        for i, keyword in enumerate(ALL_KEYWORDS, 1):
+            print(f"[{i}/{len(ALL_KEYWORDS)}] Searching: {keyword}")
+            import urllib.parse
+            encoded_query = urllib.parse.quote_plus(keyword)
+            search_url = f"https://www.reddit.com/search/?q={encoded_query}&sort=relevance&t=all"
             try:
                 page.goto(search_url, wait_until="domcontentloaded", timeout=20000)
                 page.wait_for_timeout(2000)

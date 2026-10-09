@@ -60,18 +60,24 @@ def scrape_comments(page, post):
             pass  # No comments on this post, continue gracefully
         page.wait_for_timeout(1000)  # Brief settle time after comments appear
 
-        # Light scroll to reveal more comments
-        for _ in range(5):
-            page.evaluate("window.scrollBy(0, 600)")
-            time.sleep(random.uniform(0.8, 1.5))
+        # Scroll dynamically until we find at least 50 comments or max out
+        for _ in range(15):
+            comment_els = page.locator("shreddit-comment").all()
+            if len(comment_els) >= 50:
+                break
+            page.evaluate("window.scrollBy(0, 800)")
+            time.sleep(random.uniform(1.0, 2.0))
 
         comment_els = page.locator("shreddit-comment").all()
 
         if not comment_els:
             print(f"    [debug] No comment elements found. Title: {page.title()}, URL: {page.url[:80]}")
 
-
+        # Limit to 50 valid comments to avoid hoarding too much junk on huge threads
         for el in comment_els:
+            if len(comments) >= 50:
+                break
+                
             depth = el.get_attribute("depth") or "0"
             # Capture depth 0-3 (top-level through nested replies)
             if int(depth) > 3:

@@ -2,9 +2,7 @@ import os
 import json
 import time
 from googleapiclient.discovery import build
-from core.config import BRONZE_AUTO_DIR, ALL_KEYWORDS, TIER_1_BRAND, TIER_2_ANCHORS
-
-YOUTUBE_SAFE_KEYWORDS = list(TIER_1_BRAND) + list(TIER_2_ANCHORS)
+from core.config import BRONZE_AUTO_DIR, ALL_KEYWORDS
 
 def run():
     print("Running YouTube API Extractor...")
@@ -17,7 +15,7 @@ def run():
     try:
         youtube = build('youtube', 'v3', developerKey=api_key)
         
-        for keyword in YOUTUBE_SAFE_KEYWORDS:
+        for keyword in ALL_KEYWORDS:
             print(f"Searching YouTube for: {keyword}")
             
             # We'll pull up to 2 pages (100 videos) per keyword to stay under the 10,000 quota

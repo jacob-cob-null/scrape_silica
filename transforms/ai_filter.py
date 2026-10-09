@@ -35,7 +35,7 @@ Text: "{text[:1500]}"
         pass 
     return 100, 100 # Default if error
 
-def run():
+def run(limit=None):
     print("Running AI Semantic Scorer via Local Ollama...")
     conn = get_connection()
     
@@ -50,7 +50,11 @@ def run():
         pass
         
     # Get unprocessed records
-    unprocessed = conn.execute("SELECT content_hash, cleaned_content FROM silver_records WHERE decision_rating IS NULL").fetchall()
+    query = "SELECT content_hash, cleaned_content FROM silver_records WHERE decision_rating IS NULL"
+    if limit:
+        query += f" LIMIT {limit}"
+        
+    unprocessed = conn.execute(query).fetchall()
     
     if not unprocessed:
         print("No new records to filter.")

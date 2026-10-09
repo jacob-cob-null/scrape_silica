@@ -47,21 +47,15 @@ TIER_2_ANCHORS = [
 #   Too broad alone. Paired with anchors, they capture sentiment.
 # ──────────────────────────────────────────────────────────────
 TIER_3_CONTEXT = [
-    # Tech & Infrastructure (English)
-    "semiconductor", "foundry", "fab", "wafer",
-    "data center", "data centre", "AI hub", "power grid",
-    # Socio-Political (English)
-    "displacement", "farmers", "indigenous", "ancestral land",
-    "sovereignty", "foreign investors", "EDCA", "VFA",
-    "US military", "China", "Senate hearing", "jobs",
-    "agricultural land", "land use", "reclassification",
-    "water shortage", "power supply", "minimum wage",
-    # Socio-Political (Filipino)
-    "Aeta", "benta", "pinagbili", "kuryente", "tubig",
-    "Amerikano", "trabaho", "kontraktuwal", "polusyon",
-    "baha", "kalikasan", "base militar",
+    # Tech & Infrastructure
+    "semiconductor", "foundry", "data center", "AI hub",
+    # Socio-Political
+    "displacement", "indigenous", "ancestral land",
+    "US military", "EDCA", "water shortage", "reclassification",
+    # Filipino Local Terms
+    "Aeta", "pinagbili", "polusyon", "base militar",
     # Government & Policy
-    "Marcos", "DPWH", "OFW", "POGO", "deforestation",
+    "POGO", "deforestation"
 ]
 
 # ──────────────────────────────────────────────────────────────
