@@ -68,7 +68,7 @@ def load_router():
             "The 'laya' package is not installed. Run: "
             "pip install -r requirements-laya.txt."
         ) from exc
-    return Router(preload=True)
+    return Router()
 
 
 def score(df: pd.DataFrame, question: dict, positives: set[str], batch_size: int = 32) -> pd.DataFrame:
