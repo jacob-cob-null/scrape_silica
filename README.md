@@ -12,82 +12,32 @@ An end-to-end, production-grade Medallion ELT and NLP pipeline designed to captu
 ## Architecture Flow
 
 ```mermaid
-flowchart TD
-    subgraph Bronze["Bronze Layer (Raw Ingestion)"]
-        direction TB
-        E1["YouTube (Data API v3 + Transcripts)"]
-        E2["Reddit (Headless Playwright Posts & Comments)"]
-        E3["TikTok (Zeeschuimer NDJSON Exports)"]
-        E4["Bluesky (AT Protocol API)"]
-        E5["Mastodon, HackerNews, GDELT & RSS"]
-        
-        E1 --> B1[("data/bronze/automated/*.json")]
-        E2 --> B2[("data/bronze/drop_folder/*.ndjson")]
-        E3 --> B3[("data/bronze/zeeschuimer/*.ndjson")]
-        E4 --> B1
-        E5 --> B1
-    end
+flowchart LR
+    A["<b>1. Extract</b><br/>YouTube, Reddit, TikTok,<br/>Bluesky, Mastodon, GDELT"] --> B["<b>2. Bronze</b><br/>Raw JSON & NDJSON<br/>Lakehouse Files"]
+    B --> C["<b>3. Silver</b><br/>DuckDB Deduplication<br/>(SHA-256 Content Hashes)"]
+    C --> D["<b>4. AI Filter</b><br/>LAYA noul Model<br/>(RTX 3060 GPU Inference)"]
+    D --> E["<b>5. Gold</b><br/>Parquet & CSV<br/>(0–100% Relevance)"]
 
-    subgraph Silver["Silver Layer (Cleaning & Staging)"]
-        direction TB
-        C1["Cleaner (Regex, Whitespace, PII strip)"]
-        D1["SHA-256 Deterministic Content Hasher"]
-        DB[("DuckDB: pax_silica_staging.duckdb<br/>(ON CONFLICT DO NOTHING)")]
-        
-        B1 & B2 & B3 --> C1 --> D1 --> DB
-    end
-
-    subgraph AI["AI Semantic Filtering (GPU Inference)"]
-        direction TB
-        CRIT["Criteria Schema (eval/criteria.json)<br/>Anchor Entailment (noul)"]
-        LAYA["LAYA Zero-Shot Cross-Encoder<br/>(NVIDIA RTX 3060 CUDA, Batch=32)"]
-        UPD["Vectorized Batch Update<br/>(decision_rating & confidence)"]
-        
-        DB --> LAYA
-        CRIT --> LAYA
-        LAYA --> UPD --> DB
-    end
-
-    subgraph Gold["Gold Layer (Analytics-Ready Corpus)"]
-        direction TB
-        EXP["Exporter (Schema Enforcement)"]
-        G_PQ[("data/gold/pax_silica_corpus.parquet<br/>(Snappy Compressed)")]
-        G_CSV[("data/gold/pax_silica_corpus.csv<br/>(UTF-8 Quoted)")]
-        
-        DB --> EXP --> G_PQ & G_CSV
-    end
-
-    classDef bronze fill:#f9d5e5,stroke:#333,stroke-width:1px;
-    classDef silver fill:#eeeeee,stroke:#333,stroke-width:1px;
-    classDef ai fill:#d5e8d4,stroke:#274e13,stroke-width:1px;
-    classDef gold fill:#fff2cc,stroke:#b45f06,stroke-width:1px;
-
-    class E1,E2,E3,E4,E5,B1,B2,B3 bronze;
-    class C1,D1,DB silver;
-    class CRIT,LAYA,UPD ai;
-    class EXP,G_PQ,G_CSV gold;
+    style A fill:#f0f4f8,stroke:#3b82f6,stroke-width:1.5px
+    style B fill:#fdf2f8,stroke:#ec4899,stroke-width:1.5px
+    style C fill:#f3f4f6,stroke:#6b7280,stroke-width:1.5px
+    style D fill:#ecfdf5,stroke:#10b981,stroke-width:1.5px
+    style E fill:#fffbeb,stroke:#f59e0b,stroke-width:1.5px
 ```
 
 ---
 
 ## Evaluation & Ground-Truth Methodology
 
-To ensure high data quality across multilingual social text (English, Tagalog, and Taglish code-switching), the pipeline incorporates a rigorous evaluation benchmark.
+To ensure high data quality across multilingual social text (English, Tagalog, and Taglish code-switching), the pipeline incorporates a formal evaluation benchmark:
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    participant Sample as 400-Row Stratified Sample
-    participant GroundTruth as Human / LLM Audited Labels (eval/laya_sample.csv)
-    participant Model as LAYA Cross-Encoder (noul)
-    participant Evaluator as score_eval.py Engine
-    
-    Sample->>GroundTruth: Curate ground truth (none, weak, direct, core)
-    GroundTruth->>GroundTruth: Audit review queue (needs_review_outcomes.csv)
-    Sample->>Model: GPU Batch Inference (Hypothesis Entailment)
-    Model->>Evaluator: Emit P(true) Closeness Percentage (0-100%)
-    Evaluator->>Evaluator: Compute Precision, Recall, F1 & ECE across thresholds
-    Note over Evaluator: Achieves 92.4% Recall on direct/core anchors at t=50
+flowchart LR
+    A["<b>Ground Truth Curation</b><br/>386 Labeled Rows<br/>(eval/laya_sample.csv)"] --> B["<b>LAYA noul Scoring</b><br/>GPU Batch Entailment<br/>(0%–100% Closeness)"] --> C["<b>Threshold Sweeps</b><br/>Precision / Recall / F1<br/>(92.4% Recall @ t=50)"]
+
+    style A fill:#f3f4f6,stroke:#6b7280,stroke-width:1.5px
+    style B fill:#ecfdf5,stroke:#10b981,stroke-width:1.5px
+    style C fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px
 ```
 
 ### Evaluation Benchmark Highlights:
