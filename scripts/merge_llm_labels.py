@@ -133,6 +133,11 @@ def load_annotations(path: Path) -> list[dict]:
     return records
 
 
+def strip_generated_note(note: str) -> str:
+    """Drop a previously generated artifact/LLM provenance block."""
+    return re.split(r"(?:^|;\s*)(?:artifact|llm=)", note or "", maxsplit=1)[0].strip()
+
+
 def build_note(existing: str, rec: dict) -> str:
     bits = []
     if rec["artifact"]:
@@ -247,7 +252,8 @@ def apply_labels(df: pd.DataFrame, records: list[dict], valid_labels: set[str],
                 continue
             df.at[idx, "label_relevance"] = rec["relevance"]
             merged += 1
-        df.at[idx, "label_notes"] = build_note(row.get("label_notes", ""), rec)
+        existing = strip_generated_note(row.get("label_notes", ""))
+        df.at[idx, "label_notes"] = build_note(existing, rec)
 
     return {"merged": merged, "blanked_artifact": blanked_artifact,
             "skipped": skipped, "by_id": by_id}

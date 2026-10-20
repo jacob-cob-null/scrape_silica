@@ -28,7 +28,7 @@
   "relevance": "weak",
   "why": "Opposes site location in Tarlac vs Ilocos without explicit project naming.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -52,7 +52,7 @@
   "relevance": "weak",
   "why": "Discusses groundwater depletion and farmers without explicitly naming Pax Silica.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -68,7 +68,7 @@
   "relevance": "none",
   "why": "Generic critique of political corruption without naming or clearly identifying project.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -204,7 +204,7 @@
   "relevance": "weak",
   "why": "Highlights massive daily water consumption without explicitly naming facility.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -220,7 +220,7 @@
   "relevance": "none",
   "why": "Generic corruption complaint without naming project or specific site.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -268,7 +268,7 @@
   "relevance": "none",
   "why": "Short dismissal of water problem lacking identifiable referent.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -332,7 +332,7 @@
   "relevance": "weak",
   "why": "Discusses high-end export manufacturing hub and China without project mention.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -356,7 +356,7 @@
   "relevance": "none",
   "why": "Vague displacement question without mention of site or project.",
   "llm_confidence": 0.65,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -460,7 +460,7 @@
   "relevance": "none",
   "why": "Environmental critique of unnamed polluting industry sector.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -540,7 +540,7 @@
   "relevance": "none",
   "why": "Appeal to Robredo to stop unspecified initiative.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -548,7 +548,7 @@
   "relevance": "weak",
   "why": "Criticizes placing high-heat infrastructure in tropical climate without explicit naming.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -620,7 +620,7 @@
   "relevance": "none",
   "why": "Generic complaint about anomalies and rushed hidden deals.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -876,7 +876,7 @@
   "relevance": "none",
   "why": "Plea to the President not to give the Philippines away.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -924,7 +924,7 @@
   "relevance": "weak",
   "why": "Reaction to undervaluation of land per square meter by government.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -980,7 +980,7 @@
   "relevance": "weak",
   "why": "Discusses balancing industrial water consumption versus residential usage.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -1148,7 +1148,7 @@
   "relevance": "weak",
   "why": "Compares project opposition to Bataan nuclear plant protests.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -1380,7 +1380,7 @@
   "relevance": "none",
   "why": "Generic prayer for protesters' protection lacking mention of project.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -1420,7 +1420,7 @@
   "relevance": "none",
   "why": "Generic outburst against informal settlers without project or site context.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -1436,7 +1436,7 @@
   "relevance": "weak",
   "why": "Questions lack of consultation with local residents on development project.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -1548,7 +1548,7 @@
   "relevance": "none",
   "why": "Generic remark advocating transition to AI technology away from politicians.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -1556,7 +1556,7 @@
   "relevance": "weak",
   "why": "Calculates 60B land lease payments over 25 years alleging corruption.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -1604,7 +1604,7 @@
   "relevance": "weak",
   "why": "Sarcastic dismissal of closed-loop cooling technology claims.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -1700,7 +1700,7 @@
   "relevance": "none",
   "why": "Meta-critique of a video's pro and con balance.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -1796,7 +1796,7 @@
   "relevance": "weak",
   "why": "Questions whether agreement signatories considered impacts favoring Filipinos.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -2004,7 +2004,7 @@
   "relevance": "none",
   "why": "Generic plea to oppose something without specifying topic.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -2164,7 +2164,7 @@
   "relevance": "weak",
   "why": "Contests land classification as government land rather than ancestral land.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -2396,7 +2396,7 @@
   "relevance": "weak",
   "why": "Unfairness grievance regarding land theft without naming project.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -2404,7 +2404,7 @@
   "relevance": "weak",
   "why": "Anti-AI slogan asserting humans can survive without AI.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -2436,7 +2436,7 @@
   "relevance": "weak",
   "why": "Warns project impacts will ruin lives and starve people.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -2684,7 +2684,7 @@
   "relevance": "none",
   "why": "Political critique of Vice President lacking clear project mention.",
   "llm_confidence": 0.8,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -2692,7 +2692,7 @@
   "relevance": "weak",
   "why": "Mentions mining companies encroaching on protected indigenous areas.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -2796,7 +2796,7 @@
   "relevance": "weak",
   "why": "Grievance on presidential approval overriding local sitios without project name.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -2900,7 +2900,7 @@
   "relevance": "none",
   "why": "Dismissal of content as Chinese leftist propaganda without context.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -3012,7 +3012,7 @@
   "relevance": "weak",
   "why": "Expresses surviving without AI versus nature without naming project.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -3028,7 +3028,7 @@
   "relevance": "weak",
   "why": "Defends relocation saying government will improve lives of relocatees.",
   "llm_confidence": 0.7,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -3036,7 +3036,7 @@
   "relevance": "none",
   "why": "Calls for removing corrupt politicians from office.",
   "llm_confidence": 0.75,
-  "needs_review": true,
+  "needs_review": false,
   "artifact": false
  },
  {
@@ -3129,9 +3129,9 @@
  },
  {
   "row_id": 364,
-  "relevance": "none",
-  "why": "Interview on Kazakhstan balancing Pax Silica and WAICO in AI.",
-  "llm_confidence": 0.85,
+  "relevance": "direct",
+  "why": "Announces an interview discussing Pax Silica and Kazakhstan's AI positioning.",
+  "llm_confidence": 0.9,
   "needs_review": false,
   "artifact": false
  },

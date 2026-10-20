@@ -1,0 +1,37 @@
+row_id,platform,label,decision,new_label,note
+15,youtube_comment,none,accept,,Accepted none: consistent with the criteria (Generic prayer for protesters' protection lacking mention of project.).
+29,youtube_comment,none,accept,,Accepted none: consistent with the criteria (Generic plea to oppose something without specifying topic.).
+31,youtube_comment,none,accept,,Accepted none: consistent with the criteria (Generic outburst against informal settlers without project or site context.).
+43,youtube_comment,weak,accept,,Accepted weak: consistent with the criteria (Questions lack of consultation with local residents on development project.).
+53,youtube_comment,none,accept,,Accepted none: consistent with the criteria (Political critique of Vice President lacking clear project mention.).
+54,youtube_comment,weak,accept,,Accepted weak: consistent with the criteria (Mentions mining companies encroaching on protected indigenous areas.).
+67,youtube_comment,weak,accept,,"Accepted weak: water-use comment with a deictic referent, but no project named; text-alone rule keeps it indirect."
+70,youtube_comment,none,accept,,Accepted none: consistent with the criteria (Generic corruption complaint without naming project or specific site.).
+91,youtube_comment,none,accept,,Accepted none: bare water dismissal with no project or site referent.
+106,youtube_comment,none,accept,,Accepted none: consistent with the criteria (Plea to the President not to give the Philippines away.).
+117,youtube_comment,weak,accept,,Accepted weak: consistent with the criteria (Grievance on presidential approval overriding local sitios without project name.).
+126,youtube_comment,weak,accept,,Accepted weak: consistent with the criteria (Discusses high-end export manufacturing hub and China without project mention.).
+133,youtube_comment,weak,accept,,Accepted weak: consistent with the criteria (Contests land classification as government land rather than ancestral land.).
+135,youtube_comment,none,accept,,Accepted none: consistent with the criteria (Generic remark advocating transition to AI technology away from politicians.).
+136,youtube_comment,weak,accept,,"Accepted weak: specific 60B lease figure, but no project or site named; indirect."
+137,youtube_comment,weak,accept,,Accepted weak: consistent with the criteria (Reaction to undervaluation of land per square meter by government.).
+143,youtube_comment,none,accept,,Accepted none: bare displacement question with no project referent.
+159,youtube_comment,weak,accept,,Accepted weak: names Tarlac but not the project; site mention only.
+162,reddit,weak,accept,,Accepted weak: consistent with the criteria (Discusses balancing industrial water consumption versus residential usage.).
+175,reddit,weak,accept,,Accepted weak: cooling claim without a named data centre or project.
+187,reddit,none,accept,,Accepted none: consistent with the criteria (Dismissal of content as Chinese leftist propaganda without context.).
+193,reddit,weak,accept,,Accepted weak: groundwater comment without a named facility or project.
+225,reddit,none,accept,,Accepted none: generic environment critique with no project or site referent.
+247,tiktok,none,accept,,Accepted none: consistent with the criteria (Generic critique of political corruption without naming or clearly identifying project.).
+256,tiktok,none,accept,,Accepted none: consistent with the criteria (Meta-critique of a video's pro and con balance.).
+257,tiktok,none,accept,,Accepted none: consistent with the criteria (Appeal to Robredo to stop unspecified initiative.).
+263,tiktok,weak,accept,,"Accepted weak: nuclear-plant comparison, no project name."
+266,tiktok,weak,accept,,Accepted weak: consistent with the criteria (Criticizes placing high-heat infrastructure in tropical climate without explicit naming.).
+274,tiktok,weak,accept,,Accepted weak: consistent with the criteria (Unfairness grievance regarding land theft without naming project.).
+284,tiktok,weak,accept,,Accepted weak: consistent with the criteria (Anti-AI slogan asserting humans can survive without AI.).
+291,tiktok,weak,accept,,Accepted weak: consistent with the criteria (Expresses surviving without AI versus nature without naming project.).
+296,tiktok,none,accept,,Accepted none: consistent with the criteria (Generic complaint about anomalies and rushed hidden deals.).
+300,tiktok,weak,accept,,Accepted weak: consistent with the criteria (Defends relocation saying government will improve lives of relocatees.).
+302,tiktok,weak,accept,,Accepted weak: generic ruin/starvation warning; theme only.
+308,tiktok,weak,accept,,Accepted weak: consistent with the criteria (Questions whether agreement signatories considered impacts favoring Filipinos.).
+309,tiktok,none,accept,,Accepted none: consistent with the criteria (Calls for removing corrupt politicians from office.).
