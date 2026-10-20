@@ -10,7 +10,11 @@ def get_connection():
         CREATE TABLE IF NOT EXISTS silver_records (
             content_hash VARCHAR PRIMARY KEY,
             platform VARCHAR,
-            cleaned_content VARCHAR
+            cleaned_content VARCHAR,
+            decision_rating INTEGER,
+            confidence INTEGER
         )
     """)
+    conn.execute("ALTER TABLE silver_records ADD COLUMN IF NOT EXISTS decision_rating INTEGER")
+    conn.execute("ALTER TABLE silver_records ADD COLUMN IF NOT EXISTS confidence INTEGER")
     return conn

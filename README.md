@@ -26,8 +26,9 @@ extractors/   →   data/bronze/   →   transforms/   →   data/gold/
 
 **Data layers:**
 - `data/bronze/automated/` — JSON files from API extractors
-- `data/bronze/drop_folder/` — manual drops + Playwright ndjson output
-- `data/silver/` — deduplicated SQLite records
+- `data/bronze/drop_folder/` — manual drops + Playwright Reddit posts & comments (`.ndjson`)
+- `data/bronze/zeeschuimer/` — Zeeschuimer exports (TikTok posts & comments `.ndjson`)
+- `data/silver/` — deduplicated DuckDB records (`silver_records`)
 - `data/gold/` — final Parquet + CSV exports
 
 ---
@@ -104,8 +105,9 @@ $env:PYTHONPATH="."; python main.py ingest --track automated --trial
 | `api_hacker_news.py` | Hacker News | Algolia API |
 | `api_mastodon.py` | Mastodon | REST API |
 | `api_rss.py` | RSS/News feeds | feedparser |
+| `api_gdelt.py` | GDELT | REST API |
+| `api_youtube_transcripts.py` | YouTube transcripts | youtube-transcript-api |
 | `scraper_forums.py` | Forums | requests + BeautifulSoup |
 | `playwright_reddit.py` | Reddit | Headless browser (DOM) |
 | `playwright_reddit_comments.py` | Reddit comments | Headless browser (DOM) |
-| `parser_zeeschuimer.py` | TikTok/Instagram | Zeeschuimer browser ext |
-| `parser_playwright.py` | Drop folder ndjson | Parser |
+| `parser_zeeschuimer.py` | TikTok/Instagram + drop folder | Zeeschuimer / NDJSON parser |

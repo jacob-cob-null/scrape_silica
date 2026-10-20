@@ -1,0 +1,368 @@
+You are an annotator for a research dataset on Philippine online discourse about the
+"Pax Silica" initiative: a U.S.-led economic and security project in the Philippines covering
+semiconductor and AI infrastructure, data centres, critical minerals and the Luzon Economic
+Corridor, including its sites (New Clark City, Clark, Tarlac) and its local impacts.
+
+Label EACH text on RELEVANCE using exactly one of:
+
+  none   - no link to the Pax Silica project and no link to its specific sites or impacts.
+           Includes generic Philippine news, semiconductor or rare-earth news about other
+           countries, and talk of Clark or Tarlac with no project connection.
+  weak   - a passing or indirect connection: a project-associated site, agency or theme is
+           mentioned but the project itself is not discussed.
+  direct - discusses the project, its sites, agencies, industry or local impacts, but is not
+           centred on it.
+  core   - centred on Pax Silica or its direct consequences: support, opposition, displacement,
+           land, water, jobs, corruption or naming.
+
+RULES (apply strictly):
+1. Language is irrelevant. Filipino, Tagalog, Taglish, Cebuano and English get the same
+   standard. Never lower the label because the text is short or in Filipino.
+2. Criticism and opposition count fully. "No to Pax Silica" is core, not none.
+3. A place name alone is not relevance. "Bridge collapsed in Tarlac" is none.
+4. A theme alone is not relevance. Rare earths in Malaysia, EU critical minerals, a US mining
+   programme: none. Pax Silica is the anchor.
+5. Short and vague is none, but if the referent is clearly the project, do not punish brevity.
+6. Judge each text alone. Never infer from context or from other rows in the batch.
+7. If torn between two labels, choose the lower one and set "needs_review": true.
+
+ARTIFACT RULE: if a text is not user-generated discourse (scraper boilerplate such as
+"Forum user discussion regarding X.", a bare URL, a seed fixture, or empty/emoji-only noise),
+set "artifact": true and still give relevance "none".
+
+Calibration examples (label, then text):
+  core   - "Nararapat sa atin bansa ang pax silica makakatulong sa mga pilipinong manggagawa"
+  core   - "Big NO to PAX SILICA"
+  core   - "Kawawang pilipinas may tubig sa pax silica pero walang tubig sa mahihirap"
+  core   - "Aetas and Farmers in Tarlac Defend Ancestral Lands, Warn Pax Silica AI Hub Threatens
+            Farmlands and Water"
+  direct - "Eight more countries, including South Korea, will participate in the Luzon Economic
+            Corridor (LEC)"
+  weak   - "Clark Global City is great .. More space, more convenience to stroll around the City"
+  none   - "ICYMI: Tulay sa Tarlac, bumagsak" (a bridge collapsed in Tarlac)
+  none   - "American Resources forms Indo-Pacific unit to lead Malaysia rare earth expansion"
+
+CRITICAL - ID FIDELITY:
+The "row_id" values in the input are authoritative identifiers, NOT sequence numbers.
+Copy each row_id verbatim into your answer. Never renumber. Never invent an id. Your reply
+must contain each input row_id exactly once and no other ids. If the input ids are
+"7, 91, 132", your output ids are exactly 7, 91 and 132 - not 1, 2, 3.
+
+Reply with JSON ONLY - an array with one object per input row, in the SAME ORDER as the input,
+no prose, no code fences:
+[
+  {"row_id": <int>, "relevance": "none|weak|direct|core", "artifact": false,
+   "confidence": <0.0-1.0>, "needs_review": false, "why": "<max 15 words>"}
+]
+
+Input rows:
+[
+ {
+  "row_id": 4,
+  "text": "US have no respect for any sovereign country it's slowly being replaced by China, you can't deal with a bully."
+ },
+ {
+  "row_id": 13,
+  "text": "You asked for comment from authorities ? They are communist country they dont respond only authority..."
+ },
+ {
+  "row_id": 14,
+  "text": "NO TO DDS AGAIN!!!\nNO TO DUTERTE AGAIN!!!\nNO TO POGO AGAIN!!!\nNO TO PRO CHINA AGAIN!!!\nNO TO EJK AGAIN!!!\nNO TO BOBOTANTE AGAIN!!!\nNO TO DRUG LORD SUPPORTERS AGAIN!!!\nNO TO PRO CHINESE DRUG LORD SUPPORTERS AGAIN!!!\nNO TO GHOST PROJECTS AGAIN!!! \nNO TO SARA LUSTAY AGAIN!!! \n\nWAKE UP FILIPINOS!!!!"
+ },
+ {
+  "row_id": 16,
+  "text": "Read more about Apple's push to build an all-American chip here:"
+ },
+ {
+  "row_id": 17,
+  "text": "Interestingly, all of the countries that she mentioned are Asian & White country.  No other ethnic group can master the semiconductor industry."
+ },
+ {
+  "row_id": 23,
+  "text": "Bass player OWNS this with his off the hook solo, the whole thing, but the Bass could make the dead dance one more time.."
+ },
+ {
+  "row_id": 24,
+  "text": "High Speed Watercraft made in Danao City, Cebu"
+ },
+ {
+  "row_id": 36,
+  "text": "We are like mold. Luckily living just far enought not to freeze and not to dry away instantly. ❤"
+ },
+ {
+  "row_id": 42,
+  "text": "no to pax silica. nagsisimula ng mag-ban ng construction of data centers in US hindi lang dahil sa environmental risk but also health risk. madaming paraan para padamihi. ang trabaho, improve the agriculture in our country, we have the best land for agriculture we can be world leader for exporting fresh produce, if that happens thousands of jobs can be created as well."
+ },
+ {
+  "row_id": 46,
+  "text": "Parang iba na Ang meaning nang NBI, Hindi na NATIONAL BUREAU INVESTIGATION...kundi NATIONAL BANGAG INVESTIGATION 😂😂"
+ },
+ {
+  "row_id": 49,
+  "text": "Ang ganda ng views 🤩💕"
+ },
+ {
+  "row_id": 51,
+  "text": "Food"
+ },
+ {
+  "row_id": 53,
+  "text": "It only goes to show that she is not even updated to what is happening to our country right now. How can any voter entrust her with their votes. Parang world tour lng ginagawa nya as VP. Awa nlng talaga SA Pinas."
+ },
+ {
+  "row_id": 54,
+  "text": "Kaya pala parang mas naging busy na mga mining company? Pinasok na mga area na protected at para sa katutubo"
+ },
+ {
+  "row_id": 59,
+  "text": "Wow Clark air base is change A lot. i mess that place in 1980 my daughter born in hospital. Clark air base so I have  memory there"
+ },
+ {
+  "row_id": 65,
+  "text": "Do you think graphene or carbon nanotubes could help?"
+ },
+ {
+  "row_id": 73,
+  "text": "2:51 and this exact thing happened in 2025, forcing our nutty president to back off some of his crazy needless tarriffs!"
+ },
+ {
+  "row_id": 81,
+  "text": "Clark Global City is great .. More space , more convenience to stroll around the City , more investor to come .."
+ },
+ {
+  "row_id": 83,
+  "text": "After 20 years may  mga trolls at bayarang vlogger na naman na magsasabing sinayang naman ang isang proyektong napakaganda at ang mga kabayanihan kuno nilang mag aama"
+ },
+ {
+  "row_id": 85,
+  "text": "OK yan"
+ },
+ {
+  "row_id": 101,
+  "text": "Just make silica"
+ },
+ {
+  "row_id": 104,
+  "text": "Kailangan din Ng pagkain Ang mga tabahanti Dyan kaya need din Ang agriculture to feed the people in pax silica."
+ },
+ {
+  "row_id": 110,
+  "text": "So entertaining and awesome 👌 😊, thanks for sharing this wonderful video . Really enjoyed watching it 😀 😊 and would love to see more. New friend here 😊😄 🤝🔔👍!!! Wish a wonderful time 😊"
+ },
+ {
+  "row_id": 113,
+  "text": "2024 And Im Still Here .🔥 Who's Here With Me ?"
+ },
+ {
+  "row_id": 114,
+  "text": "type ko si village of domes"
+ },
+ {
+  "row_id": 115,
+  "text": "Keep holding on to history instead of the future. 😢"
+ },
+ {
+  "row_id": 117,
+  "text": "Wala nang paalam2 yan. Presidente na may go signal jan eh may magagawa pa ba? Ano ba naman power ng sitio or municipality vs naka upong presidente?"
+ },
+ {
+  "row_id": 119,
+  "text": "Those buildings were other office's. I worked in the 2nd building after the hospital."
+ },
+ {
+  "row_id": 122,
+  "text": "May ganyan din sa cebu po.. jchai"
+ },
+ {
+  "row_id": 129,
+  "text": "The quality of road is the same as chinese tofu dredge. \nThe contractor  pocketed large amount of funds.  The contractor  used sands for growing vegetables  ,compacted soil   and adding 3\" asphalt on top.\n\nNo rebar, cement,  the thief contractor are liable for damaged, the should  rehabilitate  and re construct a proper bridge, road ,safety barriers, or face prosecution."
+ },
+ {
+  "row_id": 139,
+  "text": "Grabi ang ganda ng segment na toh sana mag continue at magtagal pa…..i will reco  this❤"
+ },
+ {
+  "row_id": 140,
+  "text": "Bhai koyi dusra space organisation banavo jo india ke liye spy, military, defense, educational, industrial, communication etc ke liye satelites bheje ye ISRO to nikamma hai bas chand, suraj, Mangal, aur videshi satelites ke liye hi kam karta hai. Lagta hai ISRO me ghuspaith ho chuki hai. Vo videshi ISRO par kam karta hai ya fir hamari government videshi dhamkiyon ke karan spy, military, communication etc satelites nahi bhejti."
+ },
+ {
+  "row_id": 144,
+  "text": "I got nmdc and gmdc .... 🎉"
+ },
+ {
+  "row_id": 146,
+  "text": "SEND CHINA A FEW KODAK BEARS FRESH AND HUNGRY FROM KODIAK ISLAND ALASKA"
+ },
+ {
+  "row_id": 152,
+  "text": "I have no trust in the USA, Israel, and EU nations. The Philippines should offer the Luzon Business Corridor site, Subic, and Clark Air Base to Japan's industries and military instead. We should encourage Japan to militarize and revive the Greater East Asia Co-Prosperity Sphere together with ASEAN. We should get rid of the Zionist West in thd Far East, and the Japan-ASEAN GEACPS should be powerful enough to deter China."
+ },
+ {
+  "row_id": 154,
+  "text": "Mga gawang hapon Hanggang Ngayon nkatayo pa😀😀baka kawayan ang nilagay na bakal jan"
+ },
+ {
+  "row_id": 178,
+  "text": "Well sabi naman ng us may alternatives sila if nag backdown or may nangyari masama sa deal (corruption etc) sa vietnam or thai na lang ata ilalagay. Btw I might be wrong pero ang alam ko sinabi ng gov natin na walang data center and its all about manufacturing and nickel mining i guess. And foxconn buggest tech manufacturer ng taiwan is joining which means this is a great progress to the manufacturing centee, we cannot rely to bpos and ofws but yeah seems like people want the status quo to stay."
+ },
+ {
+  "row_id": 180,
+  "text": "I'm 100% in favor of less speculative nonsense and fewer AI processing units. As someone who has to go to datacenters, the AI racks are really REALLY annoying. Datacenters have always been loud, but those things are insane little jet engines that make me want hearing protection just to be near them (It's weird how everything about them is just... aggravating? Like in addition to everything else they can't even be quiet?). We have datacenters in MoCo already. Hospitals, Banks, major retailers, telco companies, all of them use datacenters. The Montgomery County government uses datacenters. I wou"
+ },
+ {
+  "row_id": 182,
+  "text": "Happy to support Miri"
+ },
+ {
+  "row_id": 187,
+  "text": "Low quality propaganda from china implemented by the left."
+ },
+ {
+  "row_id": 189,
+  "text": "It's important to Jews Jews ended up there legally and illegally and mostly bought land and built institutions Their neighbors didn't appreciate the immigration into the land so they reacted with violence Their violence was met with greater violence every time That's really what gives Jews ownership of the land. Not these vacuous arguments about genetics and the Bible. I don't care about those things and I don't care about anyone else's supposed entitlement to Israel besides Israelis. Israeli voters are the sovereign controllers of their borders. They get to say who comes in. They say the peop"
+ },
+ {
+  "row_id": 192,
+  "text": "Very much"
+ },
+ {
+  "row_id": 194,
+  "text": "I've cornered the market, not on pineapple, not on coconut, but on their waters. DM me with an accounting of your total wealth and perhaps we can come to some, arrangement. If not, the waters will be eliminated."
+ },
+ {
+  "row_id": 197,
+  "text": "We need railroad to Pangasinan please"
+ },
+ {
+  "row_id": 201,
+  "text": "Heard this was because of a beef between the current owners and former owners"
+ },
+ {
+  "row_id": 202,
+  "text": "Yeah I remember having to pay a toll 2x from Ocean Park to Pasig. And we aren't even faster getting to our destination, the initial booking estimated arrival time  without toll was the same still towards the end so, I was out of 71 pesos for nothing."
+ },
+ {
+  "row_id": 222,
+  "text": "B.C. development association cancels awards, citing 'worst housing market in decades'"
+ },
+ {
+  "row_id": 224,
+  "text": "TLDR: another wokie useful idiot. I notice they tend to have the same avatar"
+ },
+ {
+  "row_id": 238,
+  "text": "This is politics and I won't put my fingers in it. This is a matter for you Filipinos. how is the housing cost issue you are complaining about not related to politics? Politics and socioeconomics are deeply entwined brother. The sooner you realize the cultural aspect of Filipinos the better for you to understand the situation and how Filipinos react to the economy, which is why you see \"something is nothing adding up\"."
+ },
+ {
+  "row_id": 241,
+  "text": "Because China benefits from the Philippines moving away from Pax Silica. US and its western allies are essentially making one of its boldest moves in an attempt to break Chinese dominance in the electronics industry. Kaya nga follow da money. Yun mga galit halata kung sino. Puwede naman build your own power and closed loop cooling. Too far ba pag profit sharing? no Villars 100km from site. Too much ata?"
+ },
+ {
+  "row_id": 244,
+  "text": "Maganda naman yung group na kiiikiii bakit ba"
+ },
+ {
+  "row_id": 270,
+  "text": "Nakakagalit na talaga kawawa tayong mga pilipino kung sakaling matuloy yang pax silica. Tayo ang mahihirapan katagalan.\nNO TO PAX SILICA!!!!!"
+ },
+ {
+  "row_id": 286,
+  "text": "Data science here but all I wanted was to make a film."
+ },
+ {
+  "row_id": 291,
+  "text": "Kaya natin mabuhay ng walang ai, pero di natin kayang mabuhay ng walang kalikasan."
+ },
+ {
+  "row_id": 295,
+  "text": "at sa TINGIN nyo baket dto nila pinagsisiksikan yang mga data centers? ISINUSUKA nga Yan sa bansa nla Tpos dto ITATAPON. susko"
+ },
+ {
+  "row_id": 300,
+  "text": "sus pababayaan ba ng gobyerno ...baka nga gumanda pa buhay nila pag nakalipat sila eh"
+ },
+ {
+  "row_id": 309,
+  "text": "may karapatan tayong alisin sila sa kanilang mga pwisto, wag tayong mag baliw baliwan at magpa -uto sa kanila. tayo din ang sisira sa ating bayan kung hahayaan lang natin silang mag sarap sarapan sa kayamanang hindi naman sa kanila.;("
+ },
+ {
+  "row_id": 315,
+  "text": "Aboitiz ecozones gear up for Luzon corridor - Inquirer.net\nAboitiz ecozones gear up for Luzon corridor&nbsp;&nbsp;Inquirer.net"
+ },
+ {
+  "row_id": 316,
+  "text": "BCDA-MTD joint venture inks deal for NBI to locate offices in New Clark City - Punto! Central Luzon\nBCDA-MTD joint venture inks deal for NBI to locate offices in New Clark City&nbsp;&nbsp;Punto! Central Luzon"
+ },
+ {
+  "row_id": 322,
+  "text": "Lower rates expected in revised water deal between MWSS, Manila Water - Inquirer.net\nLower rates expected in revised water deal between MWSS, Manila Water&nbsp;&nbsp;Inquirer.net"
+ },
+ {
+  "row_id": 323,
+  "text": "American Resources forms Indo-Pacific unit to lead Malaysia rare earth expansion - TradingView\nAmerican Resources forms Indo-Pacific unit to lead Malaysia rare earth expansion&nbsp;&nbsp;TradingView"
+ },
+ {
+  "row_id": 330,
+  "text": "Aetas and Farmers in Tarlac Defend Ancestral Lands, Warn Pax Silica AI Hub Threatens Farmlands and Water - Daily Tribune\nAetas and Farmers in Tarlac Defend Ancestral Lands, Warn Pax Silica AI Hub Threatens Farmlands and Water&nbsp;&nbsp;Daily Tribune"
+ },
+ {
+  "row_id": 335,
+  "text": "Panel Discussion: Powering the Battery Boom: Global Lithium Supply Chains and Africa's Place in Them - Benchmark Mineral Intelligence\nPanel Discussion: Powering the Battery Boom: Global Lithium Supply Chains and Africa's Place in Them&nbsp;&nbsp;Benchmark Mineral Intelligence"
+ },
+ {
+  "row_id": 342,
+  "text": "China's Real Power: Controlling Knowledge, Not Just Mining\nWhy does China control the materials that run the modern world? Over four decades, while Western economies financialized their ..."
+ },
+ {
+  "row_id": 346,
+  "text": "Where to eat in Tarlac?\nphilstarnews #tarlac From classic Filipino dishes to modern twists, here are four restaurants in Tarlac worth trying."
+ },
+ {
+  "row_id": 347,
+  "text": "Pax Silica: How the US Is Using Tech Supply Chains as Strategic Power in the AI Era | Brass Tacks\nThe US' newly announced Pax Silica initiative signals a major strategic shift—turning control over critical technology and ..."
+ },
+ {
+  "row_id": 358,
+  "text": "PRESIDENT Ferdinand Marcos Jr. will lead the inauguration of the Department of Health's Jose B. Lingad (DOH-JBL) Children's Medical Center at Clark Freeport Zone on Friday.\n\nREAD:"
+ },
+ {
+  "row_id": 362,
+  "text": "U.S. and Philippines plan a 4,000-acre AI and semiconductor hub in Luzon, boosting supply chain security under the Pax Silica initiative."
+ },
+ {
+  "row_id": 364,
+  "text": "I was interviewed for the article: \"Pax Silica или WAICO: сможет ли Казахстан усидеть на двух стульях в глобальной гонке ИИ / \" #PaxSilica or #WAICO: Can #Kazakhstan 🇰🇿 Sit on Two Chairs in the Global AI Race? \" by Khadisha Akayeva \n\n#artificialIntelligence \n\nwww.azattyqasia.org/a/pax-silica..."
+ },
+ {
+  "row_id": 369,
+  "text": "\"We hope that France and Germany, as major economies in the world, will uphold openness, cooperation and free trade,\" the commerce ministry said in a statement.\n\n\"They should avoid going down the wrong path in the wrong way, only to ultimately suffer the consequences themselves.\""
+ },
+ {
+  "row_id": 375,
+  "text": "Archaeologists in Denmark found a massive 1,000-year-old Viking textile hub. This 100,000 sqm site reveals a sophisticated industrial society focused on organized trade, not just raiding.\n\n#VikingArchaeology #zovintus, #news [Image by #AI]"
+ },
+ {
+  "row_id": 382,
+  "text": "DSWD provides educational assistance to 2 , 500 students in Tarlac , Punto ! Central Luzon\npunto.com.ph"
+ },
+ {
+  "row_id": 384,
+  "text": "NBI to begin probe on transfer of P6 . 7B to Phisgoc\nmanilatimes.net"
+ },
+ {
+  "row_id": 387,
+  "text": "US to tell partners they must pick sides in AI race with China\nrappler.com"
+ },
+ {
+  "row_id": 390,
+  "text": "Forum user discussion regarding Clark Freeport. Found on page 2 of the regional infrastructure thread. Many posts detailing construction progress and semiconductor investment speculation."
+ },
+ {
+  "row_id": 392,
+  "text": "SkyscraperCity Forum"
+ },
+ {
+  "row_id": 395,
+  "text": "Forum user discussion regarding Luzon Economic Corridor. Found on page 2 of the regional infrastructure thread. Many posts detailing construction progress and semiconductor investment speculation."
+ }
+]

@@ -1,0 +1,120 @@
+You are an annotator for a research dataset on Philippine online discourse about the
+"Pax Silica" initiative: a U.S.-led economic and security project in the Philippines covering
+semiconductor and AI infrastructure, data centres, critical minerals and the Luzon Economic
+Corridor, including its sites (New Clark City, Clark, Tarlac) and its local impacts.
+
+Label EACH text on RELEVANCE using exactly one of:
+
+  none   - no link to the Pax Silica project and no link to its specific sites or impacts.
+           Includes generic Philippine news, semiconductor or rare-earth news about other
+           countries, and talk of Clark or Tarlac with no project connection.
+  weak   - a passing or indirect connection: a project-associated site, agency or theme is
+           mentioned but the project itself is not discussed.
+  direct - discusses the project, its sites, agencies, industry or local impacts, but is not
+           centred on it.
+  core   - centred on Pax Silica or its direct consequences: support, opposition, displacement,
+           land, water, jobs, corruption or naming.
+
+RULES (apply strictly):
+1. Language is irrelevant. Filipino, Tagalog, Taglish, Cebuano and English get the same
+   standard. Never lower the label because the text is short or in Filipino.
+2. Criticism and opposition count fully. "No to Pax Silica" is core, not none.
+3. A place name alone is not relevance. "Bridge collapsed in Tarlac" is none.
+4. A theme alone is not relevance. Rare earths in Malaysia, EU critical minerals, a US mining
+   programme: none. Pax Silica is the anchor.
+5. Short and vague is none, but if the referent is clearly the project, do not punish brevity.
+6. Judge each text alone. Never infer from context or from other rows in the batch.
+7. If torn between two labels, choose the lower one and set "needs_review": true.
+
+ARTIFACT RULE: if a text is not user-generated discourse (scraper boilerplate such as
+"Forum user discussion regarding X.", a bare URL, a seed fixture, or empty/emoji-only noise),
+set "artifact": true and still give relevance "none".
+
+Calibration examples (label, then text):
+  core   - "Nararapat sa atin bansa ang pax silica makakatulong sa mga pilipinong manggagawa"
+  core   - "Big NO to PAX SILICA"
+  core   - "Kawawang pilipinas may tubig sa pax silica pero walang tubig sa mahihirap"
+  core   - "Aetas and Farmers in Tarlac Defend Ancestral Lands, Warn Pax Silica AI Hub Threatens
+            Farmlands and Water"
+  direct - "Eight more countries, including South Korea, will participate in the Luzon Economic
+            Corridor (LEC)"
+  weak   - "Clark Global City is great .. More space, more convenience to stroll around the City"
+  none   - "ICYMI: Tulay sa Tarlac, bumagsak" (a bridge collapsed in Tarlac)
+  none   - "American Resources forms Indo-Pacific unit to lead Malaysia rare earth expansion"
+
+CRITICAL - ID FIDELITY:
+The "row_id" values in the input are authoritative identifiers, NOT sequence numbers.
+Copy each row_id verbatim into your answer. Never renumber. Never invent an id. Your reply
+must contain each input row_id exactly once and no other ids. If the input ids are
+"7, 91, 132", your output ids are exactly 7, 91 and 132 - not 1, 2, 3.
+
+Reply with JSON ONLY - an array with one object per input row, in the SAME ORDER as the input,
+no prose, no code fences:
+[
+  {"row_id": <int>, "relevance": "none|weak|direct|core", "artifact": false,
+   "confidence": <0.0-1.0>, "needs_review": false, "why": "<max 15 words>"}
+]
+
+Input rows:
+[
+ {
+  "row_id": 39,
+  "text": "PSU's ko revamp nahi poori tarah band krna hoga. Sarkari job lagne k baad koi new rserach ya innovation kyu krega??"
+ },
+ {
+  "row_id": 95,
+  "text": "Di ka kapusin nang tubig sa Clark. Lubog pa nga Pampanga hanggang ngayon. Basta gumawa sila nang effective catchment basin di sila ka kapusin."
+ },
+ {
+  "row_id": 123,
+  "text": "Brilliant analysis 🎉"
+ },
+ {
+  "row_id": 159,
+  "text": "Why? Marcos don't put in  there area in Ilocos Norte , I locos sur whatever as long in there  area. Not in Tarlac."
+ },
+ {
+  "row_id": 165,
+  "text": "Do you mind my asking how exactly? I heard it was hell to work for. Was it owned by family or private equity? I can't go into more detail but, think life threatening medical event. She is doing much better now. My partner is disabled, she had a serious medical event that led to a diagnosis of muscular dystrophy. And they treated her like shit the entire time, could not provide Paid Family Medical Leave because they did not register with the state. She was a General Manager btw. FUCK CHIP CITY GOOD RIDDANCE"
+ },
+ {
+  "row_id": 191,
+  "text": "Exclusive Economic Zone EEZ"
+ },
+ {
+  "row_id": 193,
+  "text": "Yes the groundwater is lowered and less is retained for farmers since they have a permanent seat in the water management boards. The low groundwater leads to the issues."
+ },
+ {
+  "row_id": 229,
+  "text": "I'm worried 😞"
+ },
+ {
+  "row_id": 247,
+  "text": "so mas masmadami b ang plus for the philippines or plus lang sa mga buwaya?🥵i hope isipin nila tlga ito."
+ },
+ {
+  "row_id": 250,
+  "text": "SIKAT KANA😭😭😭"
+ },
+ {
+  "row_id": 258,
+  "text": "Thank you, .9 True FM - Sir Ted and  Chacha for asking the right questions that we Filipinos deserve to know 🫡Collectively, we've all made so much effort to push this topic into mainstream, and as this initiative advances, very vague pa rin ng mga sagot nila patungkol sa mga agreements. Hence, let's also make this demand for transparency a mainstream. It is our right to be informed. They have to show what they can while everything isn't final yet! Otherwise, baka mahirapan tayo if this is already signed. #showustheagreement #paxsilica"
+ },
+ {
+  "row_id": 293,
+  "text": "Very bag man s2"
+ },
+ {
+  "row_id": 306,
+  "text": "wag na nila tuloy yan ma sasayang lang gastos nila dyan pag iba nanaman maka upo at ayaw sa pax silica😅"
+ },
+ {
+  "row_id": 339,
+  "text": "Probe Archives: A Place In The Sun- Aetas\nOne of the hardest hit groups of people are the Aetas. Having lived at the foothills of Mt. Pinatubo, they have lost their homes, ..."
+ },
+ {
+  "row_id": 348,
+  "text": "The Pax Silica Lie: Why 4,000 Acres Isn't What You Think\nBreakingGround is looking for our next big story. If you're building something big in the Philippines and you want us to tell your ..."
+ }
+]

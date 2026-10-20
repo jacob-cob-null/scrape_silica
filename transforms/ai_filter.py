@@ -31,7 +31,7 @@ Text: "{text[:1500]}"
             decision = int(data.get("decision_rating", 100))
             confidence = int(data.get("confidence", 100))
             return min(max(decision, 0), 100), min(max(confidence, 0), 100)
-    except Exception as e:
+    except Exception:
         pass 
     return 100, 100 # Default if error
 
@@ -39,16 +39,6 @@ def run(limit=None):
     print("Running AI Semantic Scorer via Local Ollama...")
     conn = get_connection()
     
-    # We add the columns if they don't exist
-    try:
-        conn.execute("ALTER TABLE silver_records ADD COLUMN decision_rating INTEGER")
-    except Exception:
-        pass
-    try:
-        conn.execute("ALTER TABLE silver_records ADD COLUMN confidence INTEGER")
-    except Exception:
-        pass
-        
     # Get unprocessed records
     query = "SELECT content_hash, cleaned_content FROM silver_records WHERE decision_rating IS NULL"
     if limit:

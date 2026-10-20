@@ -1,0 +1,368 @@
+You are an annotator for a research dataset on Philippine online discourse about the
+"Pax Silica" initiative: a U.S.-led economic and security project in the Philippines covering
+semiconductor and AI infrastructure, data centres, critical minerals and the Luzon Economic
+Corridor, including its sites (New Clark City, Clark, Tarlac) and its local impacts.
+
+Label EACH text on RELEVANCE using exactly one of:
+
+  none   - no link to the Pax Silica project and no link to its specific sites or impacts.
+           Includes generic Philippine news, semiconductor or rare-earth news about other
+           countries, and talk of Clark or Tarlac with no project connection.
+  weak   - a passing or indirect connection: a project-associated site, agency or theme is
+           mentioned but the project itself is not discussed.
+  direct - discusses the project, its sites, agencies, industry or local impacts, but is not
+           centred on it.
+  core   - centred on Pax Silica or its direct consequences: support, opposition, displacement,
+           land, water, jobs, corruption or naming.
+
+RULES (apply strictly):
+1. Language is irrelevant. Filipino, Tagalog, Taglish, Cebuano and English get the same
+   standard. Never lower the label because the text is short or in Filipino.
+2. Criticism and opposition count fully. "No to Pax Silica" is core, not none.
+3. A place name alone is not relevance. "Bridge collapsed in Tarlac" is none.
+4. A theme alone is not relevance. Rare earths in Malaysia, EU critical minerals, a US mining
+   programme: none. Pax Silica is the anchor.
+5. Short and vague is none, but if the referent is clearly the project, do not punish brevity.
+6. Judge each text alone. Never infer from context or from other rows in the batch.
+7. If torn between two labels, choose the lower one and set "needs_review": true.
+
+ARTIFACT RULE: if a text is not user-generated discourse (scraper boilerplate such as
+"Forum user discussion regarding X.", a bare URL, a seed fixture, or empty/emoji-only noise),
+set "artifact": true and still give relevance "none".
+
+Calibration examples (label, then text):
+  core   - "Nararapat sa atin bansa ang pax silica makakatulong sa mga pilipinong manggagawa"
+  core   - "Big NO to PAX SILICA"
+  core   - "Kawawang pilipinas may tubig sa pax silica pero walang tubig sa mahihirap"
+  core   - "Aetas and Farmers in Tarlac Defend Ancestral Lands, Warn Pax Silica AI Hub Threatens
+            Farmlands and Water"
+  direct - "Eight more countries, including South Korea, will participate in the Luzon Economic
+            Corridor (LEC)"
+  weak   - "Clark Global City is great .. More space, more convenience to stroll around the City"
+  none   - "ICYMI: Tulay sa Tarlac, bumagsak" (a bridge collapsed in Tarlac)
+  none   - "American Resources forms Indo-Pacific unit to lead Malaysia rare earth expansion"
+
+CRITICAL - ID FIDELITY:
+The "row_id" values in the input are authoritative identifiers, NOT sequence numbers.
+Copy each row_id verbatim into your answer. Never renumber. Never invent an id. Your reply
+must contain each input row_id exactly once and no other ids. If the input ids are
+"7, 91, 132", your output ids are exactly 7, 91 and 132 - not 1, 2, 3.
+
+Reply with JSON ONLY - an array with one object per input row, in the SAME ORDER as the input,
+no prose, no code fences:
+[
+  {"row_id": <int>, "relevance": "none|weak|direct|core", "artifact": false,
+   "confidence": <0.0-1.0>, "needs_review": false, "why": "<max 15 words>"}
+]
+
+Input rows:
+[
+ {
+  "row_id": 2,
+  "text": "Ganito ang gusto maging pangulo ng mga dds😂😂"
+ },
+ {
+  "row_id": 5,
+  "text": "what one of these countries can refine to .999999% this is the issue with rare earth elements but i know this is about many more crittical minerals not just these."
+ },
+ {
+  "row_id": 9,
+  "text": "God Bless our President Donald J Trump for ensuring high tech comes back to the USA"
+ },
+ {
+  "row_id": 15,
+  "text": "May god protect these protesters from violence. I hope the USA doesnt inspire poor treatment of people expressing their free speech."
+ },
+ {
+  "row_id": 18,
+  "text": "Yes it's going to replace workers. Just wait for the androids like Optimus."
+ },
+ {
+  "row_id": 19,
+  "text": "Brilliant PBBM"
+ },
+ {
+  "row_id": 21,
+  "text": "Mganda ANG topics NIO ATTY ❤❤❤"
+ },
+ {
+  "row_id": 22,
+  "text": "Does anyone here know about the Recission Act of 1946? Of the 66 Allied countries during WWII only the Philippines were denied benefits to the veterans that sacrificed their lives. Even Japan got a relief package to help rebuild their country. The enemy got a relief package over an ally that sacrificed lives. Isn't that crazy."
+ },
+ {
+  "row_id": 31,
+  "text": "Squatters na nga kayo dyan. Kayo pa matapang. Ilan taon na kayo nakatira dyan na Libre. Ano ba yan?"
+ },
+ {
+  "row_id": 41,
+  "text": "NOW IS NOT THE TIME.\nMODI OR WHOEVER THE NEXT PM IS\nSHOULD DEFER THEIR VISIT \nTO THE WHITE HOUSE \nUNTIL A REGIME CHANGE \nHAS TAKEN PLACE,\nUNTIL THERE IS \nA LEVEL-HEADED OCCUPANT THERE.\nUNTIL THEN \nINDIA SHOULD JUST BE NICE \nAND PLAY BY THE BOOK."
+ },
+ {
+  "row_id": 43,
+  "text": "No consultation sa mga  residente?"
+ },
+ {
+  "row_id": 44,
+  "text": "DZRH BUBUWIT LATEST ???"
+ },
+ {
+  "row_id": 56,
+  "text": "Está mucho más completa la Lg"
+ },
+ {
+  "row_id": 62,
+  "text": "China does the right thing to ban rare earths possession in the hands of american, Nato and israel war criminals"
+ },
+ {
+  "row_id": 63,
+  "text": "I appreciate you work you have done such a good job making a good video on this topic Tnx for uploading such an amazing video😍😍"
+ },
+ {
+  "row_id": 84,
+  "text": "sasabihin na naman ng pnp dyan, isolated case😂, dami nyo ng kalokohan mga pulis."
+ },
+ {
+  "row_id": 86,
+  "text": "Joe reviewing supply chains to make sure that there is no interruption in the \"10% to the big guy\"."
+ },
+ {
+  "row_id": 88,
+  "text": "The trans sisters hehehe"
+ },
+ {
+  "row_id": 94,
+  "text": "Dapat magkaroon din ganyan sa mindanao, where there are also vast tracts of land, and less storms/natural disasters, hence less economic disruption as well. Also other big islands like panay and samar/leyte, to spread the dev't all over phl"
+ },
+ {
+  "row_id": 98,
+  "text": "HHAHAHAHHAHA not in this government po sa Pilipinas. Talamak ang corruption and injustice sa bansang 'to kaya NO TO PAX SILICA talaga kasi hindi nga maayos 'yung pamamalakad ng mga politikong korap, aasahan pa ba natin na magiging maayos ang pamamalakad sa PAX SILICA project."
+ },
+ {
+  "row_id": 105,
+  "text": "They should investigate how we lost our satellite both times. This is concerning now"
+ },
+ {
+  "row_id": 118,
+  "text": "ban sales, not donation."
+ },
+ {
+  "row_id": 125,
+  "text": "book Smart Broke Dmb Rich by ... explains why your dad worked his whole life and still retired with nothing. hard truth"
+ },
+ {
+  "row_id": 128,
+  "text": "Kawawang pilipinas may tubig sa pax silica pero walang tubig sa mahihirap"
+ },
+ {
+  "row_id": 135,
+  "text": "We're stuck with Dutertes and corruption. We have to move to AI technology."
+ },
+ {
+  "row_id": 136,
+  "text": "Atty now i know why sabi mo sa 60B rent ay \"goodluck sa inyo\". Homework ng apo ko, kaya ang ginawa ko 60B divided by 25 y = 2.4B bawat taon. Naku pangmaleta lang para sa buwaya! 😅😅😅😅😅😅😅"
+ },
+ {
+  "row_id": 145,
+  "text": "Gud pm..open napu ba access road NCC-SCTEX? Tnx"
+ },
+ {
+  "row_id": 149,
+  "text": "Why does he says such tottaly blatant  lies.  Or is he a perpetual \nLiar. Or is he oblivious to realty & thinks others are ideots."
+ },
+ {
+  "row_id": 157,
+  "text": "USA will destroy the Philippines."
+ },
+ {
+  "row_id": 171,
+  "text": "Galawang trapo! So young and yet so trapo!"
+ },
+ {
+  "row_id": 174,
+  "text": "While I think there is value on finding some domestic supply of minerals, I think the focus should be on research on how to make mining more environmentally friendly, automated and fast. This way you don't only get some mineral independence but also you create an industry to export expertise and knowledge (what Europe does best) to the rest of the world. But this would require our politicians to think beyond the next election cycle. Europe doesn't do it best though, not anymore, that is a pipedream. Europe does it most expensively European mining enterprises are already held back by environmen"
+ },
+ {
+  "row_id": 175,
+  "text": "But, but, but, closed loop cooling or some other bullshit!  /s Thank you, I needed that laugh. 😂"
+ },
+ {
+  "row_id": 177,
+  "text": "It's \"clean\", but less effective and more likely to lead to partial results. Also requires specialized skills to do correctly, specialized drugs that they can't openly buy, etc. It's done to make the people ordering the execution feel better, not to actually be a more humane or better execution method. I don't agree with execution as a punishment either - it's too final with too many times our justice system has shown to have failures - but the lethal injection just isn't a good execution method."
+ },
+ {
+  "row_id": 188,
+  "text": "Pinklawans are worst"
+ },
+ {
+  "row_id": 195,
+  "text": "Snapshot of Government takes over chip factory 'crucial' to defence supply chain - safeguarding 'up to 100 jobs' : An archived version can be found here  or here. I am a bot, and this action was performed automatically. Please contact the moderators of this subreddit if you have any questions or concerns."
+ },
+ {
+  "row_id": 204,
+  "text": "Here's the website for The Edge, the data center company, which is a subsidiary of Prime Group Holdings, owners of the self-storage units that house the data centers."
+ },
+ {
+  "row_id": 207,
+  "text": "He vistos también en Aguadilla."
+ },
+ {
+  "row_id": 209,
+  "text": "Sampling."
+ },
+ {
+  "row_id": 214,
+  "text": "Entiendo que los milicos hacen varias labores aparte de usar sus pistolitas, así que si están, por ejemplo, ayudando con inundaciones y cosas así me parece bien. Pero no sé qué es lo que hacen en ese sector particular. Así que no tengo opinión. En el lugar donde me quedé, había patrullas cada dos días de carabineros (que empezaron a hacer como hace 3 años, luego del estallido) y como dije, veía pasar a tanquetas con sus respectivos milicos enfundados en cascos y con rifles al aire. Solo los vi ir de lado a lado en carreteras intercomunales. Los pacos se metían a caminos interiores con regulari"
+ },
+ {
+  "row_id": 220,
+  "text": "Based on the last supply chain debacle, here is my $0.02's worth: 1) look at your top sales items then stockpile as many of its components as you possibly can. If you have some less popular products with lower volumes, update your customers' quotes, emphasizing that lead time has quadrupled--this might actually stimulate some sales. 2) take a hard look at your new product development roadmap and buy a bunch of components you think you might need. (I learned that one the hard way in '21: we had a major opportunity for a product that was in the works at that point, but we'd only done a little bi"
+ },
+ {
+  "row_id": 221,
+  "text": "Same. Im not a fan most specially the data center as it's not as beneficial other than rental fed and some couple people to reboot and replace broken parts. But we need chip manufacturing here. And a counter balance to china's investments. I'm a fan of china but they will eventually take advantage of us without balance. It's the nature of the world."
+ },
+ {
+  "row_id": 235,
+  "text": "Agree ako dito. Ipasok na ang french butter!"
+ },
+ {
+  "row_id": 254,
+  "text": "Idk if this will help pero MAYBE we can petition sa court against it. Similar to opposa v. Factoran. If may makikita kayong grave abuse ng resources naten then the yourh can collectively stand against it. Let's do everything na pwedeng gawin to help the ph pls:( copy paste everywhere, nakakapagod na tong gobyernong to pls lang"
+ },
+ {
+  "row_id": 256,
+  "text": "yung pro completely\npero cons bitin"
+ },
+ {
+  "row_id": 259,
+  "text": "Kung si PRRD yan pagalitan pa nya yang mga americanong yan 🥺"
+ },
+ {
+  "row_id": 262,
+  "text": "Permission po sa pagkuha ng ideya sa ginagawa ko pong essay"
+ },
+ {
+  "row_id": 269,
+  "text": "well there should be proper boundaries in AI and it's honestly so dystopian to see that we're training AI to replace human workers like in every aspects and fields now whether in creative, science, tech, hell even manual labor. like wdym factory workers are mandated to wear cameras just to gather data for AI or whatever tech companies so that they can help capitalists lower their human labor. and the worst thing is that AI is being used in war, like how these tech companies train AI to precisely target humans which is actually what israel is doing. and how dare Marcos Jr. and his alipores supp"
+ },
+ {
+  "row_id": 271,
+  "text": "although that is true that Nestlé is a fat water absorber, Pax Silica has advantages for Philippines like modernization of economy and more jobs for filipino and probably making tech jobs more valuable and sought after, this will also make our relations really good and well with foreign countries. The problem here is that you do not account how much the disadvantages outweigh the advantages."
+ },
+ {
+  "row_id": 276,
+  "text": "ipangdedebate ko to sa school hahahha"
+ },
+ {
+  "row_id": 279,
+  "text": "Bruh, are you even thinking? We can live without AI, but we cannot survive without water and other minerals. Mas marami pa ang mga disadvantages na ma cacause dahil sa \"Pax Silica\" na yan eh. \"It will create an ecosystem\"? Bruh, is your brain even working????!!! You're the President. People voted for you because they trusted you to lead the Philippines and make things better. But instead, you've only made life harder for the people of the Philippines‼️wala na talagang IMPROVEMENTS na mangyayari dito sa Pinas.🥹🥹🥹"
+ },
+ {
+  "row_id": 280,
+  "text": "Shame on this policemen"
+ },
+ {
+  "row_id": 294,
+  "text": "🌹 pinag aaralan ba kamo ng mabuti?( sagot yes, proposal ang plan pa lng status as of today),, may hanggang november pa tayo to balance..\nmodernization and progress, and for the environment..\n..data centers nga ginagamit ng mga apps naten,(studies, hobby, yung iba trabaho pa nga),😅"
+ },
+ {
+  "row_id": 299,
+  "text": "A president that doesn't care about the people he should serve for."
+ },
+ {
+  "row_id": 301,
+  "text": "DIYAN AKO AGREE SAYO MANANG IMEE"
+ },
+ {
+  "row_id": 305,
+  "text": "ayan na naman sa mga pangakong napapako!!!!"
+ },
+ {
+  "row_id": 308,
+  "text": "Opinion ko lang po, yung pumirma po ba about dito ay, nag-isip gaya ng nasa isip nyo? If she/he ready naba sa possible question w/c sana pumabor sa mga ating mga Pinoy.."
+ },
+ {
+  "row_id": 310,
+  "text": "WTF noooooo"
+ },
+ {
+  "row_id": 311,
+  "text": "fox🦊"
+ },
+ {
+  "row_id": 314,
+  "text": "Pax Silica: Gov't won't fund AI hub in New Clark City - Cebu Daily News\nPax Silica: Gov't won't fund AI hub in New Clark City&nbsp;&nbsp;Cebu Daily News"
+ },
+ {
+  "row_id": 318,
+  "text": "EU's new list of critical mineral projects focuses on clean energy metals - POLITICO.eu\nEU's new list of critical mineral projects focuses on clean energy metals&nbsp;&nbsp;POLITICO.eu"
+ },
+ {
+  "row_id": 327,
+  "text": "Canada US Mining Workforce Investment Critical Minerals - Rare Earth Exchanges\nCanada US Mining Workforce Investment Critical Minerals&nbsp;&nbsp;Rare Earth Exchanges"
+ },
+ {
+  "row_id": 328,
+  "text": "The Philippines is building a green, disaster-resilient city - CNN\nThe Philippines is building a green, disaster-resilient city&nbsp;&nbsp;CNN"
+ },
+ {
+  "row_id": 331,
+  "text": "𝐌𝐌𝐃𝐀 𝐃𝐄𝐏𝐋𝐎𝐘𝐒 𝐏𝐎𝐍𝐓𝐎𝐎𝐍, 𝐑𝐔𝐁𝐁𝐄𝐑 𝐁𝐎𝐀𝐓𝐒 𝐓𝐎 𝐀𝐈𝐃𝐄 𝐑𝐄𝐒𝐈𝐃𝐄𝐍𝐓𝐒 𝐀𝐅𝐅𝐄𝐂𝐓𝐄𝐃 𝐁𝐘 𝐏𝐀𝐑𝐓𝐈𝐀𝐋 𝐂𝐎𝐋𝐋𝐀𝐏𝐒𝐄 𝐎𝐅 𝐀𝐐𝐔𝐈𝐍𝐎 𝐁𝐑𝐈𝐃𝐆𝐄 𝐈𝐍 𝐓𝐀𝐑𝐋𝐀𝐂 In response to the directive of President Ferdinand Marcos Jr., the Metropolitan Manila Developm - Facebook\n𝐌𝐌𝐃𝐀 𝐃𝐄𝐏𝐋𝐎𝐘𝐒 𝐏𝐎𝐍𝐓𝐎𝐎𝐍, 𝐑𝐔𝐁𝐁𝐄𝐑 𝐁𝐎𝐀𝐓𝐒 𝐓𝐎 𝐀𝐈𝐃𝐄 𝐑𝐄𝐒𝐈𝐃𝐄𝐍𝐓𝐒 𝐀𝐅𝐅𝐄𝐂𝐓𝐄𝐃 𝐁𝐘 𝐏𝐀𝐑𝐓𝐈𝐀𝐋 𝐂𝐎𝐋𝐋𝐀𝐏𝐒𝐄 𝐎𝐅 𝐀𝐐𝐔𝐈𝐍𝐎 𝐁𝐑𝐈𝐃𝐆𝐄 𝐈𝐍 𝐓𝐀𝐑𝐋𝐀𝐂 In response to the directive of President Ferdinand Marcos Jr., the Metropolitan Manila Developm&nbsp;&nbsp;Facebook"
+ },
+ {
+  "row_id": 344,
+  "text": "ICYMI: Tulay sa Tarlac, bumagsak | ABS-CBN News\nIn case you missed it: Bumagsak ang Agana Bridge sa Tarlac noong Agosto 29 dahil sa malakas na agos ng Tarlac River bunsod ..."
+ },
+ {
+  "row_id": 345,
+  "text": "이 대통령 \"산단·정주여건 함께\"…메가프로젝트 원팀 속도 / 연합뉴스TV (YonhapnewsTV)\n[앵커] 이재명 대통령이 3대 메가프로젝트의 성공을 위해 산업단지와 정주여건을 함께 조성하라고 주문했습니다. 지역에 일자리만 ..."
+ },
+ {
+  "row_id": 349,
+  "text": "PEZA warns of 'underground BPOs' competing for workers with registered firms | ANC\nMarket Edge: The chief of the Philippine Economic Zone Authority warns of underground business process outsourcing firms that ..."
+ },
+ {
+  "row_id": 350,
+  "text": "เกาะกระแส Rare Earth ผ่านกองทุนแนะนำ  #KWEALTH #RareEarth #ลงทุน\nทำไมคนที่คุม Rare Earth ได้ถึงคุมอนาคตโลกได้ ? | TOP PICK Link:  #KWEALTH #RareEarth #ลงทุน ..."
+ },
+ {
+  "row_id": 351,
+  "text": "Watch How Raw Seeds Get Turned Into Perfect Polished Beads! 📿✨ #USManufex #Shorts #Tech\nDisclaimer: All content on US Manufacturing Excellence is specifically curated for technology education and knowledge sharing."
+ },
+ {
+  "row_id": 355,
+  "text": "Landscaping in New Clark City"
+ },
+ {
+  "row_id": 356,
+  "text": "indigenous peoples in Ancestral Domain quest\ncmu security guards used high powered guns to get rid of the IPs in their ancestral domain areas."
+ },
+ {
+  "row_id": 363,
+  "text": "The World in #Avatar #SevenHavens is going to be our World in a couple of years.\n#NotCenturies, #NotDecades, but just a Few Years.\n\n#PaxSilica\n#Shortsighted\n#ForTheRich\n#DumpingTheBillOnThePoor\n#GreatLossForFarmers\n#EnvironmentalDestruction\n#ClimateCrimes\n#ClimateCollapse\n#Irreversible\n#Deserved"
+ },
+ {
+  "row_id": 370,
+  "text": "OpenAI announced plans to build a massive $20 billion to $30+ billion AI data center campus in Effingham County, Georgia, touted as one of the largest data center projects in U.S. history. Known as Project Camellia, the facility is planned for the Savannah Gateway Industrial Hub near Rincon, Georgia"
+ },
+ {
+  "row_id": 371,
+  "text": "EU-China trade talks begin in Beijing amid escalating pressure — Talks will focus on the €1bn daily deficit and rare earth export restrictions.\n\n(Al Jazeera)"
+ },
+ {
+  "row_id": 378,
+  "text": "Partido Lakas ng Masa ( The Philippines ): Rubio out ! Stop US intervention and wars ! Hands off our region ! \nlinks.org.au"
+ },
+ {
+  "row_id": 381,
+  "text": "Church leaders voice concerns over Pax Silica project in Tarlac\nmanilatimes.net"
+ },
+ {
+  "row_id": 385,
+  "text": "5 Central Luzon Provinces Under Price Freeze , Punto ! Central Luzon\npunto.com.ph"
+ },
+ {
+  "row_id": 396,
+  "text": "Milhares de peças armazenadas em Leiria aguardam por novo museu de arte sacra Milhares de peças de arte sacra aguardam em Leiria por um espaço de exposição no futuro museu diocesano, uma reivindicação antiga da Diocese e da Câmara Municipal, mas a que o Estado tarda em dar resposta. \"Já temos..."
+ }
+]

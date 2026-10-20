@@ -1,0 +1,368 @@
+You are an annotator for a research dataset on Philippine online discourse about the
+"Pax Silica" initiative: a U.S.-led economic and security project in the Philippines covering
+semiconductor and AI infrastructure, data centres, critical minerals and the Luzon Economic
+Corridor, including its sites (New Clark City, Clark, Tarlac) and its local impacts.
+
+Label EACH text on RELEVANCE using exactly one of:
+
+  none   - no link to the Pax Silica project and no link to its specific sites or impacts.
+           Includes generic Philippine news, semiconductor or rare-earth news about other
+           countries, and talk of Clark or Tarlac with no project connection.
+  weak   - a passing or indirect connection: a project-associated site, agency or theme is
+           mentioned but the project itself is not discussed.
+  direct - discusses the project, its sites, agencies, industry or local impacts, but is not
+           centred on it.
+  core   - centred on Pax Silica or its direct consequences: support, opposition, displacement,
+           land, water, jobs, corruption or naming.
+
+RULES (apply strictly):
+1. Language is irrelevant. Filipino, Tagalog, Taglish, Cebuano and English get the same
+   standard. Never lower the label because the text is short or in Filipino.
+2. Criticism and opposition count fully. "No to Pax Silica" is core, not none.
+3. A place name alone is not relevance. "Bridge collapsed in Tarlac" is none.
+4. A theme alone is not relevance. Rare earths in Malaysia, EU critical minerals, a US mining
+   programme: none. Pax Silica is the anchor.
+5. Short and vague is none, but if the referent is clearly the project, do not punish brevity.
+6. Judge each text alone. Never infer from context or from other rows in the batch.
+7. If torn between two labels, choose the lower one and set "needs_review": true.
+
+ARTIFACT RULE: if a text is not user-generated discourse (scraper boilerplate such as
+"Forum user discussion regarding X.", a bare URL, a seed fixture, or empty/emoji-only noise),
+set "artifact": true and still give relevance "none".
+
+Calibration examples (label, then text):
+  core   - "Nararapat sa atin bansa ang pax silica makakatulong sa mga pilipinong manggagawa"
+  core   - "Big NO to PAX SILICA"
+  core   - "Kawawang pilipinas may tubig sa pax silica pero walang tubig sa mahihirap"
+  core   - "Aetas and Farmers in Tarlac Defend Ancestral Lands, Warn Pax Silica AI Hub Threatens
+            Farmlands and Water"
+  direct - "Eight more countries, including South Korea, will participate in the Luzon Economic
+            Corridor (LEC)"
+  weak   - "Clark Global City is great .. More space, more convenience to stroll around the City"
+  none   - "ICYMI: Tulay sa Tarlac, bumagsak" (a bridge collapsed in Tarlac)
+  none   - "American Resources forms Indo-Pacific unit to lead Malaysia rare earth expansion"
+
+CRITICAL - ID FIDELITY:
+The "row_id" values in the input are authoritative identifiers, NOT sequence numbers.
+Copy each row_id verbatim into your answer. Never renumber. Never invent an id. Your reply
+must contain each input row_id exactly once and no other ids. If the input ids are
+"7, 91, 132", your output ids are exactly 7, 91 and 132 - not 1, 2, 3.
+
+Reply with JSON ONLY - an array with one object per input row, in the SAME ORDER as the input,
+no prose, no code fences:
+[
+  {"row_id": <int>, "relevance": "none|weak|direct|core", "artifact": false,
+   "confidence": <0.0-1.0>, "needs_review": false, "why": "<max 15 words>"}
+]
+
+Input rows:
+[
+ {
+  "row_id": 7,
+  "text": "Makita sa Mukha nya na hndi nya alam..\nBakante Ang utak"
+ },
+ {
+  "row_id": 8,
+  "text": "They are forgetting one important thing: AI will one day wipe out humanity, no matter how \"fantastic\" people think it is."
+ },
+ {
+  "row_id": 10,
+  "text": "Kung yung US na may nuclear power plants eh tinataasan pa ng electric bills yung mga residents..tayo pa kaya dito na walang nuclear energy. 😊"
+ },
+ {
+  "row_id": 12,
+  "text": "Yan tinatawag na boneless na deke"
+ },
+ {
+  "row_id": 20,
+  "text": "How many millions of Americans are secretly rooting for china"
+ },
+ {
+  "row_id": 26,
+  "text": "ok, no hat!"
+ },
+ {
+  "row_id": 32,
+  "text": "And also my parents told the damp is draining that cause the pax will lose"
+ },
+ {
+  "row_id": 38,
+  "text": "pulitikong magsalita tsk tsk tsk kaduda duda"
+ },
+ {
+  "row_id": 50,
+  "text": "70 years old ! used to dance to the whole song, now i'm still dancing to the same 😂bad ass while boys ❤❤❤"
+ },
+ {
+  "row_id": 61,
+  "text": "nag anak na 11 bago sasa bihin mahirap ang buhay😂😂😂😂😂"
+ },
+ {
+  "row_id": 64,
+  "text": "Fascinating.\n\nBrilliant Interviews"
+ },
+ {
+  "row_id": 71,
+  "text": "Pag 60's na tulay sure yan matibay pero pag 90's sure karamihan substandard bakit? Mas inuna ang bulsa ng mga kurakot na opisyal kaysa sa sariling Bayan. Firing Squad dapat sa mga Salot sa Lipunan mga pulitikong makapal pa sa bakal pag mumukha."
+ },
+ {
+  "row_id": 76,
+  "text": "So informative...👌"
+ },
+ {
+  "row_id": 92,
+  "text": "Morning po mga mga mam ser"
+ },
+ {
+  "row_id": 99,
+  "text": "Nice to know lots of discounted  prices. Very successful  sale promotion."
+ },
+ {
+  "row_id": 100,
+  "text": "Gusto nila maging Presidente😂😂😂"
+ },
+ {
+  "row_id": 102,
+  "text": "good video, but I request an update. \nwhat the hel*~"
+ },
+ {
+  "row_id": 106,
+  "text": "President Kong mabait ka wag mo ibigay Ang pilipinas sa kanila at ipag laban mo kami"
+ },
+ {
+  "row_id": 107,
+  "text": "Why call them \"rare'\" or \"earth\". We should call them \"scarce minerals and metals'. Earth has NOTHING to do with it. And, as this video states,  they are not rare."
+ },
+ {
+  "row_id": 108,
+  "text": "Me recuerdo cuando compré este longpley de la mochila de tierra rara, que juventud"
+ },
+ {
+  "row_id": 112,
+  "text": "It looks like our dependence on China has us in a very bad situation… we don't have a clue on how to refine or produce these rare minerals. Regardless to the fact we have no basic materials as we already knew China was locking down all these mines.\nThis is first I knew we didn't even have any of the required knowledge.\nWe better sell all tech stocks and buy a horse and buggy. We just lost any war with China without a single shot and now we know why Trump did not put his famous \"fix-all tariffs\"on China😢… Taiwan belongs to China for the cost of US stupidity. But that is NOT what we have been to"
+ },
+ {
+  "row_id": 121,
+  "text": "¡LATAM, A LAS ARMAS, CABRONES!"
+ },
+ {
+  "row_id": 131,
+  "text": "Yung gumagawa ng FAKE NEWS sa tingin ko ay Hindi na totoong Tao or Filipino... Their crazy!!!"
+ },
+ {
+  "row_id": 137,
+  "text": "Wow 30 pesos per sqm, kayo magbenta gobyerno at pabili aq"
+ },
+ {
+  "row_id": 147,
+  "text": "Excellent as always"
+ },
+ {
+  "row_id": 148,
+  "text": "It's DUTERTE and not Dutert."
+ },
+ {
+  "row_id": 150,
+  "text": "Well summarized lecture"
+ },
+ {
+  "row_id": 151,
+  "text": "Inspection tapos mag budget tapos nanakawin.budget naman tapos nakaw naman.ganyan nalang palagi yan"
+ },
+ {
+  "row_id": 153,
+  "text": "Not. Reported in USA. I doubt Trump notices. No USA media cares to show how much the world does not want us"
+ },
+ {
+  "row_id": 155,
+  "text": "This will help boost our economy, accelerate innovation, and create employment opportunities! Other signatory countries include the Australia, Japan, South Korea, Singapore, UK, etc.."
+ },
+ {
+  "row_id": 162,
+  "text": "well there needs to be a balance... Many industries can't just reduce their water consumption on the fly without it hurting their productivity and some processes simply need a specific amount of water. But we the people need to limit our water usage so the big corpos can keep up theirs so their profit margins stay in the green."
+ },
+ {
+  "row_id": 164,
+  "text": "Martians sweep trivially easily. The tech difference here is wild. The moment a Martian steps foot on Earth, they'd be overwhelmed by the gravity, the horizon, and the clouds. It'd be like shooting fish in a barrel. They train in 1g lol."
+ },
+ {
+  "row_id": 168,
+  "text": "As concerning as this sounds, The Netherlands is not a landlocked country nor a poor one. Desalination plants are a thing. The main issue is ground water levels. Due to large parts of the Netherlands being built on former swamp land, if the ground water levels fall too low it will have catastrophic effects on foundations of houses. Already in 2020 a report was released that 1/10th of all buildings in the Netherlands were at risk of foundational damage due to low ground water damage The actual problem isn't a drinking water shortage (well of course it is partially, but like you pointed out ther"
+ },
+ {
+  "row_id": 170,
+  "text": "Pro account deleted and done. Won't be missed."
+ },
+ {
+  "row_id": 173,
+  "text": "It's moving with other stocks on no news - you will get your money back and make some more if you hold it."
+ },
+ {
+  "row_id": 176,
+  "text": "L'iniziativa vede inizialmente con un primo contingente di circa 3.000 giovani, con l'obiettivo di arrivare ad arruolare fino a 50.000 soldati volontari all'anno entro il 2035. Al termine dei 10 mesi, i partecipanti entrano a far parte della riserva operativa di disponibilità per un periodo di 5 anni.I militari così arruolati avranno il compito di affiancare il personale militare in attività difensive e logistiche a livello nazionale. Sul piano del supporto alla sicurezza interna, vengono coinvolti nelle pattuglie per la protezione di infrastrutture critiche e siti sensibili. Ma cosa ti downvo"
+ },
+ {
+  "row_id": 179,
+  "text": "Rinesearch ko to nung nakaraang araw, 3,000 MW to 5,000 MW daw plan na maconsume nung data center. May nacontract daw na gagawa ng solar farm for the data center na 500 MW. Mind you na 2500 to 4500 MW parin need na kunin ng data center sa grid. Etong march to may din halos hirap mga power plant magproduce ng power dahil hindi enough yung tubig ng mga hydro powerplant kasama na yung pagtaas nung oil. Mind you 3000 MW is 20% agad nung total peak demand ng luzon (during 6-9 pm). Isipin mo san hahanap ng 3,000 MW yang data center na yan. Unahin muna nila ipriority ang pag gawa ng powerplant bago y"
+ },
+ {
+  "row_id": 183,
+  "text": "Anything but improving the roads and resolving their traffics"
+ },
+ {
+  "row_id": 196,
+  "text": "I'm curious as to why some are colored in but others are not. The grey colour eezs are solo sovereign states. The ones coloured mean they are the property of the associated colour state. Ie, notice how the USA is actually a country centred on the Pacific ocean? I am more questioning some decisions the map maker made which I'm confused about. Some of the countries have lines around what I assume is their EEZ like Argentina and Namibia but the area is neither colored nor labeled. Additionally, some sovereign states like Seychelles are colored in while micronesia is left in the grey blob. I am al"
+ },
+ {
+  "row_id": 198,
+  "text": "Probably one of those \"look at me\" influencers.  \"I went to the most dangerously stupid place in the world…click to find out how much of an idiot I am!\" SMASH the subscribe button!"
+ },
+ {
+  "row_id": 199,
+  "text": "Mostly regulation and labor right. When you don't give a shit about human rights or working conditions and zero care for the environment then you can dominate any industry. Average intelligence of westeners: Classic copium."
+ },
+ {
+  "row_id": 200,
+  "text": "The difference of ODA are audit and accountability. Japan and US have higher levels of auditing, accountability than the Philippines. One mistake of corruption, goodbye career and life. That is pressure not only in government but socially/culturally accepted. If US puts in money it means they want it to happen without pleasing the corruption institution/local practices. Much like the highway in Basilan. Both the national and local government for years allocated money for a highway in Basilan which was never built until US built and funded that highway by themselves. In terms of projects, they "
+ },
+ {
+  "row_id": 206,
+  "text": "For a bar and grill: Pax Tequila"
+ },
+ {
+  "row_id": 215,
+  "text": "True, madami sasakay sa bullet train Lalo na tuwing holiday seasons. Pero sana sa scenario na yan ay heavily subsidized Ang bullet train for Filipinos Kasi siguradong mahal Ang construction ng rails due to sa geography ng bansa unlike Japan na mainly one big island + a few smaller islands kaya madaling i-connect Ang lahat thru rail line. I imagine na in danger din Ang infrastructure na dadaan sa mga may conflicts like NPA infested areas or mga insurgents/terrorists sa you know where..."
+ },
+ {
+  "row_id": 216,
+  "text": "Interesting"
+ },
+ {
+  "row_id": 219,
+  "text": "1.) if malapit sa City yung place mo, rare na magkaroon kayo ng power interruption. 2.) medyo mahina water dito (Tarlac city) lalo na pag morning. kaya naka Jetmatic lang kami. 3.) yes meron converge (naka converge din kami) no problems so far basta on time ka magbayad lagi. 4.) mas okay sana kung malapit kayo sa city since mas marami cell towers. Pero madalas, globe ang malakas sa area namin 5.) yes availabe ang grabfood/foodpanda. Late lanb nag operate yung grabcar kaya wala masyado ma book. Wala pa angkas atm. 6.) yes po meron. 7.) pwede naman kaso medyo mahal din po singilan ng trikes dito"
+ },
+ {
+  "row_id": 228,
+  "text": "Perché le centrifughe non si spostano. Gli uomini sì"
+ },
+ {
+  "row_id": 232,
+  "text": "As cold hearted and hateful as this is going to sound, no. I'm in full agreement with you. I don't have sympathy for those who actively choose to do harm to either people or the environment despite knowing full well they know what they're doing is bad."
+ },
+ {
+  "row_id": 248,
+  "text": "C Recto ang nakangiti ah😁😁😁"
+ },
+ {
+  "row_id": 251,
+  "text": "Approved na ba yung pax silica? #paxsilica #water #savetheearth #nge #bacolod"
+ },
+ {
+  "row_id": 261,
+  "text": "mga performative 😭😭"
+ },
+ {
+  "row_id": 263,
+  "text": "ganito rin nang yari kay Marcos Sr. sa pag papatayo ng Nuclear power plant. daming pumapapel kaya na hinto, hindi nmn kasi itatayo ang isang proj. kung walang safety, kaya yan itinayo dahil alam may safety yan, tulad ng ginawa ng ibang bansa,"
+ },
+ {
+  "row_id": 265,
+  "text": "Kung kalikasan lang pala ang isasakripisyo para sa advanced na teknolohiya, mabuti pang wag na lang."
+ },
+ {
+  "row_id": 273,
+  "text": "bakit hinahayaan ng govt :(("
+ },
+ {
+  "row_id": 278,
+  "text": "\"If you kill the environment, you kill everything\"\n-Gina Lopez"
+ },
+ {
+  "row_id": 281,
+  "text": "ganto sana Yung mga viral di Yung mga matcha trend nayan teana."
+ },
+ {
+  "row_id": 283,
+  "text": "WALANG MAKAKASIRA NG GANDA NG KALIKASAN NATIN"
+ },
+ {
+  "row_id": 297,
+  "text": "imagine Kaya pala nang Luzon mag supply nang tubig sa pax silica almost 50M gallon? tapos everyday binabalita na kolang ang supply nang tubig sa mitro manila🤣🤣🤣"
+ },
+ {
+  "row_id": 303,
+  "text": "To Philippine Government! Wake up!!!"
+ },
+ {
+  "row_id": 317,
+  "text": "LS Rare-Earth Alliance Extends to Brazilian Mine as Supply Chain Widens - Seoul Economic Daily\nLS Rare-Earth Alliance Extends to Brazilian Mine as Supply Chain Widens&nbsp;&nbsp;Seoul Economic Daily"
+ },
+ {
+  "row_id": 319,
+  "text": "US Launches Pax Silica Initiative To Strengthen Cooperation In AI, Critical Minerals & Advanced Manufacturing - Free Press Journal\nUS Launches Pax Silica Initiative To Strengthen Cooperation In AI, Critical Minerals & Advanced Manufacturing&nbsp;&nbsp;Free Press Journal"
+ },
+ {
+  "row_id": 321,
+  "text": "The Trump Administration's Critical Minerals Agenda Comes for America's 'Forgotten Wildlife Corridor' - Inside Climate News\nThe Trump Administration's Critical Minerals Agenda Comes for America's 'Forgotten Wildlife Corridor'&nbsp;&nbsp;Inside Climate News"
+ },
+ {
+  "row_id": 325,
+  "text": "E-News | Federal official promotes rare earth mineral career program at WVU - West Virginia University\nE-News | Federal official promotes rare earth mineral career program at WVU&nbsp;&nbsp;West Virginia University"
+ },
+ {
+  "row_id": 329,
+  "text": "Agro-industrial center to soon rise at New Clark City - Inquirer.net\nAgro-industrial center to soon rise at New Clark City&nbsp;&nbsp;Inquirer.net"
+ },
+ {
+  "row_id": 332,
+  "text": "DEPDev: Pax Silica can help diversify PH economy, not limited to AI - GMA Network\nDEPDev: Pax Silica can help diversify PH economy, not limited to AI&nbsp;&nbsp;GMA Network"
+ },
+ {
+  "row_id": 334,
+  "text": "Evolution Metals & Technologies Corp. Reaffirms $400 Million to $460 Million FY2027 Revenue Guidance, Unveils Eight Sintered Magnet Grades Covering an Estimated 75% of Global NdFeB Revenue, and Moves to Answer U.S. Army Call for Rare Earth Mag - FinSMEs\nEvolution Metals & Technologies Corp. Reaffirms $400 Million to $460 Million FY2027 Revenue Guidance, Unveils Eight Sintered Magnet Grades Covering an Estimated 75% of Global NdFeB Revenue, and Moves to Answer U.S. Army Call for Rare Earth Mag&nbsp;&nbsp;FinSMEs"
+ },
+ {
+  "row_id": 336,
+  "text": "NEW SNAPS OF MARS 📸 NASA shared on Thursday some new photos of Mars taken by their Curiosity Mars rover showing polygonal fractures or honeycomb-like structures in the soil. \"Similar textured patches that Curiousity had discovered in the past appear - facebook.com\nNEW SNAPS OF MARS 📸 NASA shared on Thursday some new photos of Mars taken by their Curiosity Mars rover showing polygonal fractures or honeycomb-like structures in the soil. \"Similar textured patches that Curiousity had discovered in the past appear&nbsp;&nbsp;facebook.com"
+ },
+ {
+  "row_id": 337,
+  "text": "NCIP counts Aeta households amid Pax Silica concerns - Daily Tribune\nNCIP counts Aeta households amid Pax Silica concerns&nbsp;&nbsp;Daily Tribune"
+ },
+ {
+  "row_id": 354,
+  "text": "Planong Pax Silica Hub sa Tarlac, umani ng matinding batikos at pagtutol mula sa youth sector\nSa katatapos lamang na ikalimang State of the Nation Address ni Pangulong Ferdinand Marcos, Jr. nitong July 27, taas-noong ..."
+ },
+ {
+  "row_id": 357,
+  "text": "PAX SILICA AT ANG SONA NG PANGULO NA YAYANIG SA LUPA feat USEC CLAIRE CASTRO\nPAX SILICA AT ANG SONA NG PANGULO NA YAYANIG SA LUPA feat USEC CLAIRE CASTRO BATASnatin.com Lexitary- The ..."
+ },
+ {
+  "row_id": 360,
+  "text": "On this episode of Talk Line, host Brandon Clark chats with Dixon Mayor Glen Hughes for updates on city street work, answers to listeners' questions, and a new app that can keep you connected with the Dixon Police Department."
+ },
+ {
+  "row_id": 376,
+  "text": "EU - backed coalition vies for role in global AI order\njapanherald.com"
+ },
+ {
+  "row_id": 377,
+  "text": "Foreign Affairs Secretary Lazaro , Korean Foreign Minister Cho Discuss PH - ROK Strategic Partnership\nglobalsecurity.org"
+ },
+ {
+  "row_id": 379,
+  "text": "New arrest warrant out vs Alice Guo\nphilstar.com"
+ },
+ {
+  "row_id": 391,
+  "text": "Forum user discussion regarding Tarlac. Found on page 2 of the regional infrastructure thread. Many posts detailing construction progress and semiconductor investment speculation."
+ },
+ {
+  "row_id": 394,
+  "text": "Forum user discussion regarding Pax Silica Economic Security Zone. Found on page 2 of the regional infrastructure thread. Many posts detailing construction progress and semiconductor investment speculation."
+ },
+ {
+  "row_id": 398,
+  "text": "Luzon Economic Corridor sees huge investment in AI hubs."
+ }
+]

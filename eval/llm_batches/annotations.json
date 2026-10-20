@@ -1,0 +1,3202 @@
+[
+ {
+  "row_id": 39,
+  "relevance": "none",
+  "why": "Hindi commentary on Indian public sector undertakings and government jobs.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 95,
+  "relevance": "weak",
+  "why": "Discusses water supply and catchment in Clark/Pampanga without explicit project mention.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 123,
+  "relevance": "none",
+  "why": "Short generic reaction with no project referent.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 159,
+  "relevance": "weak",
+  "why": "Opposes site location in Tarlac vs Ilocos without explicit project naming.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 165,
+  "relevance": "none",
+  "why": "Workplace grievance regarding Chip City cookie bakery chain.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 191,
+  "relevance": "none",
+  "why": "Bare maritime territory term with no project connection.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 193,
+  "relevance": "weak",
+  "why": "Discusses groundwater depletion and farmers without explicitly naming Pax Silica.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 229,
+  "relevance": "none",
+  "why": "Vague personal reaction with no context or anchor.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 247,
+  "relevance": "none",
+  "why": "Generic critique of political corruption without naming or clearly identifying project.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 250,
+  "relevance": "none",
+  "why": "Generic short conversational remark with emojis.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 258,
+  "relevance": "core",
+  "why": "Centred on transparency demands regarding Pax Silica agreements and governance.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 293,
+  "relevance": "none",
+  "why": "Short typo or noise with no discernible meaning.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 306,
+  "relevance": "core",
+  "why": "Explicitly discusses discontinuation and political opposition to Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 339,
+  "relevance": "none",
+  "why": "Historical archival snippet regarding Pinatubo displacement of Aetas.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 348,
+  "relevance": "core",
+  "why": "Critical headline centred on land footprint of Pax Silica in Philippines.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 3,
+  "relevance": "none",
+  "why": "Comment about bugs in video game Farming Simulator 25.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 11,
+  "relevance": "none",
+  "why": "Irrelevant off-topic joke about snack chips.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 27,
+  "relevance": "none",
+  "why": "Generic listening timestamp comment with no connection.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 30,
+  "relevance": "none",
+  "why": "Comment regarding a vehicular drowning accident and local mayor.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 35,
+  "relevance": "none",
+  "why": "US domestic political conspiracy commentary.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 40,
+  "relevance": "none",
+  "why": "Generic video appreciation comment to creator.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 45,
+  "relevance": "none",
+  "why": "Home networking troubleshooting question about Vodafone routers.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 55,
+  "relevance": "core",
+  "why": "Explicit direct opposition to Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 57,
+  "relevance": "none",
+  "why": "Short generic reaction with no project referent.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 66,
+  "relevance": "none",
+  "why": "Vague question about unnamed new government agency.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 67,
+  "relevance": "weak",
+  "why": "Highlights massive daily water consumption without explicitly naming facility.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 68,
+  "relevance": "none",
+  "why": "Kapampangan conversational expression with no topical connection.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 70,
+  "relevance": "none",
+  "why": "Generic corruption complaint without naming project or specific site.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 74,
+  "relevance": "none",
+  "why": "Indian patriotic slogan praising Prime Minister Modi.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 79,
+  "relevance": "core",
+  "why": "Directly critiques Pax Silica naming and imperialist implications.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 82,
+  "relevance": "none",
+  "why": "Sci-fi planetary harvesting remark.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 87,
+  "relevance": "none",
+  "why": "Casual lifestyle compliment about a couple.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 90,
+  "relevance": "none",
+  "why": "Comment about Divisoria police reassignments.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 91,
+  "relevance": "none",
+  "why": "Short dismissal of water problem lacking identifiable referent.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 93,
+  "relevance": "none",
+  "why": "Vague skepticism lacking context.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 96,
+  "relevance": "none",
+  "why": "Local corruption allegations about Pangasinan flood control funds.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 97,
+  "relevance": "none",
+  "why": "Video production critique with no project anchor.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 103,
+  "relevance": "none",
+  "why": "Comment about AI avatar facial animation.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 109,
+  "relevance": "none",
+  "why": "Generic supportive emoji sentiment.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 116,
+  "relevance": "none",
+  "why": "Comment about an unrepaired bridge.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 124,
+  "relevance": "none",
+  "why": "Travel request for Capas, Tarlac.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 126,
+  "relevance": "weak",
+  "why": "Discusses high-end export manufacturing hub and China without project mention.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 127,
+  "relevance": "none",
+  "why": "Generic media platforming reaction.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 134,
+  "relevance": "none",
+  "why": "Complaint regarding police enforcement.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 143,
+  "relevance": "none",
+  "why": "Vague displacement question without mention of site or project.",
+  "llm_confidence": 0.65,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 156,
+  "relevance": "weak",
+  "why": "Praise of Clark with no explicit project discussion.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 158,
+  "relevance": "none",
+  "why": "Community shoutout for Victoria, Tarlac.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 161,
+  "relevance": "none",
+  "why": "Vague reaction about size with no subject.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 163,
+  "relevance": "none",
+  "why": "Legal advice regarding will contest and injunctions.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 181,
+  "relevance": "none",
+  "why": "Generic critique of US military foreign basing agreements.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 184,
+  "relevance": "none",
+  "why": "Generic positive feedback on an article.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 185,
+  "relevance": "none",
+  "why": "Geopolitical debate about Middle East sovereignty.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 186,
+  "relevance": "weak",
+  "why": "Discusses foreign investment incentives, electricity, and infrastructure in Philippines.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 208,
+  "relevance": "none",
+  "why": "Historical political discussion about Ninoy Aquino.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 211,
+  "relevance": "none",
+  "why": "General government corruption complaint without topic.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 217,
+  "relevance": "none",
+  "why": "Intense rhetorical reaction lacking identifiable context.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 218,
+  "relevance": "none",
+  "why": "Commercial dispute involving Sobrepeña group real estate leases.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 225,
+  "relevance": "none",
+  "why": "Environmental critique of unnamed polluting industry sector.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 226,
+  "relevance": "none",
+  "why": "Philosophical debate on AI model sentience and pain.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 230,
+  "relevance": "none",
+  "why": "Forum moderation meta-comment about combat power questions.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 234,
+  "relevance": "none",
+  "why": "Single sigh interjection.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 236,
+  "relevance": "none",
+  "why": "Commentary on local official complicity in POGO facilities.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 237,
+  "relevance": "none",
+  "why": "Unanchored political denunciation.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 239,
+  "relevance": "none",
+  "why": "General critique comparing big tech companies to famine.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 240,
+  "relevance": "none",
+  "why": "Fictional sci-fi military analysis.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 246,
+  "relevance": "none",
+  "why": "Generic political insult directed at leaders.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 253,
+  "relevance": "none",
+  "why": "Student meta-comment about video being clearer than school lessons.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 257,
+  "relevance": "none",
+  "why": "Appeal to Robredo to stop unspecified initiative.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 266,
+  "relevance": "weak",
+  "why": "Criticizes placing high-heat infrastructure in tropical climate without explicit naming.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 268,
+  "relevance": "direct",
+  "why": "Discusses resource-depleting Philippine facility compared to flood control priorities.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 275,
+  "relevance": "direct",
+  "why": "Evaluates pros/cons and natural resource exploitation of the project.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 277,
+  "relevance": "direct",
+  "why": "Critiques transferring resisted US infrastructure to the Philippines as colonization.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 282,
+  "relevance": "core",
+  "why": "Direct opposition and slogan against Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 288,
+  "relevance": "direct",
+  "why": "Opposes building foreign AI facilities/hubs in the Philippines.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 289,
+  "relevance": "none",
+  "why": "Generic rhetorical warning about history repeating itself.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 290,
+  "relevance": "none",
+  "why": "Playful fruit slang remark.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 292,
+  "relevance": "none",
+  "why": "Unanchored comment about rocket launches.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 296,
+  "relevance": "none",
+  "why": "Generic complaint about anomalies and rushed hidden deals.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 304,
+  "relevance": "none",
+  "why": "Slogan complaining about serving the rich.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 313,
+  "relevance": "weak",
+  "why": "Headline on power subsidies for investors in CREATE MORE bill.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 320,
+  "relevance": "direct",
+  "why": "Headline contrasting Pax Americana with Pax Silica geopolitics.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 324,
+  "relevance": "direct",
+  "why": "Headline reporting international participation in Luzon Economic Corridor.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 338,
+  "relevance": "none",
+  "why": "Tourism road trip video description of Tarlac City.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 340,
+  "relevance": "direct",
+  "why": "French media snippet on Nvidia, Pax Silica, and AI chips.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 352,
+  "relevance": "none",
+  "why": "Historical descriptive snippet of Clark Air Base.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 359,
+  "relevance": "none",
+  "why": "Earthquake telemetry notice for Tarlac.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 361,
+  "relevance": "none",
+  "why": "Galician comment on Spanish politics.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 368,
+  "relevance": "none",
+  "why": "Spam clickbait link on US-China relations.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 373,
+  "relevance": "none",
+  "why": "Short reaction with truncated Reuters link without text context.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 374,
+  "relevance": "core",
+  "why": "Groups explicitly reject Luzon Economic Corridor as sellout of patrimony.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 388,
+  "relevance": "none",
+  "why": "Scraper boilerplate fixture text.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 389,
+  "relevance": "none",
+  "why": "Scraper boilerplate fixture text.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 7,
+  "relevance": "none",
+  "why": "Ad hominem remark about someone's blank facial expression.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 8,
+  "relevance": "none",
+  "why": "Generic philosophical warning about AI wiping out humanity.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 10,
+  "relevance": "none",
+  "why": "Comparison of US and Philippine electricity rates and nuclear power.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 12,
+  "relevance": "none",
+  "why": "Slang remark about a dike.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 20,
+  "relevance": "none",
+  "why": "Rhetorical question on US-China geopolitics.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 26,
+  "relevance": "none",
+  "why": "Short generic comment about wearing no hat.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 32,
+  "relevance": "core",
+  "why": "Mentions dam draining and consequences causing the pax to lose.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 38,
+  "relevance": "none",
+  "why": "Generic suspicion of politicians speaking.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 50,
+  "relevance": "none",
+  "why": "Nostalgic dancing remark on music.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 61,
+  "relevance": "none",
+  "why": "Off-topic comment mocking family size and poverty.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 64,
+  "relevance": "none",
+  "why": "Praise for an interview video without topic mention.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 71,
+  "relevance": "none",
+  "why": "Critique of substandard 1990s bridge infrastructure and corruption.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 76,
+  "relevance": "none",
+  "why": "Short generic praise for informative content.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 92,
+  "relevance": "none",
+  "why": "Casual conversational morning greeting.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 99,
+  "relevance": "none",
+  "why": "Comment about discounted retail prices and promotions.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 100,
+  "relevance": "none",
+  "why": "Vague political mock comment about running for president.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 102,
+  "relevance": "none",
+  "why": "Generic request for a video update.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 106,
+  "relevance": "none",
+  "why": "Plea to the President not to give the Philippines away.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 107,
+  "relevance": "none",
+  "why": "Semantic argument on the term rare earth minerals.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 108,
+  "relevance": "none",
+  "why": "Spanish pun or nostalgic comment regarding rare earth vinyl.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 112,
+  "relevance": "none",
+  "why": "US dependency on Chinese rare earth refining and trade policy.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 121,
+  "relevance": "none",
+  "why": "Spanish call to arms for Latin America.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 131,
+  "relevance": "none",
+  "why": "General denunciation of fake news peddlers.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 137,
+  "relevance": "weak",
+  "why": "Reaction to undervaluation of land per square meter by government.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 147,
+  "relevance": "none",
+  "why": "Short generic praise.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 148,
+  "relevance": "none",
+  "why": "Spelling correction of Duterte's name.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 150,
+  "relevance": "none",
+  "why": "Compliment regarding summarized lecture.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 151,
+  "relevance": "none",
+  "why": "Cynical remark about government budget theft cycles.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 153,
+  "relevance": "none",
+  "why": "Commentary on US media coverage of anti-US foreign sentiment.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 155,
+  "relevance": "direct",
+  "why": "Supports international economic pact listing partner signatory countries boosting economy.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 162,
+  "relevance": "weak",
+  "why": "Discusses balancing industrial water consumption versus residential usage.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 164,
+  "relevance": "none",
+  "why": "Sci-fi hypothetical battle discussion about Martians.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 168,
+  "relevance": "none",
+  "why": "Groundwater level risks in the Netherlands.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 170,
+  "relevance": "none",
+  "why": "Account deletion remark with no context.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 173,
+  "relevance": "none",
+  "why": "Stock trading advice.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 176,
+  "relevance": "none",
+  "why": "Italian text regarding military reserve recruitment program.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 179,
+  "relevance": "direct",
+  "why": "Details massive power consumption (3000-5000MW) and grid impact of data centers.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 183,
+  "relevance": "none",
+  "why": "Generic complaint about prioritizing other projects over traffic/roads.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 196,
+  "relevance": "none",
+  "why": "Discussion of cartographic coloring of Exclusive Economic Zones.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 198,
+  "relevance": "none",
+  "why": "Critique of influencer clickbait culture.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 199,
+  "relevance": "none",
+  "why": "General critique of labor rights and environmental disregard in manufacturing.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 200,
+  "relevance": "weak",
+  "why": "Compares US/Japan official development assistance accountability versus local practices.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 206,
+  "relevance": "none",
+  "why": "Wordplay pun naming a bar 'Pax Tequila'.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 215,
+  "relevance": "weak",
+  "why": "Discussion of Philippine rail line construction challenges and geography.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 216,
+  "relevance": "none",
+  "why": "Single-word reaction.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 219,
+  "relevance": "none",
+  "why": "Local living conditions, water, and utilities query response in Tarlac City.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 228,
+  "relevance": "none",
+  "why": "Italian philosophical observation about centrifuges.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 232,
+  "relevance": "none",
+  "why": "Moral critique of individuals causing environmental harm.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 248,
+  "relevance": "none",
+  "why": "Comment noting Ralph Recto smiling without specific project context.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 251,
+  "relevance": "core",
+  "why": "Asks if Pax Silica has been approved with relevant hashtags.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 261,
+  "relevance": "none",
+  "why": "Generic dismissal calling people performative.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 263,
+  "relevance": "weak",
+  "why": "Compares project opposition to Bataan nuclear plant protests.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 265,
+  "relevance": "direct",
+  "why": "Argues against sacrificing the environment for advanced technology infrastructure.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 273,
+  "relevance": "none",
+  "why": "Unanchored question asking why the government allows something.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 278,
+  "relevance": "none",
+  "why": "Quotation from Gina Lopez on environmental protection.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 281,
+  "relevance": "none",
+  "why": "Wishes serious topics went viral instead of food trends.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 283,
+  "relevance": "none",
+  "why": "General slogan affirming nature's beauty won't be destroyed.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 297,
+  "relevance": "core",
+  "why": "Contrasts 50M gallon water supply for Pax Silica with Metro Manila shortages.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 303,
+  "relevance": "none",
+  "why": "Generic wake-up call to the Philippine government.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 317,
+  "relevance": "none",
+  "why": "News headline on Brazilian mine rare-earth alliance.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 319,
+  "relevance": "core",
+  "why": "Headline announcing US launch of Pax Silica Initiative.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 321,
+  "relevance": "none",
+  "why": "Headline on US domestic critical minerals agenda and wildlife corridor.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 325,
+  "relevance": "none",
+  "why": "Headline on West Virginia University mineral career program.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 329,
+  "relevance": "weak",
+  "why": "News headline regarding agro-industrial center rising at New Clark City.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 332,
+  "relevance": "core",
+  "why": "Headline on Pax Silica diversifying Philippine economy beyond AI.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 334,
+  "relevance": "none",
+  "why": "Press release on US Army magnet procurement guidance.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 336,
+  "relevance": "none",
+  "why": "News post about NASA Curiosity rover photos of Mars.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 337,
+  "relevance": "core",
+  "why": "Headline reporting NCIP counting Aeta households amid Pax Silica concerns.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 354,
+  "relevance": "core",
+  "why": "Article on planned Pax Silica Hub in Tarlac facing youth backlash.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 357,
+  "relevance": "core",
+  "why": "Discussion of Pax Silica and the President's State of the Nation Address.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 360,
+  "relevance": "none",
+  "why": "Podcast snippet featuring Brandon Clark and Mayor Hughes.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 376,
+  "relevance": "none",
+  "why": "Headline on EU-backed coalition in global AI order.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 377,
+  "relevance": "none",
+  "why": "Bilateral foreign affairs meeting between Philippines and South Korea.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 379,
+  "relevance": "none",
+  "why": "Headline regarding arrest warrant for Alice Guo.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 391,
+  "relevance": "none",
+  "why": "Scraper boilerplate fixture text.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 394,
+  "relevance": "none",
+  "why": "Scraper boilerplate fixture text.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 398,
+  "relevance": "direct",
+  "why": "Reports significant investment in AI hubs within Luzon Economic Corridor.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 2,
+  "relevance": "none",
+  "why": "Domestic Philippine partisan political commentary about DDS supporters.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 5,
+  "relevance": "none",
+  "why": "General query about global rare earth element refining capabilities.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 9,
+  "relevance": "none",
+  "why": "Praise for US domestic high-tech manufacturing policies.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 15,
+  "relevance": "none",
+  "why": "Generic prayer for protesters' protection lacking mention of project.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 18,
+  "relevance": "none",
+  "why": "Generic speculation on AI and robotics replacing workers.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 19,
+  "relevance": "none",
+  "why": "Unanchored brief praise of President Marcos.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 21,
+  "relevance": "none",
+  "why": "General compliment to an attorney on their video topic.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 22,
+  "relevance": "none",
+  "why": "Historical commentary on WWII Filipino veterans and Rescission Act.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 31,
+  "relevance": "none",
+  "why": "Generic outburst against informal settlers without project or site context.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 41,
+  "relevance": "none",
+  "why": "Commentary on Indian foreign policy and White House visits.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 43,
+  "relevance": "weak",
+  "why": "Questions lack of consultation with local residents on development project.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 44,
+  "relevance": "none",
+  "why": "Query about radio program news segment.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 56,
+  "relevance": "none",
+  "why": "Spanish appliance or tech comparison of LG products.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 62,
+  "relevance": "none",
+  "why": "Foreign policy commentary on Chinese rare earth export controls.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 63,
+  "relevance": "none",
+  "why": "Generic appreciation comment on video quality.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 84,
+  "relevance": "none",
+  "why": "Sarcastic remark about police statements and isolated cases.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 86,
+  "relevance": "none",
+  "why": "US political partisan commentary regarding Joe Biden.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 88,
+  "relevance": "none",
+  "why": "Short off-topic conversational quip.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 94,
+  "relevance": "direct",
+  "why": "Suggests expanding similar industrial corridor developments to Mindanao and Visayas.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 98,
+  "relevance": "core",
+  "why": "Explicitly opposes Pax Silica project citing corruption and governance.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 105,
+  "relevance": "none",
+  "why": "Commentary on lost satellite investigations.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 118,
+  "relevance": "none",
+  "why": "Vague four-word policy prescription lacking context.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 125,
+  "relevance": "none",
+  "why": "Financial self-help book recommendation.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 128,
+  "relevance": "core",
+  "why": "Critiques water allocation for Pax Silica over impoverished citizens.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 135,
+  "relevance": "none",
+  "why": "Generic remark advocating transition to AI technology away from politicians.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 136,
+  "relevance": "weak",
+  "why": "Calculates 60B land lease payments over 25 years alleging corruption.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 145,
+  "relevance": "weak",
+  "why": "Inquiry regarding accessibility of New Clark City SCTEX road.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 149,
+  "relevance": "none",
+  "why": "Generic denunciation of an unnamed speaker as a liar.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 157,
+  "relevance": "none",
+  "why": "Broad unanchored anti-US geopolitical assertion.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 171,
+  "relevance": "none",
+  "why": "Generic critique of a young traditional politician.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 174,
+  "relevance": "none",
+  "why": "Discussion of European mineral extraction policies and green mining.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 175,
+  "relevance": "weak",
+  "why": "Sarcastic dismissal of closed-loop cooling technology claims.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 177,
+  "relevance": "none",
+  "why": "Ethical discussion on capital punishment and lethal injection.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 188,
+  "relevance": "none",
+  "why": "Partisan insult aimed at Philippine opposition liberals.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 195,
+  "relevance": "none",
+  "why": "Foreign news summary about government takeover of chip factory.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 204,
+  "relevance": "none",
+  "why": "Shares website link for commercial US data center company.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 207,
+  "relevance": "none",
+  "why": "Brief Spanish observation about Aguadilla, Puerto Rico.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 209,
+  "relevance": "none",
+  "why": "Single isolated word with no context.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 214,
+  "relevance": "none",
+  "why": "Spanish discussion on military and police patrols in Chile.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 220,
+  "relevance": "none",
+  "why": "Commercial manufacturing supply chain and inventory advice.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 221,
+  "relevance": "direct",
+  "why": "Discusses domestic data centers, chip manufacturing, and balancing US-China investments.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 235,
+  "relevance": "none",
+  "why": "Casual remark about importing French butter.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 254,
+  "relevance": "direct",
+  "why": "Urges youth legal petition citing Oposa v. Factoran against resource abuse.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 256,
+  "relevance": "none",
+  "why": "Meta-critique of a video's pro and con balance.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 259,
+  "relevance": "none",
+  "why": "Speculates Duterte would scold Americans without project mention.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 262,
+  "relevance": "none",
+  "why": "Student asking permission to use video ideas for an essay.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 269,
+  "relevance": "direct",
+  "why": "Critiques AI labor displacement, tech militarization, and presidential administration support.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 271,
+  "relevance": "core",
+  "why": "Weighs modernization and job benefits against severe resource disadvantages of Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 276,
+  "relevance": "none",
+  "why": "Comment planning to use topic for school debate.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 279,
+  "relevance": "core",
+  "why": "Explicitly attacks Pax Silica ecosystem claims, prioritizing water and mineral protection.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 280,
+  "relevance": "none",
+  "why": "Generic complaint shaming policemen.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 294,
+  "relevance": "direct",
+  "why": "Discusses November planning status balancing environment with data center development.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 299,
+  "relevance": "none",
+  "why": "Broad condemnation of the President's public service.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 301,
+  "relevance": "none",
+  "why": "Short agreement with Senator Imee Marcos.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 305,
+  "relevance": "none",
+  "why": "Generic complaint about broken political promises.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 308,
+  "relevance": "weak",
+  "why": "Questions whether agreement signatories considered impacts favoring Filipinos.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 310,
+  "relevance": "none",
+  "why": "Unanchored emotional reaction.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 311,
+  "relevance": "none",
+  "why": "Single emoji word label.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 314,
+  "relevance": "core",
+  "why": "Headline on government refusal to fund Pax Silica AI hub in New Clark City.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 318,
+  "relevance": "none",
+  "why": "European Union clean energy critical minerals news.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 327,
+  "relevance": "none",
+  "why": "Headline on US-Canada critical minerals workforce development.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 328,
+  "relevance": "weak",
+  "why": "News report on Philippine development of green disaster-resilient city.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 331,
+  "relevance": "none",
+  "why": "Emergency rescue response to Aquino Bridge collapse in Tarlac.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 344,
+  "relevance": "none",
+  "why": "Report on Agana Bridge collapse in Tarlac.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 345,
+  "relevance": "none",
+  "why": "Korean broadcast on domestic mega-projects and residential industrial complexes.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 349,
+  "relevance": "none",
+  "why": "PEZA warnings on underground Philippine BPO competition.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 350,
+  "relevance": "none",
+  "why": "Thai financial content about investing in rare earth funds.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 351,
+  "relevance": "none",
+  "why": "Craft video about turning raw seeds into beads.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 355,
+  "relevance": "weak",
+  "why": "Video title concerning landscaping in New Clark City.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 356,
+  "relevance": "none",
+  "why": "Clash over ancestral domain involving Central Mindanao University security guards.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 363,
+  "relevance": "core",
+  "why": "Explicitly hashtags Pax Silica linking it to environmental destruction and farmer losses.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 370,
+  "relevance": "none",
+  "why": "Report on OpenAI domestic data center project in Georgia, USA.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 371,
+  "relevance": "none",
+  "why": "EU-China bilateral talks on rare earth export quotas.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 378,
+  "relevance": "none",
+  "why": "Leftist political party statement against US military presence.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 381,
+  "relevance": "core",
+  "why": "Article reporting church leaders voicing concerns over Pax Silica in Tarlac.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 385,
+  "relevance": "none",
+  "why": "Regional Central Luzon economic price freeze notice.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 396,
+  "relevance": "none",
+  "why": "Portuguese article on religious art sacred museum in Leiria.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 1,
+  "relevance": "none",
+  "why": "Empty exclamation noise without meaningful content.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 6,
+  "relevance": "core",
+  "why": "Directly supports Pax Silica for helping Filipino workers.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 25,
+  "relevance": "none",
+  "why": "Criticizes Tulfo staying silent without project context.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 28,
+  "relevance": "weak",
+  "why": "Promotional real estate listing for residential subdivision in Clark.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 29,
+  "relevance": "none",
+  "why": "Generic plea to oppose something without specifying topic.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 33,
+  "relevance": "none",
+  "why": "Short generic praise for fast action.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 34,
+  "relevance": "none",
+  "why": "Complaint about a woman's demeanor in video.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 37,
+  "relevance": "direct",
+  "why": "Defends development progress despite opposition from Imee Marcos.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 47,
+  "relevance": "none",
+  "why": "General remark on China manufacturing its own chips.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 48,
+  "relevance": "none",
+  "why": "Commentary on jobs and robotics in Arizona, USA.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 52,
+  "relevance": "none",
+  "why": "Short generic conversational phrase.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 58,
+  "relevance": "none",
+  "why": "Feedback on audio narration editing quality.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 60,
+  "relevance": "none",
+  "why": "Wordplay pun on red flags and China.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 69,
+  "relevance": "none",
+  "why": "Comment observing functioning street lights and traffic rules.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 72,
+  "relevance": "none",
+  "why": "Incoherent spam and broken repetitive noise.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 75,
+  "relevance": "none",
+  "why": "Gibberish username compliment.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 77,
+  "relevance": "none",
+  "why": "Comment on foreign crime and death penalties.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 78,
+  "relevance": "none",
+  "why": "Generic well wishes to a travel vlogger.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 80,
+  "relevance": "none",
+  "why": "Off-topic shopping joke about pillow cases.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 89,
+  "relevance": "direct",
+  "why": "Proposes nuclear power and dams for AI data center demands.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 111,
+  "relevance": "none",
+  "why": "Political commentary on SEA Games controversies and opposition scandals.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 120,
+  "relevance": "direct",
+  "why": "Critiques systemic project execution and land ownership claims in Philippines.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 130,
+  "relevance": "core",
+  "why": "Enumerates strategic benefits of Pax Silica processing mineral exports domestically.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 132,
+  "relevance": "none",
+  "why": "Query about beneficiaries of Maharlika Investment Fund.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 133,
+  "relevance": "weak",
+  "why": "Contests land classification as government land rather than ancestral land.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 138,
+  "relevance": "none",
+  "why": "Casual poem or joke mentioning Angeles City.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 141,
+  "relevance": "none",
+  "why": "Generic expression of thanks for presidential support.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 142,
+  "relevance": "core",
+  "why": "Discusses political figure's ignorance and legal distraction regarding Pax Silica.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 160,
+  "relevance": "none",
+  "why": "Quiz answer comment.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 166,
+  "relevance": "core",
+  "why": "Argues against accepting Pax Silica given unresolved water and power shortages.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 167,
+  "relevance": "none",
+  "why": "Automated Reddit moderator bot notification.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 169,
+  "relevance": "none",
+  "why": "Short celebratory cheer lacking context.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 172,
+  "relevance": "none",
+  "why": "Debate regarding US congressional military cooperation bill with Israel.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 190,
+  "relevance": "none",
+  "why": "Automated Reddit account age bot notification.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 203,
+  "relevance": "none",
+  "why": "Critique of European industrial and space policy environmental delays.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 205,
+  "relevance": "none",
+  "why": "Vague moral disappointment lacking referent.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 210,
+  "relevance": "none",
+  "why": "Comment listing military hardware procurement items.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 212,
+  "relevance": "weak",
+  "why": "Discusses resource allocation and workforce coercion regarding major AI projects.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 213,
+  "relevance": "none",
+  "why": "Political remark regarding US policy and Venezuelan oil.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 223,
+  "relevance": "none",
+  "why": "Customer query on Anthropic API terms of service.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 227,
+  "relevance": "none",
+  "why": "News report on Chinese scientists exploring rare earths in Iran.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 231,
+  "relevance": "none",
+  "why": "Unanchored call for imprisonment of responsible parties.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 233,
+  "relevance": "none",
+  "why": "Technical software development conversation on APIs and scrapers.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 242,
+  "relevance": "none",
+  "why": "Condolence message.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 243,
+  "relevance": "core",
+  "why": "Directly declares solidarity in rejecting Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 245,
+  "relevance": "none",
+  "why": "Short bewildered acronym outburst.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 249,
+  "relevance": "core",
+  "why": "Explicit opposition stance declaring no to Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 252,
+  "relevance": "none",
+  "why": "Remark on creators promoting commercial AI subscriptions.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 255,
+  "relevance": "none",
+  "why": "Exclamation advocating nuclear power plant development only.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 260,
+  "relevance": "core",
+  "why": "Conditional support for Pax Silica provided dirty water is used.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 264,
+  "relevance": "core",
+  "why": "Explicit direct opposition statement to Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 267,
+  "relevance": "core",
+  "why": "Supports Pax Silica conditionally on absence of government corruption.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 272,
+  "relevance": "core",
+  "why": "Vehement opposition to Pax Silica due to impacts on people.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 274,
+  "relevance": "weak",
+  "why": "Unfairness grievance regarding land theft without naming project.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 284,
+  "relevance": "weak",
+  "why": "Anti-AI slogan asserting humans can survive without AI.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 285,
+  "relevance": "none",
+  "why": "Humorous lifestyle comment on delivery app riders.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 287,
+  "relevance": "none",
+  "why": "Generic cheer amplifying a previous point.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 298,
+  "relevance": "none",
+  "why": "Simple agreement with speaker.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 302,
+  "relevance": "weak",
+  "why": "Warns project impacts will ruin lives and starve people.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 307,
+  "relevance": "none",
+  "why": "Emotional conversational expression without context.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 312,
+  "relevance": "core",
+  "why": "Headline on Pax Silica boosting Philippine AI value chain role.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 326,
+  "relevance": "none",
+  "why": "News on Chinese copper mine expansion.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 333,
+  "relevance": "core",
+  "why": "Opinion piece titled defending Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 341,
+  "relevance": "none",
+  "why": "Article on Critical Minerals Institute anniversary and strategy.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 343,
+  "relevance": "weak",
+  "why": "Tourism promotion describing the beauty of New Clark City.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 353,
+  "relevance": "none",
+  "why": "Japanese informational seminar on PEZA tax incentives.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 365,
+  "relevance": "none",
+  "why": "Bare incomplete URL string.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 366,
+  "relevance": "none",
+  "why": "Galician text regarding 3D photogrammetry laboratory modeling.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 367,
+  "relevance": "none",
+  "why": "Report on mineral exploration and harsh climate in Greenland.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 372,
+  "relevance": "none",
+  "why": "Discussion of Indian critical mineral diplomacy with Chile and Peru.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 380,
+  "relevance": "none",
+  "why": "PAGASA weather forecast bulletin for Luzon and Visayas.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 383,
+  "relevance": "none",
+  "why": "Headline on US-India undersea cable connectivity initiative.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 386,
+  "relevance": "none",
+  "why": "Article on US-India economic bilateral relations.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 393,
+  "relevance": "none",
+  "why": "Scraper boilerplate fixture text.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 397,
+  "relevance": "none",
+  "why": "Polish forum discussion regarding highway road signage.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 399,
+  "relevance": "direct",
+  "why": "Discusses BCDA semiconductor hub in Tarlac, water, and power.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 400,
+  "relevance": "none",
+  "why": "Empty placeholder string fixture.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 4,
+  "relevance": "none",
+  "why": "Geopolitical opinion about US-China rivalry without project link.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 13,
+  "relevance": "none",
+  "why": "Generic criticism about authorities in a communist country.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 14,
+  "relevance": "none",
+  "why": "Domestic partisan political slogans targeting Duterte and POGO.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 16,
+  "relevance": "none",
+  "why": "Article preview on Apple building US-based semiconductor chips.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 17,
+  "relevance": "none",
+  "why": "Broad comment regarding demographics in the global semiconductor industry.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 23,
+  "relevance": "none",
+  "why": "Music review discussing a bass solo.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 24,
+  "relevance": "none",
+  "why": "Notice about watercraft manufacturing in Cebu.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 36,
+  "relevance": "none",
+  "why": "Abstract philosophical comment on human existence.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 42,
+  "relevance": "core",
+  "why": "Directly opposes Pax Silica and data centers, advocating agriculture instead.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 46,
+  "relevance": "none",
+  "why": "Political wordplay mocking the NBI.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 49,
+  "relevance": "none",
+  "why": "Short compliment on scenery.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 51,
+  "relevance": "none",
+  "why": "Single isolated word with no context.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 53,
+  "relevance": "none",
+  "why": "Political critique of Vice President lacking clear project mention.",
+  "llm_confidence": 0.8,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 54,
+  "relevance": "weak",
+  "why": "Mentions mining companies encroaching on protected indigenous areas.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 59,
+  "relevance": "none",
+  "why": "Personal nostalgia about 1980s Clark Air Base hospital.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 65,
+  "relevance": "none",
+  "why": "Technical inquiry about graphene and carbon nanotubes.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 73,
+  "relevance": "none",
+  "why": "Commentary on US presidential tariffs.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 81,
+  "relevance": "weak",
+  "why": "Praise of Clark Global City matching calibration weak example.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 83,
+  "relevance": "none",
+  "why": "Cynical prediction about political dynastic propaganda and trolls.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 85,
+  "relevance": "none",
+  "why": "Short approval phrase with no context.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 101,
+  "relevance": "none",
+  "why": "Three-word generic sentence mentioning silica.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 104,
+  "relevance": "core",
+  "why": "Discusses agricultural and food needs for workers in Pax Silica.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 110,
+  "relevance": "none",
+  "why": "Generic supportive comment thanking the video creator.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 113,
+  "relevance": "none",
+  "why": "Timestamp viewer check-in comment.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 114,
+  "relevance": "none",
+  "why": "Brief off-topic personal preference.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 115,
+  "relevance": "none",
+  "why": "Vague philosophical remark about holding onto history.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 117,
+  "relevance": "weak",
+  "why": "Grievance on presidential approval overriding local sitios without project name.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 119,
+  "relevance": "none",
+  "why": "Recollection of working in hospital office buildings.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 122,
+  "relevance": "none",
+  "why": "Local comparative remark about Cebu.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 129,
+  "relevance": "none",
+  "why": "Complaint about corrupt road and bridge construction quality.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 139,
+  "relevance": "none",
+  "why": "Compliment praising a video segment.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 140,
+  "relevance": "none",
+  "why": "Hindi commentary regarding Indian space agency ISRO.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 144,
+  "relevance": "none",
+  "why": "Comment celebrating Indian mining stock holdings.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 146,
+  "relevance": "none",
+  "why": "Absurd joke about Kodiak bears and China.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 152,
+  "relevance": "direct",
+  "why": "Proposes offering Luzon Corridor sites, Subic, and Clark to Japan.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 154,
+  "relevance": "none",
+  "why": "Praise for durable Japanese construction versus substandard works.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 178,
+  "relevance": "direct",
+  "why": "Discusses US deal alternatives, mining, and Foxconn joining manufacturing.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 180,
+  "relevance": "none",
+  "why": "Complaint about AI racks in Montgomery County, Maryland data centers.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 182,
+  "relevance": "none",
+  "why": "Short generic personal support comment.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 187,
+  "relevance": "none",
+  "why": "Dismissal of content as Chinese leftist propaganda without context.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 189,
+  "relevance": "none",
+  "why": "Political debate over land rights in Israel.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 192,
+  "relevance": "none",
+  "why": "Two-word agreement lacking referent.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 194,
+  "relevance": "none",
+  "why": "Humorous satire regarding cornering fruit water markets.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 197,
+  "relevance": "none",
+  "why": "Transit request for a railway to Pangasinan.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 201,
+  "relevance": "none",
+  "why": "Unanchored comment about a feud between property owners.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 202,
+  "relevance": "none",
+  "why": "Complaint about Manila expressway toll fees.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 222,
+  "relevance": "none",
+  "why": "Canadian news headline regarding British Columbia housing.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 224,
+  "relevance": "none",
+  "why": "Generic political insult regarding an online avatar.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 238,
+  "relevance": "none",
+  "why": "Discussion of Philippine socioeconomics and housing costs.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 241,
+  "relevance": "core",
+  "why": "Discusses geopolitics, closed-loop cooling, and site distances in Pax Silica.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 244,
+  "relevance": "none",
+  "why": "Casual remark defending a specific group.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 270,
+  "relevance": "core",
+  "why": "Direct opposition and distress over Pax Silica harming Filipinos.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 286,
+  "relevance": "none",
+  "why": "Personal career remark contrasting data science with filmmaking.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 291,
+  "relevance": "weak",
+  "why": "Expresses surviving without AI versus nature without naming project.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 295,
+  "relevance": "direct",
+  "why": "Criticizes foreign data center dumping into the Philippines.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 300,
+  "relevance": "weak",
+  "why": "Defends relocation saying government will improve lives of relocatees.",
+  "llm_confidence": 0.7,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 309,
+  "relevance": "none",
+  "why": "Calls for removing corrupt politicians from office.",
+  "llm_confidence": 0.75,
+  "needs_review": true,
+  "artifact": false
+ },
+ {
+  "row_id": 315,
+  "relevance": "direct",
+  "why": "Headline on Aboitiz economic zones gearing up for Luzon corridor.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 316,
+  "relevance": "weak",
+  "why": "Report on NBI establishing offices in New Clark City.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 322,
+  "relevance": "none",
+  "why": "MWSS and Manila Water revised utility concession rates.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 323,
+  "relevance": "none",
+  "why": "American Resources rare earth expansion in Malaysia.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 330,
+  "relevance": "core",
+  "why": "Matches calibration core example on Aetas, Tarlac, and Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 335,
+  "relevance": "none",
+  "why": "Panel on global lithium supply chains and Africa.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 342,
+  "relevance": "none",
+  "why": "General analysis of Chinese technological control over raw materials.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 346,
+  "relevance": "none",
+  "why": "Food and restaurant guide in Tarlac.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 347,
+  "relevance": "core",
+  "why": "Analysis centred on Pax Silica and strategic tech supply chains.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 358,
+  "relevance": "none",
+  "why": "Inauguration of children's medical center at Clark Freeport.",
+  "llm_confidence": 0.9,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 362,
+  "relevance": "core",
+  "why": "News summary of US-PH semiconductor hub under Pax Silica.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 364,
+  "relevance": "none",
+  "why": "Interview on Kazakhstan balancing Pax Silica and WAICO in AI.",
+  "llm_confidence": 0.85,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 369,
+  "relevance": "none",
+  "why": "Statement on France and Germany bilateral economic trade policy.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 375,
+  "relevance": "none",
+  "why": "Archaeological discovery of Viking textile site in Denmark.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 382,
+  "relevance": "none",
+  "why": "DSWD educational aid distribution in Tarlac.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 384,
+  "relevance": "none",
+  "why": "NBI investigation into fund transfers for Phisgoc.",
+  "llm_confidence": 0.95,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 387,
+  "relevance": "weak",
+  "why": "US pressuring global allies over AI race with China.",
+  "llm_confidence": 0.8,
+  "needs_review": false,
+  "artifact": false
+ },
+ {
+  "row_id": 390,
+  "relevance": "none",
+  "why": "Scraper boilerplate fixture text.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 392,
+  "relevance": "none",
+  "why": "Bare website name snippet.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ },
+ {
+  "row_id": 395,
+  "relevance": "none",
+  "why": "Scraper boilerplate fixture text.",
+  "llm_confidence": 1.0,
+  "needs_review": false,
+  "artifact": true
+ }
+]

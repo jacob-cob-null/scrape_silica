@@ -1,0 +1,368 @@
+You are an annotator for a research dataset on Philippine online discourse about the
+"Pax Silica" initiative: a U.S.-led economic and security project in the Philippines covering
+semiconductor and AI infrastructure, data centres, critical minerals and the Luzon Economic
+Corridor, including its sites (New Clark City, Clark, Tarlac) and its local impacts.
+
+Label EACH text on RELEVANCE using exactly one of:
+
+  none   - no link to the Pax Silica project and no link to its specific sites or impacts.
+           Includes generic Philippine news, semiconductor or rare-earth news about other
+           countries, and talk of Clark or Tarlac with no project connection.
+  weak   - a passing or indirect connection: a project-associated site, agency or theme is
+           mentioned but the project itself is not discussed.
+  direct - discusses the project, its sites, agencies, industry or local impacts, but is not
+           centred on it.
+  core   - centred on Pax Silica or its direct consequences: support, opposition, displacement,
+           land, water, jobs, corruption or naming.
+
+RULES (apply strictly):
+1. Language is irrelevant. Filipino, Tagalog, Taglish, Cebuano and English get the same
+   standard. Never lower the label because the text is short or in Filipino.
+2. Criticism and opposition count fully. "No to Pax Silica" is core, not none.
+3. A place name alone is not relevance. "Bridge collapsed in Tarlac" is none.
+4. A theme alone is not relevance. Rare earths in Malaysia, EU critical minerals, a US mining
+   programme: none. Pax Silica is the anchor.
+5. Short and vague is none, but if the referent is clearly the project, do not punish brevity.
+6. Judge each text alone. Never infer from context or from other rows in the batch.
+7. If torn between two labels, choose the lower one and set "needs_review": true.
+
+ARTIFACT RULE: if a text is not user-generated discourse (scraper boilerplate such as
+"Forum user discussion regarding X.", a bare URL, a seed fixture, or empty/emoji-only noise),
+set "artifact": true and still give relevance "none".
+
+Calibration examples (label, then text):
+  core   - "Nararapat sa atin bansa ang pax silica makakatulong sa mga pilipinong manggagawa"
+  core   - "Big NO to PAX SILICA"
+  core   - "Kawawang pilipinas may tubig sa pax silica pero walang tubig sa mahihirap"
+  core   - "Aetas and Farmers in Tarlac Defend Ancestral Lands, Warn Pax Silica AI Hub Threatens
+            Farmlands and Water"
+  direct - "Eight more countries, including South Korea, will participate in the Luzon Economic
+            Corridor (LEC)"
+  weak   - "Clark Global City is great .. More space, more convenience to stroll around the City"
+  none   - "ICYMI: Tulay sa Tarlac, bumagsak" (a bridge collapsed in Tarlac)
+  none   - "American Resources forms Indo-Pacific unit to lead Malaysia rare earth expansion"
+
+CRITICAL - ID FIDELITY:
+The "row_id" values in the input are authoritative identifiers, NOT sequence numbers.
+Copy each row_id verbatim into your answer. Never renumber. Never invent an id. Your reply
+must contain each input row_id exactly once and no other ids. If the input ids are
+"7, 91, 132", your output ids are exactly 7, 91 and 132 - not 1, 2, 3.
+
+Reply with JSON ONLY - an array with one object per input row, in the SAME ORDER as the input,
+no prose, no code fences:
+[
+  {"row_id": <int>, "relevance": "none|weak|direct|core", "artifact": false,
+   "confidence": <0.0-1.0>, "needs_review": false, "why": "<max 15 words>"}
+]
+
+Input rows:
+[
+ {
+  "row_id": 1,
+  "text": "aohhhhhhhhhhh"
+ },
+ {
+  "row_id": 6,
+  "text": "Nararapat sa atin bansa ang pax silica makakatulong sa mga pilipinong manggagawa"
+ },
+ {
+  "row_id": 25,
+  "text": "walang kibo si tukpo dyan i mean si tulfo"
+ },
+ {
+  "row_id": 28,
+  "text": "DECA Clark Residences and Resort exhibit 2-story town houses that usually have two bedrooms with one bath and toilet. The Wake-board park offers an 8-hectare resort complex.\n \nBy Request from subscribers - Deca Clark Resort Residences - Angeles City Pampanga Clark Freeport, DIRECTIONS MAP:   \nFor info on the homes,   Wake-board Park, , Landscaped Entrance Arch, Clubhouse, Swimming Pool, Parks and Playground, Basketball Courts, Large landscaped open spaces, Tree-lined sidewalks, Streetlights, Security guards on location, Shuttle service. Make sure to subscribe and hit the bell."
+ },
+ {
+  "row_id": 29,
+  "text": "Hnd Tama Yan howag niyo payagan madam ipag Laban niyo po Yan"
+ },
+ {
+  "row_id": 33,
+  "text": "Wow, bilis action. Good job!"
+ },
+ {
+  "row_id": 34,
+  "text": "masyadong papansin at hyper yung babae nakakainis."
+ },
+ {
+  "row_id": 37,
+  "text": "its progress. who cares what Inee Marcos says"
+ },
+ {
+  "row_id": 47,
+  "text": "China is going to make his owen chips"
+ },
+ {
+  "row_id": 48,
+  "text": "Is this actually going to bring jobs and revenue to Arizona? Or is it going to be run by AI robots?"
+ },
+ {
+  "row_id": 52,
+  "text": "He still has it"
+ },
+ {
+  "row_id": 58,
+  "text": "Why did u think this was a good idea ? Two voices alternating every couple of sentences and each voice is a different octave and each one recorded at a diffrent quality !!! The topic is very interesting but i couldnt manage to even get to half the video cuz the alternation was so psychologically triggering and physically irritating to the ears"
+ },
+ {
+  "row_id": 60,
+  "text": "Red flags? Completely red or the Chinese ones?😂."
+ },
+ {
+  "row_id": 69,
+  "text": "Wow, actual working street lights and they were seeming to follow the rules :)"
+ },
+ {
+  "row_id": 72,
+  "text": "chen s teakcear yani people have objections and... yani in all world  need s yani never meak d jor y s yani meaked one rom big and close your self need s all yani living people to day like this becouse.......... yani........"
+ },
+ {
+  "row_id": 75,
+  "text": "zxbkeyga cumer big  fan😂"
+ },
+ {
+  "row_id": 77,
+  "text": "dito sila gumagawa ng mga krimen dahil hindi nila kayang gawin sa china kagaguhan nila may death penalty doon."
+ },
+ {
+  "row_id": 78,
+  "text": "Ingat po kayo palagi sa byahe nyo,, para mas madami pang video kagaya nito <3"
+ },
+ {
+  "row_id": 80,
+  "text": "unfortunately no pillow cases in the shop good news for Mike who hates dozens of pillow cases lol😂😂😂"
+ },
+ {
+  "row_id": 89,
+  "text": "Just build a nuclear power plant, that should meet the energy needs of the AI data center project.\n\nAlso build a separate water treatment plant or a dam, that should take care of the water supply demand of the AI project as well."
+ },
+ {
+  "row_id": 111,
+  "text": "Mag ingat kayo mga kababayan. May bagong news storm nanamanang opposition laban sa government vs sea games. Just like another bikoy scandal. 🤣🤣🤣"
+ },
+ {
+  "row_id": 120,
+  "text": "Sa totoo lang di magwowork yan sa pinas. Simpleng flood control na needed natin at life threatening and sobrang kailangan natin coz it is a matter of life or death di pa nagawa ng tama at nagkanakawan pa. Paano pa kaya yan na privately owned company lang na transaction. Isa pa claim nila kainla lahat ng buong lupain doon pero it is clear na hindi. Any project na ginagawa sa pinas ay palpak dahil may issue sa system. It is a systemic issue. It is like adhd schizo person trying hide and appear as high functioning person but in reality he is just high. Meaning our political problem is not brought"
+ },
+ {
+  "row_id": 130,
+  "text": "5 Reasons China Hates Pax Silica in the Philippines\n\n1️⃣ China may lose cheap raw materials\n\nThe Philippines sends raw minerals like nickel and copper to China. In 2025, China remained the country's biggest nickel export market. \n\nWe sell them cheap.\n\nChina processes them and sells finished products at a much higher price.\n\nChina earns more from our own resources.\n\n2️⃣ The Philippines can build its own factories\n\nPax Silica can help the Philippines process minerals here.\n\nThat means more factories.\n\nMore jobs.\n\nMore Filipino engineers.\n\nMore products made in the Philippines.\n\n3️⃣ Companies may"
+ },
+ {
+  "row_id": 132,
+  "text": "Sinong nakinabang sa maharlika finds"
+ },
+ {
+  "row_id": 133,
+  "text": "It's government land, not an ancestral land"
+ },
+ {
+  "row_id": 138,
+  "text": "the  Angeles is calling  me\nit's → July\nwait  me\ni\nhave  A  Chocolate"
+ },
+ {
+  "row_id": 141,
+  "text": "Salamat PBBM sa supporta."
+ },
+ {
+  "row_id": 142,
+  "text": "Her thoughts are scattered throughout all the allegations against her plus her father is in jail! For sure understanding Pax Silica isn't on top of her agenda!\nHowever there is no excuse for her ignorance on the matter!"
+ },
+ {
+  "row_id": 160,
+  "text": "Option B correct ❤️❤️❤️"
+ },
+ {
+  "row_id": 166,
+  "text": "If the government really care about technology and hindi Tayo mapag iwanan ng ibang bansa dapat gumawa sila ng paraan para ma solve yung matagal nang issue ng lack of water at kuryente. Like 2010s palang meron ako napanood sa news regarding mawala ground water. Base sa information na Yun dapat marami na desalination plant ginawa ang gobyerno. Or mga water treatment plant at storage ng water para kung tag init meron tubig. Or kung ano naman technology na makakatulong sa atin na wag maging dependant sa ground water. Sa issue naman ng kuryente dapat marami na dapat Ngayon ibat ibang source ng kur"
+ },
+ {
+  "row_id": 167,
+  "text": "Hi Redditor, it would seem you have strayed too far from WSB, there are emojis detected. Try making a comment with no emoji at all.  Have a great day! I am a bot, and this action was performed automatically. Please contact the moderators of this subreddit if you have any questions or concerns."
+ },
+ {
+  "row_id": 169,
+  "text": "lets gooooo"
+ },
+ {
+  "row_id": 172,
+  "text": "Congress is attempting to push through a bill that would merge our military with Israel's. That's not at all what the bill does. It appoints a person to coordinate cooperation between the militaries. Agree. A major concern. They would have access to unlimited funding, intelligence and surveillance. And judging by what they've done to people who are under their military control - it can't be a good outcome for the USA or the world. It hasn't passed in the senate yet. I also enjoy getting mad at my own fantasies Comment deleted by user"
+ },
+ {
+  "row_id": 190,
+  "text": "Sorry, but your account is too new to post.  Your account needs to be either 2 weeks old or have at least 250 combined link and comment karma.  Don't modmail us about this, just wait it out or get more karma. I am a bot, and this action was performed automatically. Please contact the moderators of this subreddit if you have any questions or concerns."
+ },
+ {
+  "row_id": 203,
+  "text": "No, thank you. ESA. I'm being sarcastic, of course, but gosh—we are so slow when it comes to technological advancement. There are so many rules buried everywhere, just because some people can't stop thinking, \"Is there any grain of dust that could land on my croissant while I'm eating it on the porch of some Michelin-star restaurant, coming from a mine, a factory or production line a thousand kilometers away? Oh no, the tragedy! 😱\" Well, did you guys think there's no price to that peace of mind?"
+ },
+ {
+  "row_id": 205,
+  "text": "Very disappointing. Standing on wrong side of history."
+ },
+ {
+  "row_id": 210,
+  "text": "Isama mo pa pala ang Dassault Raphale at Exocet missiles."
+ },
+ {
+  "row_id": 212,
+  "text": "no. i have wished for neither to be where so much capital and resources are being allotted. I benefit from AI on a personal level, but the larger thing at play here is that everyone is being forced to adapt especially if it meant survival in the workforce and the economy. adapting to stay employed isn't an endorsement of these major AI projects."
+ },
+ {
+  "row_id": 213,
+  "text": "Unless you have oil, then we invite your president for an indefinite stay in one of our fine US prisons.. talking to you Venezuela Comment removed by moderator"
+ },
+ {
+  "row_id": 223,
+  "text": "What part of Anthropic's stance is unacceptable to you? the one where they sign a contract but don't provide agreed services after taking payment"
+ },
+ {
+  "row_id": 227,
+  "text": "China is sending scientists to Iran for rare earth 'exploration and processing'"
+ },
+ {
+  "row_id": 231,
+  "text": "People responsible should be JAILED, for a long time."
+ },
+ {
+  "row_id": 233,
+  "text": "I built the same thing for internal use. AI just writes the API calls for a deterministic executor, which an agent can modify if something fails. It gets better every deploy. I've done hundreds of steps before.Are you using the unlisted internal APIs for things like reports? My understanding is that this works, but HubSpot really doesn't like people doing it. Supered got in trouble for it IIRC. Or are you using something like Playwright?"
+ },
+ {
+  "row_id": 242,
+  "text": "Rest well Brother"
+ },
+ {
+  "row_id": 243,
+  "text": "Hindi muna kita kontrahin, kaisa mo ako sa pag reject sa Pax Silica."
+ },
+ {
+  "row_id": 245,
+  "text": "NO WTHFU??"
+ },
+ {
+  "row_id": 249,
+  "text": "no to pax silica nagagalit na si alvin"
+ },
+ {
+  "row_id": 252,
+  "text": "panay promote pa mga yan kamo ng ai subscriptions"
+ },
+ {
+  "row_id": 255,
+  "text": "LETS ONLY AGREE TO NUCLEAR POWER PLANT!!!"
+ },
+ {
+  "row_id": 260,
+  "text": "yes to pax silica pero maduming tubig gagamitin"
+ },
+ {
+  "row_id": 264,
+  "text": "No.to pax silica."
+ },
+ {
+  "row_id": 267,
+  "text": "for me pax silica is good if the government is not corrupt"
+ },
+ {
+  "row_id": 272,
+  "text": "No to pax silica!!!! Louderrrrr no to pax silica maraming tao maapektuhan jusqq"
+ },
+ {
+  "row_id": 274,
+  "text": "it's just unfair because it's like they're stealing our land"
+ },
+ {
+  "row_id": 284,
+  "text": "WE CAN LIVE WITHOUT AI!!"
+ },
+ {
+  "row_id": 285,
+  "text": "kelangan pala naka green dress para magkaroon ng ganyang rider noted tehh💕🤣 sanaol tlga hahahahaha"
+ },
+ {
+  "row_id": 287,
+  "text": "LOUDERRRR!!! 💗"
+ },
+ {
+  "row_id": 298,
+  "text": "Tama ka sir"
+ },
+ {
+  "row_id": 302,
+  "text": "masisira Ang Buhay Ng mga. tao.. maraming magugotom"
+ },
+ {
+  "row_id": 307,
+  "text": "Ako lang ba naiiyak? 😔"
+ },
+ {
+  "row_id": 312,
+  "text": "Pax Silica hub to boost PH role in global AI value chain - Facebook\nPax Silica hub to boost PH role in global AI value chain&nbsp;&nbsp;Facebook"
+ },
+ {
+  "row_id": 326,
+  "text": "Baogang Handagai Copper Mine Expansion 2029 - Rare Earth Exchanges\nBaogang Handagai Copper Mine Expansion 2029&nbsp;&nbsp;Rare Earth Exchanges"
+ },
+ {
+  "row_id": 333,
+  "text": "Defending Pax Silica - The Manila Times\nDefending Pax Silica&nbsp;&nbsp;The Manila Times"
+ },
+ {
+  "row_id": 341,
+  "text": "The Critical Minerals Institute Warns That Government Funding Alone Is Not a Strategy\nToday, August 20, 2026, the Critical Minerals Institute (CMI) marks its fifth anniversary. Five years after CMI was created to bring ..."
+ },
+ {
+  "row_id": 343,
+  "text": "The Beauty of New Clark City Pampanga\nclarkpampanga."
+ },
+ {
+  "row_id": 353,
+  "text": "【フィリピン経済特区】\"PEZA\"とは!?〜法人所得税の免除、現地購入品の付加価値税免除などの優遇税制〜\nフィリピン投資オンラインセミナー開催中  ☆公式LINEでフィリピン投資セミナー【無料参加】 ..."
+ },
+ {
+  "row_id": 365,
+  "text": "www.americasquarterly.org/article/what..."
+ },
+ {
+  "row_id": 366,
+  "text": "Xunto a esta investigación, o laboratorio KosmoTech_1200 vén de publicar un vídeo que permite achegarse á peza a través dun modelado 3D realizado mediante fotogrametría."
+ },
+ {
+  "row_id": 367,
+  "text": "Resource exploration and extraction in Greenland has stymied companies for decades thanks to the island's harsh climate, lack of key infrastructure and difficult geology. Previous efforts to extract rare earth minerals, as well as oil and gas, have never progressed beyond the exploratory stage."
+ },
+ {
+  "row_id": 372,
+  "text": "India is also advancing trade negotiations with Chile and Peru, including discussions covering critical minerals. India is the biggest importer of venezuelan oil-India engagment and influence in latin america growing even as the region shifts right"
+ },
+ {
+  "row_id": 380,
+  "text": "Parts of Luzon , Visayas will have rains , thunderstorms due to habagat Pagasa\nmanilatimes.net"
+ },
+ {
+  "row_id": 383,
+  "text": "US , India partner to secure undersea cable networks and expand digital connectivity under TRUST initiative\ncalcuttanews.net"
+ },
+ {
+  "row_id": 386,
+  "text": "Strengthening Economic Ties Between India and the U . S .: Sergio Gor\nudaipurkiran.com"
+ },
+ {
+  "row_id": 393,
+  "text": "Forum user discussion regarding Luzon corridor. Found on page 2 of the regional infrastructure thread. Many posts detailing construction progress and semiconductor investment speculation."
+ },
+ {
+  "row_id": 397,
+  "text": "Chciałem poruszyć bardzo ważny wg mnie temat, dotyczący podstawowego oznakowania dróg. Zaczęliśmy już dyskutować na ten temat w \"Czeskich autostradach\", ale doszliśmy do wniosku, że zasługuje on na osobne potraktowanie. Wklejam moje wypowiedzi stamtąd: Witam:] Od dłuższego czasu przeglądam już..."
+ },
+ {
+  "row_id": 399,
+  "text": "BCDA is building a semiconductor hub in Tarlac. This brings water and power grid to the area."
+ },
+ {
+  "row_id": 400,
+  "text": "No text found"
+ }
+]

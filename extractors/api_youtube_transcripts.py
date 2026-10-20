@@ -1,7 +1,7 @@
 import json
 import time
-from pathlib import Path
 from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api._errors import IpBlocked, RequestBlocked
 from youtube_transcript_api.formatters import TextFormatter
 from core.config import BRONZE_AUTO_DIR
 
@@ -32,6 +32,8 @@ def run():
     # 2. Extract transcripts
     formatter = TextFormatter()
     success_count = 0
+    consecutive_blocks = 0
+    max_blocks = 3
     
     for i, vid_id in enumerate(vid_ids, 1):
         # Skip if we already have the transcript
@@ -51,7 +53,21 @@ def run():
                     transcript = list(transcript_list)[0]
                     
                 transcript_data = transcript.fetch()
+                consecutive_blocks = 0
+            except (IpBlocked, RequestBlocked) as e:
+                print(f"  -> YouTube IP block encountered: {e}")
+                consecutive_blocks += 1
+                if consecutive_blocks >= max_blocks:
+                    print(f"YouTube transcript requests are blocked by IP ({consecutive_blocks} consecutive blocks). Stopping transcript extraction.")
+                    break
+                continue
             except Exception as e:
+                err_str = str(e).lower()
+                if "blocking requests from your ip" in err_str or "ip has been blocked" in err_str:
+                    consecutive_blocks += 1
+                    if consecutive_blocks >= max_blocks:
+                        print("YouTube transcript requests are blocked by IP. Stopping transcript extraction.")
+                        break
                 print(f"  -> No transcript available (or error): {e}")
                 continue
                 

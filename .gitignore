@@ -1,4 +1,9 @@
 .env
 data
 
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
 .reddit_checkpoint.txt

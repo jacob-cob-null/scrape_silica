@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -11,11 +10,12 @@ DATA_DIR = BASE_DIR / "data"
 BRONZE_DIR = DATA_DIR / "bronze"
 BRONZE_AUTO_DIR = BRONZE_DIR / "automated"
 BRONZE_DROP_DIR = BRONZE_DIR / "drop_folder"
+BRONZE_ZEESCHUIMER_DIR = BRONZE_DIR / "zeeschuimer"
 SILVER_DIR = DATA_DIR / "silver"
 GOLD_DIR = DATA_DIR / "gold"
 
 # Ensure directories exist
-for d in [BRONZE_AUTO_DIR, BRONZE_DROP_DIR, SILVER_DIR, GOLD_DIR]:
+for d in [BRONZE_AUTO_DIR, BRONZE_DROP_DIR, BRONZE_ZEESCHUIMER_DIR, SILVER_DIR, GOLD_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 # ──────────────────────────────────────────────────────────────

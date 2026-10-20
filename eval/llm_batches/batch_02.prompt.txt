@@ -1,0 +1,368 @@
+You are an annotator for a research dataset on Philippine online discourse about the
+"Pax Silica" initiative: a U.S.-led economic and security project in the Philippines covering
+semiconductor and AI infrastructure, data centres, critical minerals and the Luzon Economic
+Corridor, including its sites (New Clark City, Clark, Tarlac) and its local impacts.
+
+Label EACH text on RELEVANCE using exactly one of:
+
+  none   - no link to the Pax Silica project and no link to its specific sites or impacts.
+           Includes generic Philippine news, semiconductor or rare-earth news about other
+           countries, and talk of Clark or Tarlac with no project connection.
+  weak   - a passing or indirect connection: a project-associated site, agency or theme is
+           mentioned but the project itself is not discussed.
+  direct - discusses the project, its sites, agencies, industry or local impacts, but is not
+           centred on it.
+  core   - centred on Pax Silica or its direct consequences: support, opposition, displacement,
+           land, water, jobs, corruption or naming.
+
+RULES (apply strictly):
+1. Language is irrelevant. Filipino, Tagalog, Taglish, Cebuano and English get the same
+   standard. Never lower the label because the text is short or in Filipino.
+2. Criticism and opposition count fully. "No to Pax Silica" is core, not none.
+3. A place name alone is not relevance. "Bridge collapsed in Tarlac" is none.
+4. A theme alone is not relevance. Rare earths in Malaysia, EU critical minerals, a US mining
+   programme: none. Pax Silica is the anchor.
+5. Short and vague is none, but if the referent is clearly the project, do not punish brevity.
+6. Judge each text alone. Never infer from context or from other rows in the batch.
+7. If torn between two labels, choose the lower one and set "needs_review": true.
+
+ARTIFACT RULE: if a text is not user-generated discourse (scraper boilerplate such as
+"Forum user discussion regarding X.", a bare URL, a seed fixture, or empty/emoji-only noise),
+set "artifact": true and still give relevance "none".
+
+Calibration examples (label, then text):
+  core   - "Nararapat sa atin bansa ang pax silica makakatulong sa mga pilipinong manggagawa"
+  core   - "Big NO to PAX SILICA"
+  core   - "Kawawang pilipinas may tubig sa pax silica pero walang tubig sa mahihirap"
+  core   - "Aetas and Farmers in Tarlac Defend Ancestral Lands, Warn Pax Silica AI Hub Threatens
+            Farmlands and Water"
+  direct - "Eight more countries, including South Korea, will participate in the Luzon Economic
+            Corridor (LEC)"
+  weak   - "Clark Global City is great .. More space, more convenience to stroll around the City"
+  none   - "ICYMI: Tulay sa Tarlac, bumagsak" (a bridge collapsed in Tarlac)
+  none   - "American Resources forms Indo-Pacific unit to lead Malaysia rare earth expansion"
+
+CRITICAL - ID FIDELITY:
+The "row_id" values in the input are authoritative identifiers, NOT sequence numbers.
+Copy each row_id verbatim into your answer. Never renumber. Never invent an id. Your reply
+must contain each input row_id exactly once and no other ids. If the input ids are
+"7, 91, 132", your output ids are exactly 7, 91 and 132 - not 1, 2, 3.
+
+Reply with JSON ONLY - an array with one object per input row, in the SAME ORDER as the input,
+no prose, no code fences:
+[
+  {"row_id": <int>, "relevance": "none|weak|direct|core", "artifact": false,
+   "confidence": <0.0-1.0>, "needs_review": false, "why": "<max 15 words>"}
+]
+
+Input rows:
+[
+ {
+  "row_id": 3,
+  "text": "Farm 25 tem que melhorar muito tem muito bug"
+ },
+ {
+  "row_id": 11,
+  "text": "I got a bag of lays right here what's the problem"
+ },
+ {
+  "row_id": 27,
+  "text": "May 13, 2026, still listening. 😎"
+ },
+ {
+  "row_id": 30,
+  "text": "Kong nahulog ang kanilang sasakyan tapos mabilis ang agos ng tubig ay mahirap na silang mahagilap kong nagbakasyon man ang alkalde Hindi niya kasalanan ang nangyari aksidente  ang nangyari walang may kagustuhan"
+ },
+ {
+  "row_id": 35,
+  "text": "When is America going to wake up to the facts Great Britain is controlling the democrats and about a third of the republicans, all of the legacy media, academia, Hollywood, and certain ethnic groups. We have just about lost America because of our laxidaisical attitude towards America independence. hope we make it to 250 . Looks pretty bleak!!😢"
+ },
+ {
+  "row_id": 40,
+  "text": "Very nice Ed thanks for the video 👍"
+ },
+ {
+  "row_id": 45,
+  "text": "I have Vodafone router in lounge 1st floor flat and doorbell is downstairs opposite corner. I have 2 Vodafone boosters to make WiFi stronger at\nfront of flat (upstairs) and each booster have one LAN port so wondering if I can hook up home hub in a booster 👍"
+ },
+ {
+  "row_id": 55,
+  "text": "Big NO to PAX SILICA"
+ },
+ {
+  "row_id": 57,
+  "text": "Ayos yan!!!😊🎉"
+ },
+ {
+  "row_id": 66,
+  "text": "can i ask something??\nabout the  industrial profile of the new goverment agency?????? pls..."
+ },
+ {
+  "row_id": 67,
+  "text": "Baka hindi nio alam million litters of clean water ang kailangan niyan in ONE DAY ,imagine,mag isip naman kayo."
+ },
+ {
+  "row_id": 68,
+  "text": "Nyaman naken saken😊😊"
+ },
+ {
+  "row_id": 70,
+  "text": "Makikinabang lang dyn mga crocs sa gobyerno kaya aligaga na sila"
+ },
+ {
+  "row_id": 74,
+  "text": "Bharat Mata Ki Jai Ho Modiji 🎉🎉🎉🎉🎉 VandeMatram 🙏🔱🚩"
+ },
+ {
+  "row_id": 79,
+  "text": "Talking about underdog power? Pax Silica does not refer to underdogs but to Pax Romana… a very unfortunate and transparent sign of greedy imperialism!!"
+ },
+ {
+  "row_id": 82,
+  "text": "I say we head out into space and just harvest a planet. I am a human, I don't care about the consequences. It would be an awsome Sci Fi future. Just my destructive thought though. ;)"
+ },
+ {
+  "row_id": 87,
+  "text": "Lovely couple in a simple life in P.I.❤️"
+ },
+ {
+  "row_id": 90,
+  "text": "hahaha..natawa talaga ako sa sinasibi mo sir..na tinanggal ang 9 na police sa devisoria..kala ko tanggal yun pala nilipat lng ng pwes2 hahahaha"
+ },
+ {
+  "row_id": 91,
+  "text": "wala yan problima sa tubig ayos yan"
+ },
+ {
+  "row_id": 93,
+  "text": "This will never happen 😂😂😂😂😂😂"
+ },
+ {
+  "row_id": 96,
+  "text": "Hanapin nyo si Governor at Congressman nasa bulsa nila ung bagit sa flood Control kahit na sabihin nilang may kaya na si guico my benubulsa parin yan sa kaban ng bayan kasi yan ung penag aagawan nilang posesyon dahil malaking pera pate Congressman laki din kita ng nila sa pera ng taong bayan bato bato sa langit ang tamaan ay huag magalit totoo naman segi pa more"
+ },
+ {
+  "row_id": 97,
+  "text": "too many edits in this video, and you cant scare us."
+ },
+ {
+  "row_id": 103,
+  "text": "Something about how his mouth is moving makes me think it's generated by a GPT."
+ },
+ {
+  "row_id": 109,
+  "text": "Love and light❤❤❤❤❤❤❤❤"
+ },
+ {
+  "row_id": 116,
+  "text": "10 years later hindi pa rin mare repair yang bridge na yan promise 😂"
+ },
+ {
+  "row_id": 124,
+  "text": "Capas, Tarlac nman Idol Drew!"
+ },
+ {
+  "row_id": 126,
+  "text": "Takot lang ang china na maging independent ang pilipinas dahil sa kanila ininexport yung yaman ng pilipinas na imbis sana na dito sa pilipinas gamitin para imanufacture into high-end product. Kung wala lang talagang kurapsyon at mga buwaya, maraming oportunidad ang pilipinas para maging maunlad dahil nga sa likas na yaman, populasyon, at geography natin na maging central hub to export sa iba't ibang bansa."
+ },
+ {
+  "row_id": 127,
+  "text": "WHY??? WHY are you giving airtime to these creeps?"
+ },
+ {
+  "row_id": 134,
+  "text": "Wala yan hanggang salita lang ang mga yan condemned mga walang kwetang police"
+ },
+ {
+  "row_id": 143,
+  "text": "DISPLACED FROM THEIR OWN COUNTRY? IS THIS CORRECT?"
+ },
+ {
+  "row_id": 156,
+  "text": "Maganda naman talaga ang Clark"
+ },
+ {
+  "row_id": 158,
+  "text": "pa like ng mga taga Victoria dyan comment kung san barangay"
+ },
+ {
+  "row_id": 161,
+  "text": "pota ang laki. Lol"
+ },
+ {
+  "row_id": 163,
+  "text": "Quite late to challenge the will, but nevertheless, try an injunction to invite settlment offer, on the basis of fraud and recently coming to know about the same. All depends on the drafting language. Thank you will still give it a try"
+ },
+ {
+  "row_id": 181,
+  "text": "The US government should be charged heavily to keep their bases in those countries. Those people should have the right to travel to the US without a visa and live there however long they want since the Americans are affecting their lives back home"
+ },
+ {
+  "row_id": 184,
+  "text": "What a great read."
+ },
+ {
+  "row_id": 185,
+  "text": "Same, voted no but not because I believe Jewish people have no claim/right to be there but because of the definition of zionism being Jewish sovereignty. And regardless of people arguing that it can still be an equal nation for all under zionism, no it can't because the religious and extremists will continue to interpret it as ethno supremacy. Well, Jews didn't have ANY right to a land, are we crazy? History is made of wars and treaties. What then, Romans do have right to Europe and North Africa? No one is the first \"native\" of a land. There will always be someone else who\"was there before \". "
+ },
+ {
+  "row_id": 186,
+  "text": "Aside from cheap labor (which other ASEAN countries have) wala tayong ibang pampaakit sa mga investors. Ease of doing business? Waley. Infrastructure? Waley. Cheap electricity? Waley din. Kaya ayun, rent free nalang kayo for 2 years."
+ },
+ {
+  "row_id": 208,
+  "text": "Why are you legit sayin Ninoy is a pro commie lol, bro aint even a commie what are you smoking"
+ },
+ {
+  "row_id": 211,
+  "text": "Tapos grabe ang corruption sa gov't natin"
+ },
+ {
+  "row_id": 217,
+  "text": "People have been killed for much less. This is declaration of all out war."
+ },
+ {
+  "row_id": 218,
+  "text": "The Sobrepeña group is at fault there. They had no authority to sell property knowing their lease had already been rescinded. The owners/leasors need to file cases against them in order to get recompense for what they paid and invested into the property. The government is paying Sobrepeña over a billion pesos and unless they file a case against them they can just pocket that money without giving what is due to everyone that invested with them. I found this, hope this helps: I'm not sure where this information stems from, I'm not discounting it as I'm still in the process of digging everything "
+ },
+ {
+  "row_id": 225,
+  "text": "Ah yes suportan natin yung isa sa pinaka malaking sektor na sumisira sa kalikasan natin lol Performative BS."
+ },
+ {
+  "row_id": 226,
+  "text": "> Whether the model actually feels anything, nobody knows. Um, no, plenty of people know. Their answer just doesn't align with your insane fantasy that white-knighting for math makes you some sort of hero instead of an embarrassing crazy person. Philosophical question here: take all the times people on Reddit or any other source of potential training data have attempted to describe human pain. Where in that data is the experience of pain? When I stub my toe, I am not reacting because I have observed other people reacting to similar events. Stubbing my toe produces a primary experience I can ce"
+ },
+ {
+  "row_id": 230,
+  "text": "Comment removed by moderator My response is somewhat flippant, but honestly you need to narrow the question somewhat. Combat power is a difficult thing to measure. I didn't see your original comment but agree this is so opened ended a question that we shouldn't suffer it."
+ },
+ {
+  "row_id": 234,
+  "text": "hais"
+ },
+ {
+  "row_id": 236,
+  "text": "Every Local Government executive knows everything noteworthy that happens in their jurisdiction. You can't even open a jollibee franchise without the mayor and even the governor suddenly sending congratulatory bouquets. Also, the POGO facilities were likely built by local construction contractors. Most local contractors also almost always are owned by local officials."
+ },
+ {
+  "row_id": 237,
+  "text": "Rogue terrorist state. Anyone supporting these actions should have their right to vote removed for life."
+ },
+ {
+  "row_id": 239,
+  "text": "At this point, how are the tech companies not the horseman, famine"
+ },
+ {
+  "row_id": 240,
+  "text": "The us army couldn't beat the geographic advantages of mountrains and a narrow economically significant waterway. Any sci-fi army that has a greater advantage than that (se, an orbital presence) clears with little to no difficulty."
+ },
+ {
+  "row_id": 246,
+  "text": "bangag kasi namumuno eh"
+ },
+ {
+  "row_id": 253,
+  "text": "mas naiintindihan ko pa tong topic na'to kesa sa lesson namin"
+ },
+ {
+  "row_id": 257,
+  "text": "Leni Robredo ipa stop mona good governance ka naman diba?"
+ },
+ {
+  "row_id": 266,
+  "text": "Tapos sa tropical country ilalagay jusko"
+ },
+ {
+  "row_id": 268,
+  "text": "flood control ayaw? but a facility that will deplete our resources gusto? this just shows how messed up our government can be, we don't even know if makakabenefit talaga ang mga filipinos dito."
+ },
+ {
+  "row_id": 275,
+  "text": "Meron cons (our natural resources mostly) and Yes there are also Pros. Pero kahit anong pros pa yan, sure akong talo tayomg mga pilipino. Ang mga oligarko lang ang mananalo dito. GISING PINOY LUGI TAYO DITO PLEASE GISING"
+ },
+ {
+  "row_id": 277,
+  "text": "Just remember even the Democrats and Republicans in the US are resisting building this type of infrastructure so now nilipat nila dito sa Pilipinas wow colonization at it's finest"
+ },
+ {
+  "row_id": 282,
+  "text": "NO TO PAX SILICA. WE DESERVE MORE‼️‼️‼️"
+ },
+ {
+  "row_id": 288,
+  "text": "I'm all for AI, makes me more efficient (as a recruiter) but don't put your facility/hub here in the Philippines."
+ },
+ {
+  "row_id": 289,
+  "text": "History might repeat itself pero kaya mo bang mabuhay na hinahayaan mo lng na maulit talaga ito?"
+ },
+ {
+  "row_id": 290,
+  "text": "mango yarn?"
+ },
+ {
+  "row_id": 292,
+  "text": "Tapos mag l-launch sila ng rocket SUMAKAY NA SILA AND WAG NA BUMALIK"
+ },
+ {
+  "row_id": 296,
+  "text": "Tinatago Kasi may ANOMALYA\nMinamadali Kasi may ANOMALYA\n8080 nalang talaga kung mag bubulagbulagan pa"
+ },
+ {
+  "row_id": 304,
+  "text": "PROTECT AND SERVE THE RICH 🥴"
+ },
+ {
+  "row_id": 313,
+  "text": "Power subsidy for investors eyed in CREATE MORE bill - Facebook\nPower subsidy for investors eyed in CREATE MORE bill&nbsp;&nbsp;Facebook"
+ },
+ {
+  "row_id": 320,
+  "text": "Cold War 2.0: from Pax Americana to Pax Silica - The Express Tribune\nCold War 2.0: from Pax Americana to Pax Silica&nbsp;&nbsp;The Express Tribune"
+ },
+ {
+  "row_id": 324,
+  "text": "Eight more countries, including South Korea, will participate in the Luzon Economic Corridor (LEC) - 매일경제\nEight more countries, including South Korea, will participate in the Luzon Economic Corridor (LEC)&nbsp;&nbsp;매일경제"
+ },
+ {
+  "row_id": 338,
+  "text": "Tarlac Road Trip No. 17 Tarlac City | The Economic Center of Tarlac | Central Luzon | Philippines 4K\nTarlac Road Trip No. 17 Tarlac City Tarlac City is a 1st class component city and capital of the province of Tarlac, Philippines."
+ },
+ {
+  "row_id": 340,
+  "text": "E2 : \"Le Nouveau Pétrole\" — Nvidia, Pax Silica et le contrôle des puces IA.\nAu 20ème siècle, les guerres se faisaient pour le pétrole. Aujourd'hui elles se font pour quelque chose de différent. Une puce."
+ },
+ {
+  "row_id": 352,
+  "text": "Take Off From The Former Clark Airbase\nClark Air Base is a Philippine Air Force base on Luzon Island in the Philippines, located 3 miles (4.8 km) west of Angeles, about ..."
+ },
+ {
+  "row_id": 359,
+  "text": "#Erdbeben M3.5 | Province of Tarlac, Central Luzon, Philippinen | vor 11m | 23. Sep. 2026 00:59 (China Standard Time)\nHaben Sie es gespürt? Beben melden!\n#weak #M2+ #M3+ #Philippinen #Central_Luzon"
+ },
+ {
+  "row_id": 361,
+  "text": "Para eses do vox tamén lle parecen unha peza."
+ },
+ {
+  "row_id": 368,
+  "text": "Trump Just Played China bdqqxgy.sbs/IIdHjv"
+ },
+ {
+  "row_id": 373,
+  "text": "Um...not convinced.\n\nwww.reuters.com/business/nvi..."
+ },
+ {
+  "row_id": 374,
+  "text": "'Philippines not for sale,' groups tell investors\nThe groups rejected the Luzon Economic Corridor, calling it a \"massive sellout\" of Philippine patrimony.\nThe post 'Philippines not for sale,' groups tell investors appeared first on Bulatlat […]"
+ },
+ {
+  "row_id": 388,
+  "text": "Forum user discussion regarding PaxSilica. Found on page 2 of the regional infrastructure thread. Many posts detailing construction progress and semiconductor investment speculation."
+ },
+ {
+  "row_id": 389,
+  "text": "Forum user discussion regarding Tarlac. Found on page 3 of the regional infrastructure thread. Many posts detailing construction progress and semiconductor investment speculation."
+ }
+]
