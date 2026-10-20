@@ -1,17 +1,19 @@
 {
   "version": "2026-10-19",
-  "notes": "Classification scheme for the Pax Silica gold record. The eval sample mirrors the gold schema (platform, decision_rating, confidence, content) plus a ground-truth label. decision_rating (0-100) = round(100 * (P(direct) + P(core))); confidence (0-100) = 100 * Laya's confidence signal. Only 'relevance' is scored.",
+  "notes": "Classification scheme for the Pax Silica gold record. The eval sample mirrors the gold schema (platform, decision_rating, confidence, content) plus a ground-truth label. decision_rating (0-100) = round(100 * P(anchor closeness)); confidence (0-100) = 100 * Laya's confidence signal. Only 'relevance' is scored.",
   "positive_labels": ["direct", "core"],
   "threshold": 50,
   "questions": {
     "relevance": {
-      "type": "choice",
-      "instructions": "Judge whether this text is about the Pax Silica initiative: the U.S.-led economic and security project in the Philippines covering semiconductor and AI infrastructure, data centres, critical minerals and the Luzon Economic Corridor, including its sites (New Clark City, Clark, Tarlac) and its local impacts. Text in any language counts, including Filipino, Tagalog and Taglish. Relevance is to the Pax Silica project itself, NOT to the Philippines, technology, or mining in general.",
+      "type": "noul",
+      "instructions": "Does this text discuss or relate to the Pax Silica initiative, semiconductor or AI data center infrastructure, critical minerals, or the Luzon Economic Corridor in the Philippines (including sites like Clark, New Clark City, or Tarlac and their local impacts on land, water, power, or displacement)? Text in any language counts, including Filipino, Tagalog, and Taglish.",
+      "labels": {
+        "true": "relevant to Pax Silica or its local sites",
+        "false": "unrelated to the project"
+      },
       "criteria": {
-        "none": "no link to the Pax Silica project and no link to its specific sites or impacts; this includes generic Philippine news, semiconductor or rare-earth news about other countries, and talk of Clark or Tarlac with no project connection",
-        "weak": "a passing or indirect connection: mentions a site, agency or theme associated with the project without discussing the project itself, such as a Clark City property listing or a generic data-centre debate with no project reference",
-        "direct": "discusses the project, its sites, agencies or industry, or its local impacts, but is not centred on it, such as a news item on Luzon corridor investment or a comment debating the data centre's water or power use",
-        "core": "centred on Pax Silica or its direct consequences: support, opposition, displacement, land, water, jobs, corruption or naming, such as 'No to Pax Silica' or Aeta ancestral land versus the AI hub"
+        "true": "discusses, debates, supports, or opposes Pax Silica, AI data centres, clean energy, critical minerals, or land/water/displacement impacts in Clark or Tarlac",
+        "false": "unrelated conversation, food, entertainment, generic Philippine politics, recipes, or general tech with no link to the project or its sites"
       }
     }
   },

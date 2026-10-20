@@ -3,21 +3,27 @@ score_eval.py
 
 Scores eval/laya_sample.csv with Laya and fills the two GOLD fields:
 
-    decision_rating   0-100 = round(100 * (P(direct) + P(core)))
+    decision_rating   0-100 = round(100 * P(anchor closeness))
     confidence        0-100 = 100 * Laya's confidence signal
 
 Then, if the ground-truth column label_relevance is filled, reports precision /
 recall / F1, ECE, and a threshold sweep so the operating point is chosen from
 data rather than hardcoded.
 
-Verified answer shape (laya 0.4.11 + transformers 4.57.6):
-    answers.relevance = {
-        "choice": "core",
-        "probabilities": {"none": .., "weak": .., "direct": .., "core": ..},
-        "confidence": 0.1778,          # Laya's signal; NOT P(choice)
-        "answer_confidence": 0.4496,   # == probabilities[choice]
-        "action": {"act_probability": 1.0},   # signal-free; ignored
-    }
+Verified answer shapes (laya 0.4.11):
+    noul:
+        answers.relevance = {
+            "type": "noul",
+            "noul": 0.8629,       # P(true) -> closeness to anchor
+            "confidence": 0.8629,
+        }
+    choice:
+        answers.relevance = {
+            "type": "choice",
+            "choice": "core",
+            "probabilities": {"none": .., "weak": .., "direct": .., "core": ..},
+            "confidence": 0.1778,
+        }
 
 Usage:
     $env:USE_TF="0"; $env:PYTHONPATH="."; python scripts\score_eval.py
@@ -65,24 +71,46 @@ def load_router():
     return Router(preload=True)
 
 
-def score(df: pd.DataFrame, question: dict, positives: set[str]) -> pd.DataFrame:
+def score(df: pd.DataFrame, question: dict, positives: set[str], batch_size: int = 32) -> pd.DataFrame:
     router = load_router()
     ratings, confidences = [], []
+    is_noul = question.get("type") == "noul"
+    texts = df["content"].fillna("").tolist()
+    total = len(texts)
 
-    for i, text in enumerate(df["content"].fillna(""), 1):
+    for start in range(0, total, batch_size):
+        chunk = texts[start:start + batch_size]
+        requests = [{"state": t, "questions": {"relevance": question}} for t in chunk]
         try:
-            answer = router.predict(text, {"relevance": question})["answers"]["relevance"]
-            probs = answer.get("probabilities") or {}
-            positive_mass = sum(probs.get(k, 0.0) for k in positives)
-            ratings.append(int(round(100 * positive_mass)))
-            confidences.append(int(round(100 * float(answer.get("confidence", 0.0)))))
+            results = router.predict_batch(requests, batch_size=batch_size)
+            for res in results:
+                ans = res["answers"]["relevance"]
+                if is_noul:
+                    closeness = float(ans.get("noul", 0.0))
+                    ratings.append(int(round(100 * closeness)))
+                else:
+                    probs = ans.get("probabilities") or {}
+                    positive_mass = sum(probs.get(k, 0.0) for k in positives)
+                    ratings.append(int(round(100 * positive_mass)))
+                confidences.append(int(round(100 * float(ans.get("confidence", 0.0)))))
         except Exception as exc:
-            print(f"  [{i}] scoring failed: {exc}")
-            ratings.append("")
-            confidences.append("")
+            print(f"  Batch [{start}:{start+len(chunk)}] failed: {exc}; fallback to sequential")
+            for t in chunk:
+                try:
+                    ans = router.predict(t, {"relevance": question})["answers"]["relevance"]
+                    if is_noul:
+                        ratings.append(int(round(100 * float(ans.get("noul", 0.0)))))
+                    else:
+                        probs = ans.get("probabilities") or {}
+                        positive_mass = sum(probs.get(k, 0.0) for k in positives)
+                        ratings.append(int(round(100 * positive_mass)))
+                    confidences.append(int(round(100 * float(ans.get("confidence", 0.0)))))
+                except Exception as inner_exc:
+                    print(f"    Item scoring failed: {inner_exc}")
+                    ratings.append("")
+                    confidences.append("")
 
-        if i % 50 == 0:
-            print(f"  scored {i}/{len(df)}")
+        print(f"  scored {min(start + len(chunk), total)}/{total}")
 
     df = df.copy()
     df["decision_rating"] = ratings
@@ -110,7 +138,7 @@ def compute_metrics(df: pd.DataFrame, positives: set[str], threshold: float) -> 
 
     print("\nThreshold sweep (decision_rating is 0-100):")
     rows = []
-    for t in [20, 30, 40, 50, 60, 70]:
+    for t in [40, 50, 60, 70, 75, 80]:
         preds = (ratings >= t).astype(int)
         tp = int(((preds == 1) & (labeled["truth"] == 1)).sum())
         fp = int(((preds == 1) & (labeled["truth"] == 0)).sum())
