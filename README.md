@@ -27,9 +27,9 @@ flowchart LR
 
 ---
 
-## Evaluation & Ground-Truth Methodology
+## Evaluation & Model Calibration Benchmark
 
-To ensure high data quality across multilingual social text (English, Tagalog, and Taglish code-switching), the pipeline incorporates a formal evaluation benchmark:
+To ensure data quality across multilingual social text (English, Tagalog, and Taglish code-switching), the pipeline incorporates a formal evaluation benchmark evaluated on **386 human-labeled ground-truth records** (`eval/laya_sample.csv` across YouTube, Reddit, and TikTok).
 
 ```mermaid
 flowchart LR
@@ -40,13 +40,32 @@ flowchart LR
     style C fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px
 ```
 
-### Evaluation Benchmark Highlights:
-- **Ground Truth Corpus**: 386 labeled rows across YouTube, Reddit, and TikTok.
-- **Anchor Recall**: **95% (40/42 anchors)** validated against the human audit queue.
-- **Model Formulation**: Uses binary hypothesis entailment (`noul`) rather than multi-class categorical splitting, preventing probability dilution across Taglish comments.
-- **Performance**:
-  - **Threshold 50**: **92.4% Recall** (captures nearly all relevant discourse).
-  - **Threshold 75**: **0.532 F1** (balanced operating point for high-precision analytical slices).
+### Baseline Zero-Shot vs. Calibrated Entailment
+
+![Baseline Zero-Shot vs Calibrated Binary Entailment](eval/model_comparison.png)
+
+#### 1. The Recall Collapse Problem (Zero-Shot 4-Choice)
+Early iterations utilized a standard 4-way multi-class cross-encoder (`unrelated`, `weak`, `direct`, `core`). On colloquial Taglish comments, the model split its probability mass across the positive classes. At the default decision threshold ($t=50\%$), recall **collapsed to 22.7%**, discarding over three-quarters of relevant netizen opinions.
+
+#### 2. The Calibrated Solution (`noul` Binary Entailment)
+We reformulated the criteria into a continuous anchor closeness hypothesis (`type: noul`). This restored recall to **92.4% at $t=50\%$** and **95% anchor coverage (40/42 anchors captured)** on human audit records.
+
+| Threshold ($t$) | Baseline Recall | Baseline F1 | **Calibrated Recall** | **Calibrated Precision** | **Calibrated F1** | Operating Role |
+| :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **50%** | 22.7% | 0.333 | **92.4%** | 25.0% | 0.394 | High-Recall Discovery (surfaces all edge discussions) |
+| **70%** | 10.6% | 0.182 | **69.7%** | 36.8% | 0.482 | Recommended Annotation Benchmark (~37K records) |
+| **75%** | 8.0% | 0.142 | **62.1%** | 46.6% | 0.532 | High-Confidence Discourse Slicing |
+| **78%** | 6.5% | 0.115 | **54.5%** | 56.2% | **0.554** | **Optimal F1 Operating Point** (~17K records) |
+
+---
+
+## Edge Case Handling: Upstream Language Gate
+
+During exploratory data audits, we uncovered a subtle keyword collision:
+* **The Homonym Problem**: Ingesting the acronym `PEZA` (*Philippine Economic Zone Authority*) captured European social posts (e.g., Galician/Spanish football commentary where `peza` translates to "piece" or "key player", such as Fermín López news). Uncalibrated zero-shot cross-encoders frequently gave these irrelevant posts scores above 90%.
+* **The Solution (7-Stage Filter Cascade)**: We integrated an upstream Language Gate into `transforms/cleaner.py` using `langdetect` combined with an `ANCHOR_RE` safeguard. 
+  1. Texts detected as non-target European languages (Spanish, Galician, French, German, etc.) are purged during Bronze → Silver cleaning.
+  2. Critical domain anchors (e.g., `"No to pax silica"`, which statistical language models often misclassify as Latin/Italian) are protected by regex safeguards so short, valid netizen reactions are never dropped.
 
 ---
 

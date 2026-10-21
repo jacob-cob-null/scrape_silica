@@ -2,7 +2,7 @@
   "version": "2026-10-19",
   "notes": "Classification scheme for the Pax Silica gold record. The eval sample mirrors the gold schema (platform, decision_rating, confidence, content) plus a ground-truth label. decision_rating (0-100) = round(100 * P(anchor closeness)); confidence (0-100) = 100 * Laya's confidence signal. Only 'relevance' is scored.",
   "positive_labels": ["direct", "core"],
-  "threshold": 50,
+  "threshold": 75,
   "questions": {
     "relevance": {
       "type": "noul",

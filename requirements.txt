@@ -9,3 +9,5 @@ pandas
 feedparser
 playwright
 beautifulsoup4
+langdetect
+matplotlib
