@@ -39,7 +39,6 @@ TIER_2_ANCHORS = [
     "BCDA", "PEZA",
     # Industry (Philippine-specific)
     "AI industrial hub", "chip supply chain",
-    "critical minerals", "rare earth",
 ]
 
 # ──────────────────────────────────────────────────────────────
@@ -49,6 +48,8 @@ TIER_2_ANCHORS = [
 TIER_3_CONTEXT = [
     # Tech & Infrastructure
     "semiconductor", "foundry", "data center", "AI hub",
+    # Industry & Resources (paired with primary anchors to avoid global mining noise)
+    "critical minerals", "rare earth",
     # Socio-Political
     "displacement", "indigenous", "ancestral land",
     "US military", "EDCA", "water shortage", "reclassification",

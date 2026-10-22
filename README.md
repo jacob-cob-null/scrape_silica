@@ -59,13 +59,19 @@ We reformulated the criteria into a continuous anchor closeness hypothesis (`typ
 
 ---
 
-## Edge Case Handling: Upstream Language Gate
+## Upstream Quality Gates & Edge Case Handling
 
-During exploratory data audits, we uncovered a subtle keyword collision:
-* **The Homonym Problem**: Ingesting the acronym `PEZA` (*Philippine Economic Zone Authority*) captured European social posts (e.g., Galician/Spanish football commentary where `peza` translates to "piece" or "key player", such as Fermín López news). Uncalibrated zero-shot cross-encoders frequently gave these irrelevant posts scores above 90%.
-* **The Solution (7-Stage Filter Cascade)**: We integrated an upstream Language Gate into `transforms/cleaner.py` using `langdetect` combined with an `ANCHOR_RE` safeguard. 
-  1. Texts detected as non-target European languages (Spanish, Galician, French, German, etc.) are purged during Bronze → Silver cleaning.
-  2. Critical domain anchors (e.g., `"No to pax silica"`, which statistical language models often misclassify as Latin/Italian) are protected by regex safeguards so short, valid netizen reactions are never dropped.
+During exploratory data audits, we identified and mitigated three major upstream noise vectors before data reaches the Gold corpus:
+
+1. **Language Gate & Homonym Defense (`PEZA`)**:
+   * *Problem*: Ingesting the acronym `PEZA` (*Philippine Economic Zone Authority*) captured European social posts (e.g., Galician/Spanish football commentary where `peza` translates to "piece" or "key player", such as Fermín López news). Uncalibrated cross-encoders gave these scores above 90%.
+   * *Mitigation*: Stage 7 in `transforms/cleaner.py` uses `langdetect` to purge non-target languages while `ANCHOR_RE` safeguards explicit project tokens (e.g. `"No to pax silica"`).
+2. **Crawler Trailing Domain Stripping**:
+   * *Problem*: News scrapers (e.g. GDELT) appended raw domain names (e.g. `\nmanilatimes.net`) to headlines, causing cross-encoder attention to fixate on the domain token and collapsing valid headline scores from **77% down to 8%**.
+   * *Mitigation*: Stage 3 in `transforms/cleaner.py` regex-strips trailing web domain suffixes.
+3. **Financial Stock Ticker & Mining Query Isolation**:
+   * *Problem*: Standalone queries for `"critical minerals"` on Reddit pulled in WallStreetBets penny-stock pumps (e.g., `$FMS.v`, `$TMC`, `$ABAT`) that cross-encoders scored ~65% due to generic mining keywords.
+   * *Mitigation*: In `core/config.py`, `"critical minerals"` and `"rare earth"` were demoted to `TIER_3_CONTEXT` (requiring pairing with Philippine anchors). Additionally, Stage 5 in `transforms/cleaner.py` drops posts starting with ticker symbols unless they contain explicit Philippine anchors.
 
 ---
 
@@ -82,6 +88,15 @@ During exploratory data audits, we uncovered a subtle keyword collision:
 * **`decision_rating`** (`INT64`): Continuous **0%–100% closeness percentage** to the Pax Silica anchor.
 * **`confidence`** (`INT64`): Model calibration confidence score (0%–100%).
 * **`content`** (`VARCHAR`): Cleaned, normalized social media post or comment text.
+
+### Recommended Score Interpretation Bands:
+To avoid the false confidence of hardcoding artificial categorical labels onto probabilistic cross-encoder outputs, the Gold corpus preserves continuous `decision_rating` values (0–100%). Downstream analysts should apply the following empirically grounded operating bands:
+
+| Score Band | Corpus Share | Empirical Precision | Recommended Analytical Role |
+| :---: | :---: | :---: | :--- |
+| **$\ge 75\%$** | ~20.5% (~21.9K records) | **High (~60%–90%)** | **Core Research Slice**: Recommended for sentiment analysis, policy summaries, and topic modeling. Strongly suppresses internet noise and off-topic discourse. |
+| **$50\% - 74\%$** | ~32.1% (~34.4K records) | **Moderate (~30%–35%)** | **Discovery / High-Recall Slice**: Captures code-switched opinions, tangential tech, and edge commentary (~92% recall). Ideal for exploratory audits and qualitative review. |
+| **$< 50\%$** | ~35.5% (~38.1K records) | **Low (< 8%)** | **Filtered Negatives**: Unrelated conversational chatter, food, memes, general tech, and off-topic social media banter. |
 
 ---
 
