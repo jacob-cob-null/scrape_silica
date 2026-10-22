@@ -15,6 +15,12 @@ ANCHOR_RE = re.compile(
 # Supported target languages for Philippine netizen discourse
 TARGET_LANGS = {'en', 'tl', 'fil', 'ceb', 'id'}
 
+# High-frequency English and Tagalog stopwords for fast-path validation (bypasses slow statistical detect)
+FAST_PASS_WORDS = {
+    'the', 'and', 'is', 'to', 'in', 'of', 'for', 'on', 'with', 'that', 'this', 'are', 'from', 'at', 'be', 'it', 'by', 'as', 'was', 'have', 'has', 'we', 'you', 'my', 'our', 'they', 'will',
+    'ang', 'ng', 'mga', 'sa', 'na', 'ko', 'mo', 'ba', 'po', 'opo', 'hindi', 'pero', 'para', 'kung', 'may', 'ano', 'kasi', 'kami', 'tayo', 'sila', 'nila', 'atin', 'natin', 'inyo', 'lahat'
+}
+
 
 def is_target_language(text: str) -> bool:
     """
@@ -40,6 +46,11 @@ def is_target_language(text: str) -> bool:
                 return detect(text) in TARGET_LANGS
             except Exception:
                 return False
+        return True
+
+    # Fast-pass: if text contains 2+ high-frequency English or Filipino words, it is safe
+    words = {w.lower() for w in re.findall(r'\b[a-z]{2,}\b', text.lower())}
+    if len(words & FAST_PASS_WORDS) >= 2:
         return True
 
     cleaned = re.sub(r'[^\w\s]', '', text).strip()
