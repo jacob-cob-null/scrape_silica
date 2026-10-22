@@ -83,6 +83,8 @@ def clean_text(raw_content: str) -> str | None:
     text = re.sub(r'http\S+', '', text)
     # Remove Markdown link syntax: [text](url) -> text
     text = re.sub(r'\[(.*?)\]\(.*?\)', r'\1', text)
+    # Remove trailing raw domain suffixes from news aggregators (e.g. \nmanilatimes.net)
+    text = re.sub(r'[\s\n]+[a-z0-9-]+\.(com|net|org|ph|gov|edu)\S*', '', text, flags=re.IGNORECASE)
 
     text = text.strip()
 
@@ -93,9 +95,11 @@ def clean_text(raw_content: str) -> str | None:
     if len(tokens) < 1 or chars == 0:
         return None  # Only drop completely empty comments
 
-    # 5. Lexical Diversity (Removed)
-    # Social media comments are often short or repetitive ("wow wow wow").
-    # We no longer drop them for low lexical diversity.
+    # 5. Financial Stock Ticker Gate
+    # Drops generic penny stock/investing pumps (e.g. '$FMS.v Entry price...', '$TMC Betting...')
+    # unless they explicitly mention a project anchor or Philippine context.
+    if re.match(r'^\$[A-Za-z0-9_]{1,8}(\.[A-Za-z]{1,4})?\b', text) and not ANCHOR_RE.search(text):
+        return None
 
     # 6. Alphabetic Density (Relaxed)
     # We allow heavy emoji use, but still drop comments that are 100% pure punctuation
