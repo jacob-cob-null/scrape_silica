@@ -3,7 +3,7 @@
 [![Data Architecture: Medallion](https://img.shields.io/badge/Architecture-Medallion%20(Bronze%20%E2%86%92%20Silver%20%E2%86%92%20Gold)-blue.svg)](#architecture)
 [![Database: DuckDB](https://img.shields.io/badge/Storage-DuckDB%20%2B%20Snappy%20Parquet-orange.svg)](#silver-layer)
 [![NLP: Laya NLI](https://img.shields.io/badge/NLP-Zero--Shot%20Cross--Encoder%20(CUDA)-green.svg)](#ai-semantic-filtering)
-[![Scale: 100K+](https://img.shields.io/badge/Corpus-107K%2B%20Records-purple.svg)](#dataset-metrics)
+[![Scale: 100K+](https://img.shields.io/badge/Corpus-102K%2B%20Records-purple.svg)](#dataset-metrics)
 
 An end-to-end, production-grade Medallion ELT and NLP pipeline designed to capture, clean, deduplicate, and semantically score public netizen discourse regarding the U.S.-led **"Pax Silica"** semiconductor and AI infrastructure initiative in the Philippines.
 
@@ -12,17 +12,11 @@ An end-to-end, production-grade Medallion ELT and NLP pipeline designed to captu
 ## Architecture Flow
 
 ```mermaid
-flowchart LR
-    A["<b>1. Extract</b><br/>YouTube, Reddit, TikTok,<br/>Bluesky, Mastodon, GDELT"] --> B["<b>2. Bronze</b><br/>Raw JSON & NDJSON<br/>Lakehouse Files"]
-    B --> C["<b>3. Silver</b><br/>DuckDB Deduplication<br/>(SHA-256 Content Hashes)"]
-    C --> D["<b>4. AI Filter</b><br/>LAYA noul Model<br/>(RTX 3060 GPU Inference)"]
-    D --> E["<b>5. Gold</b><br/>Parquet & CSV<br/>(0–100% Relevance)"]
-
-    style A fill:#f0f4f8,stroke:#3b82f6,stroke-width:1.5px
-    style B fill:#fdf2f8,stroke:#ec4899,stroke-width:1.5px
-    style C fill:#f3f4f6,stroke:#6b7280,stroke-width:1.5px
-    style D fill:#ecfdf5,stroke:#10b981,stroke-width:1.5px
-    style E fill:#fffbeb,stroke:#f59e0b,stroke-width:1.5px
+flowchart TD
+    A["<b>1. Extract (Public Ingestion)</b><br/>YouTube API • Reddit • TikTok • Bluesky • Mastodon • GDELT"] --> B["<b>2. Bronze Layer</b><br/>Immutable Raw JSON & NDJSON Lakehouse Files"]
+    B --> C["<b>3. Silver Layer (DuckDB)</b><br/>SHA-256 Deduplication & 7-Stage Cascade (Language Gate, Ticker & Domain Scrubbing)"]
+    C --> D["<b>4. Semantic Scoring</b><br/>LAYA noul Binary Entailment Model (RTX 3060 CUDA Batching)"]
+    D --> E["<b>5. Gold Analytical Layer</b><br/>Continuous 0–100% Relevance (Snappy Parquet & UTF-8 CSV)"]
 ```
 
 ---
@@ -32,12 +26,9 @@ flowchart LR
 To ensure data quality across multilingual social text (English, Tagalog, and Taglish code-switching), the pipeline incorporates a formal evaluation benchmark evaluated on **386 human-labeled ground-truth records** (`eval/laya_sample.csv` across YouTube, Reddit, and TikTok).
 
 ```mermaid
-flowchart LR
-    A["<b>Ground Truth Curation</b><br/>386 Labeled Rows<br/>(eval/laya_sample.csv)"] --> B["<b>LAYA noul Scoring</b><br/>GPU Batch Entailment<br/>(0%–100% Closeness)"] --> C["<b>Threshold Sweeps</b><br/>Precision / Recall / F1<br/>(92.4% Recall @ t=50)"]
-
-    style A fill:#f3f4f6,stroke:#6b7280,stroke-width:1.5px
-    style B fill:#ecfdf5,stroke:#10b981,stroke-width:1.5px
-    style C fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px
+flowchart TD
+    A["<b>1. Ground Truth Curation</b><br/>386 Multi-Platform Labeled Records (eval/laya_sample.csv)"] --> B["<b>2. LAYA noul Batch Scoring</b><br/>Continuous Closeness Hypothesis on CUDA (0%–100%)"]
+    B --> C["<b>3. Empirical Threshold Sweeps</b><br/>Precision, Recall & F1 Curve Optimization (92.4% Recall @ t=50, Peak F1 = 0.554 @ t=78)"]
 ```
 
 ### Baseline Zero-Shot vs. Calibrated Entailment
@@ -52,10 +43,10 @@ We reformulated the criteria into a continuous anchor closeness hypothesis (`typ
 
 | Threshold ($t$) | Baseline Recall | Baseline F1 | **Calibrated Recall** | **Calibrated Precision** | **Calibrated F1** | Operating Role |
 | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **50%** | 22.7% | 0.333 | **92.4%** | 25.0% | 0.394 | High-Recall Discovery (surfaces all edge discussions) |
-| **70%** | 10.6% | 0.182 | **69.7%** | 36.8% | 0.482 | Recommended Annotation Benchmark (~37K records) |
-| **75%** | 8.0% | 0.142 | **62.1%** | 46.6% | 0.532 | High-Confidence Discourse Slicing |
-| **78%** | 6.5% | 0.115 | **54.5%** | 56.2% | **0.554** | **Optimal F1 Operating Point** (~17K records) |
+| **50%** | 22.7% | 0.333 | **92.4%** | 25.0% | 0.394 | High-Recall Discovery (~68.5K records) |
+| **70%** | 10.6% | 0.182 | **69.7%** | 36.8% | 0.482 | Recommended Annotation Benchmark (~36.7K records) |
+| **75%** | 8.0% | 0.142 | **62.1%** | 46.6% | 0.532 | High-Confidence Discourse Slicing (~23.9K records) |
+| **78%** | 6.5% | 0.115 | **54.5%** | 56.2% | **0.554** | **Optimal F1 Operating Point** (~16.8K records) |
 
 ---
 
@@ -92,11 +83,13 @@ During exploratory data audits, we identified and mitigated three major upstream
 ### Recommended Score Interpretation Bands:
 To avoid the false confidence of hardcoding artificial categorical labels onto probabilistic cross-encoder outputs, the Gold corpus preserves continuous `decision_rating` values (0–100%). Downstream analysts should apply the following empirically grounded operating bands:
 
+![Pax Silica Corpus Platform Composition & Score Density](eval/corpus_distribution.png)
+
 | Score Band | Corpus Share | Empirical Precision | Recommended Analytical Role |
 | :---: | :---: | :---: | :--- |
-| **$\ge 75\%$** | ~20.5% (~21.9K records) | **High (~60%–90%)** | **Core Research Slice**: Recommended for sentiment analysis, policy summaries, and topic modeling. Strongly suppresses internet noise and off-topic discourse. |
-| **$50\% - 74\%$** | ~32.1% (~34.4K records) | **Moderate (~30%–35%)** | **Discovery / High-Recall Slice**: Captures code-switched opinions, tangential tech, and edge commentary (~92% recall). Ideal for exploratory audits and qualitative review. |
-| **$< 50\%$** | ~35.5% (~38.1K records) | **Low (< 8%)** | **Filtered Negatives**: Unrelated conversational chatter, food, memes, general tech, and off-topic social media banter. |
+| **$\ge 75\%$** | 23.4% (23,911 records) | **High (~60%–90%)** | **Core Research Slice**: Recommended for sentiment analysis, policy summaries, and topic modeling. Strongly suppresses internet noise and off-topic discourse. |
+| **$50\% - 74\%$** | 43.6% (44,559 records) | **Moderate (~30%–35%)** | **Discovery / High-Recall Slice**: Captures code-switched opinions, tangential tech, and edge commentary (~92% recall). Ideal for exploratory audits and qualitative review. |
+| **$< 50\%$** | 33.1% (33,820 records) | **Low (< 8%)** | **Filtered Negatives**: Unrelated conversational chatter, food, memes, general tech, and off-topic social media banter. |
 
 ---
 
