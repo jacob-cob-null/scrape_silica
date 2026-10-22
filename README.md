@@ -80,10 +80,13 @@ During exploratory data audits, we identified and mitigated three major upstream
 * **`confidence`** (`INT64`): Model calibration confidence score (0%–100%).
 * **`content`** (`VARCHAR`): Cleaned, normalized social media post or comment text.
 
+### Platform Composition:
+![Pax Silica Corpus Platform Composition](eval/platform_composition.png)
+
 ### Recommended Score Interpretation Bands:
 To avoid the false confidence of hardcoding artificial categorical labels onto probabilistic cross-encoder outputs, the Gold corpus preserves continuous `decision_rating` values (0–100%). Downstream analysts should apply the following empirically grounded operating bands:
 
-![Pax Silica Corpus Platform Composition & Score Density](eval/corpus_distribution.png)
+![Pax Silica Continuous Score Density & Operational Tiers](eval/score_distribution.png)
 
 | Score Band | Corpus Share | Empirical Precision | Recommended Analytical Role |
 | :---: | :---: | :---: | :--- |

@@ -1,11 +1,10 @@
 """
 scripts/plot_corpus_distribution.py
 
-Generates visual distribution plots for the Pax Silica Gold Corpus:
-1. Platform Composition (Horizontal Bar Chart)
-2. Continuous Decision Rating Density (Shaded by Operational Tiers: Negatives, Discovery, Core)
-
-Saves figure to eval/corpus_distribution.png.
+Generates isolated, publication-grade distribution plots for the Pax Silica Gold Corpus:
+1. eval/platform_composition.png - Dedicated horizontal bar chart of platform composition.
+2. eval/score_distribution.png   - Dedicated continuous score density histogram with operational tiers.
+3. eval/corpus_distribution.png  - Vertical stacked figure (2x1) ensuring zero horizontal squishing.
 """
 
 from pathlib import Path
@@ -15,54 +14,52 @@ import pandas as pd
 
 REPO = Path(__file__).resolve().parent.parent
 GOLD_PARQUET = REPO / "data" / "gold" / "pax_silica_corpus.parquet"
-OUT_PATH = REPO / "eval" / "corpus_distribution.png"
+EVAL_DIR = REPO / "eval"
 
 
-def plot_corpus():
-    df = pd.read_parquet(GOLD_PARQUET)
+def plot_platform_composition(df: pd.DataFrame, out_path: Path):
     total = len(df)
-
-    plt.style.use("seaborn-v0_8-whitegrid" if "seaborn-v0_8-whitegrid" in plt.style.available else "default")
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5.5), dpi=150)
-
-    # -------------------------------------------------------------
-    # Subplot 1: Platform Distribution (Horizontal Bar Chart)
-    # -------------------------------------------------------------
     plat_counts = df["platform"].value_counts()
-    # Group rare platforms (< 500) into 'Other'
-    major_plats = plat_counts[plat_counts >= 500]
+    major_plats = plat_counts[plat_counts >= 500].copy()
     other_sum = plat_counts[plat_counts < 500].sum()
     if other_sum > 0:
         major_plats["other (forums, bsky, etc.)"] = other_sum
 
     plat_labels = [p.replace("_", " ").title() for p in major_plats.index]
     y_pos = np.arange(len(major_plats))
-    colors = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#64748b", "#94a3b8"][:len(major_plats)]
+    colors = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#64748b", "#94a3b8", "#475569"][:len(major_plats)]
 
-    bars = ax1.barh(y_pos, major_plats.values, color=colors, edgecolor="black", alpha=0.85)
-    ax1.set_yticks(y_pos)
-    ax1.set_yticklabels(plat_labels, fontsize=10, fontweight="bold")
-    ax1.invert_yaxis()  # Top-down
-    ax1.set_xlabel("Number of Verified Records", fontsize=10)
-    ax1.set_title(f"Platform Composition (N = {total:,})", fontsize=12, fontweight="bold")
-    ax1.grid(True, linestyle="--", alpha=0.5, axis="x")
+    fig, ax = plt.subplots(figsize=(9.5, 5.0), dpi=160)
+    bars = ax.barh(y_pos, major_plats.values, color=colors, edgecolor="#1e293b", alpha=0.88, height=0.68)
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(plat_labels, fontsize=10.5, fontweight="bold")
+    ax.invert_yaxis()  # Top-down
+    ax.set_xlabel("Number of Verified Records", fontsize=11, fontweight="bold", labelpad=8)
+    ax.set_title(f"Pax Silica Corpus: Platform Composition (N = {total:,})", fontsize=13, fontweight="bold", pad=12)
+    ax.grid(True, linestyle="--", alpha=0.45, axis="x")
 
-    # Add text labels on bars
     for bar in bars:
         w = bar.get_width()
         pct = w / total * 100
-        ax1.text(w + (total * 0.01), bar.get_y() + bar.get_height()/2, f"{w:,} ({pct:.1f}%)",
-                 va="center", fontsize=8.5, fontweight="bold")
+        ax.text(w + (total * 0.012), bar.get_y() + bar.get_height() / 2,
+                f"{w:,} ({pct:.1f}%)",
+                va="center", fontsize=9.5, fontweight="bold", color="#1e293b")
 
-    ax1.set_xlim(0, max(major_plats.values) * 1.22)
+    ax.set_xlim(0, max(major_plats.values) * 1.22)
+    plt.tight_layout()
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(out_path)
+    plt.close()
+    print(f"Generated isolated platform composition figure: {out_path}")
 
-    # -------------------------------------------------------------
-    # Subplot 2: Relevance Score Density & Operational Tiers
-    # -------------------------------------------------------------
+
+def plot_score_distribution(df: pd.DataFrame, out_path: Path):
     scores = df["decision_rating"].dropna()
-    n, bins, patches = ax2.hist(scores, bins=50, edgecolor="black", alpha=0.8, range=(0, 100))
 
-    # Color code patches by tier
+    fig, ax = plt.subplots(figsize=(10.5, 5.5), dpi=160)
+    n, bins, patches = ax.hist(scores, bins=50, edgecolor="#1e293b", alpha=0.82, range=(0, 100))
+
+    # Color code patches by operational tier
     for patch, bin_left in zip(patches, bins[:-1]):
         if bin_left >= 75:
             patch.set_facecolor("#10b981")  # Emerald Green (Core)
@@ -72,30 +69,115 @@ def plot_corpus():
             patch.set_facecolor("#94a3b8")  # Slate Gray (Negatives)
 
     # Threshold markers
-    ax2.axvline(x=50, color="#d97706", linestyle="--", linewidth=1.8, label="Discovery Gate (t=50%)")
-    ax2.axvline(x=75, color="#059669", linestyle="-", linewidth=2.0, label="Recommended Core Gate (t=75%)")
-    ax2.axvline(x=78, color="#7c3aed", linestyle=":", linewidth=2.0, label="Peak F1 Optimum (t=78%)")
+    ax.axvline(x=50, color="#d97706", linestyle="--", linewidth=2.0, label="Discovery Gate (t=50%)")
+    ax.axvline(x=75, color="#059669", linestyle="-", linewidth=2.2, label="Recommended Core Gate (t=75%)")
+    ax.axvline(x=78, color="#7c3aed", linestyle=":", linewidth=2.2, label="Peak F1 Optimum (t=78%)")
 
-    ax2.set_title("Continuous Score Density & Operational Tiers", fontsize=12, fontweight="bold")
-    ax2.set_xlabel("Decision Rating (Closeness to Pax Silica Anchor %)", fontsize=10)
-    ax2.set_ylabel("Record Volume (Frequency)", fontsize=10)
-    ax2.grid(True, linestyle="--", alpha=0.5)
-    ax2.set_ylim(0, max(n) * 1.12)
-    ax2.legend(loc="upper left", fontsize=8.5, framealpha=0.95)
+    ax.set_title("Pax Silica Corpus: Continuous Score Density & Operational Tiers", fontsize=13, fontweight="bold", pad=12)
+    ax.set_xlabel("Decision Rating (Closeness to Pax Silica Anchor %)", fontsize=11, fontweight="bold", labelpad=8)
+    ax.set_ylabel("Record Volume (Frequency)", fontsize=11, fontweight="bold", labelpad=8)
+    ax.grid(True, linestyle="--", alpha=0.45)
+    ax.set_ylim(0, max(n) * 1.15)
+    ax.set_xlim(-1, 101)
+    ax.legend(loc="upper left", fontsize=9.5, framealpha=0.95)
 
     # Annotations for tiers
-    ax2.text(25, max(n) * 0.52, "Filtered Negatives\n(33.8k rows / 33.1%)\nOff-Topic Noise",
-             ha="center", fontsize=8, color="#475569", bbox=dict(boxstyle="round,pad=0.3", fc="#f1f5f9", ec="#94a3b8", alpha=0.95))
-    ax2.text(62, max(n) * 0.65, "Discovery Slice\n(44.6k rows / 43.6%)\nHigh-Recall Auditing",
-             ha="center", fontsize=8, color="#b45309", bbox=dict(boxstyle="round,pad=0.3", fc="#fef3c7", ec="#f59e0b", alpha=0.95))
-    ax2.text(88, max(n) * 0.85, "Analytical Core\n(23.9k rows / 23.4%)\nHigh Precision (Policy)",
-             ha="center", fontsize=8, color="#065f46", bbox=dict(boxstyle="round,pad=0.3", fc="#d1fae5", ec="#10b981", alpha=0.95))
+    ax.text(25, max(n) * 0.52, "Filtered Negatives\n(33.8k rows / 33.1%)\nOff-Topic Noise",
+            ha="center", fontsize=9, color="#334155",
+            bbox=dict(boxstyle="round,pad=0.4", fc="#f8fafc", ec="#94a3b8", alpha=0.95, lw=1.2))
+    ax.text(62, max(n) * 0.65, "Discovery Slice\n(44.6k rows / 43.6%)\nHigh-Recall Auditing",
+            ha="center", fontsize=9, color="#92400e",
+            bbox=dict(boxstyle="round,pad=0.4", fc="#fef3c7", ec="#f59e0b", alpha=0.95, lw=1.2))
+    ax.text(88, max(n) * 0.85, "Analytical Core\n(23.9k rows / 23.4%)\nHigh Precision (Policy)",
+            ha="center", fontsize=9, color="#065f46",
+            bbox=dict(boxstyle="round,pad=0.4", fc="#d1fae5", ec="#10b981", alpha=0.95, lw=1.2))
 
     plt.tight_layout()
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(OUT_PATH)
-    print(f"Generated corpus distribution figure: {OUT_PATH}")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(out_path)
+    plt.close()
+    print(f"Generated isolated score distribution figure: {out_path}")
+
+
+def plot_combined_vertical(df: pd.DataFrame, out_path: Path):
+    total = len(df)
+    plat_counts = df["platform"].value_counts()
+    major_plats = plat_counts[plat_counts >= 500].copy()
+    other_sum = plat_counts[plat_counts < 500].sum()
+    if other_sum > 0:
+        major_plats["other (forums, bsky, etc.)"] = other_sum
+
+    plat_labels = [p.replace("_", " ").title() for p in major_plats.index]
+    y_pos = np.arange(len(major_plats))
+    colors = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#64748b", "#94a3b8", "#475569"][:len(major_plats)]
+
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10.5, 10.5), dpi=160)
+
+    # Panel 1: Platforms
+    bars = ax1.barh(y_pos, major_plats.values, color=colors, edgecolor="#1e293b", alpha=0.88, height=0.68)
+    ax1.set_yticks(y_pos)
+    ax1.set_yticklabels(plat_labels, fontsize=10, fontweight="bold")
+    ax1.invert_yaxis()
+    ax1.set_xlabel("Number of Verified Records", fontsize=10.5, fontweight="bold")
+    ax1.set_title(f"Platform Composition (N = {total:,})", fontsize=12.5, fontweight="bold", pad=10)
+    ax1.grid(True, linestyle="--", alpha=0.45, axis="x")
+
+    for bar in bars:
+        w = bar.get_width()
+        pct = w / total * 100
+        ax1.text(w + (total * 0.012), bar.get_y() + bar.get_height() / 2,
+                 f"{w:,} ({pct:.1f}%)",
+                 va="center", fontsize=9, fontweight="bold", color="#1e293b")
+
+    ax1.set_xlim(0, max(major_plats.values) * 1.22)
+
+    # Panel 2: Scores
+    scores = df["decision_rating"].dropna()
+    n, bins, patches = ax2.hist(scores, bins=50, edgecolor="#1e293b", alpha=0.82, range=(0, 100))
+
+    for patch, bin_left in zip(patches, bins[:-1]):
+        if bin_left >= 75:
+            patch.set_facecolor("#10b981")
+        elif bin_left >= 50:
+            patch.set_facecolor("#f59e0b")
+        else:
+            patch.set_facecolor("#94a3b8")
+
+    ax2.axvline(x=50, color="#d97706", linestyle="--", linewidth=2.0, label="Discovery Gate (t=50%)")
+    ax2.axvline(x=75, color="#059669", linestyle="-", linewidth=2.2, label="Recommended Core Gate (t=75%)")
+    ax2.axvline(x=78, color="#7c3aed", linestyle=":", linewidth=2.2, label="Peak F1 Optimum (t=78%)")
+
+    ax2.set_title("Continuous Score Density & Operational Tiers", fontsize=12.5, fontweight="bold", pad=10)
+    ax2.set_xlabel("Decision Rating (Closeness to Pax Silica Anchor %)", fontsize=10.5, fontweight="bold")
+    ax2.set_ylabel("Record Volume (Frequency)", fontsize=10.5, fontweight="bold")
+    ax2.grid(True, linestyle="--", alpha=0.45)
+    ax2.set_ylim(0, max(n) * 1.15)
+    ax2.set_xlim(-1, 101)
+    ax2.legend(loc="upper left", fontsize=9, framealpha=0.95)
+
+    ax2.text(25, max(n) * 0.52, "Filtered Negatives\n(33.8k rows / 33.1%)\nOff-Topic Noise",
+             ha="center", fontsize=8.5, color="#334155",
+             bbox=dict(boxstyle="round,pad=0.4", fc="#f8fafc", ec="#94a3b8", alpha=0.95, lw=1.2))
+    ax2.text(62, max(n) * 0.65, "Discovery Slice\n(44.6k rows / 43.6%)\nHigh-Recall Auditing",
+             ha="center", fontsize=8.5, color="#92400e",
+             bbox=dict(boxstyle="round,pad=0.4", fc="#fef3c7", ec="#f59e0b", alpha=0.95, lw=1.2))
+    ax2.text(88, max(n) * 0.85, "Analytical Core\n(23.9k rows / 23.4%)\nHigh Precision (Policy)",
+             ha="center", fontsize=8.5, color="#065f46",
+             bbox=dict(boxstyle="round,pad=0.4", fc="#d1fae5", ec="#10b981", alpha=0.95, lw=1.2))
+
+    plt.tight_layout()
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(out_path)
+    plt.close()
+    print(f"Generated combined vertical distribution figure: {out_path}")
+
+
+def plot_all():
+    df = pd.read_parquet(GOLD_PARQUET)
+    plot_platform_composition(df, EVAL_DIR / "platform_composition.png")
+    plot_score_distribution(df, EVAL_DIR / "score_distribution.png")
+    plot_combined_vertical(df, EVAL_DIR / "corpus_distribution.png")
 
 
 if __name__ == "__main__":
-    plot_corpus()
+    plot_all()
