@@ -80,15 +80,16 @@ def plot_corpus():
     ax2.set_xlabel("Decision Rating (Closeness to Pax Silica Anchor %)", fontsize=10)
     ax2.set_ylabel("Record Volume (Frequency)", fontsize=10)
     ax2.grid(True, linestyle="--", alpha=0.5)
-    ax2.legend(loc="upper right", fontsize=8.5)
+    ax2.set_ylim(0, max(n) * 1.12)
+    ax2.legend(loc="upper left", fontsize=8.5, framealpha=0.95)
 
     # Annotations for tiers
-    ax2.text(25, max(n) * 0.85, "Filtered Negatives\n(33.8k rows / 33.1%)\nOff-Topic Noise",
-             ha="center", fontsize=8, color="#475569", bbox=dict(boxstyle="round,pad=0.3", fc="#f1f5f9", ec="#94a3b8"))
+    ax2.text(25, max(n) * 0.52, "Filtered Negatives\n(33.8k rows / 33.1%)\nOff-Topic Noise",
+             ha="center", fontsize=8, color="#475569", bbox=dict(boxstyle="round,pad=0.3", fc="#f1f5f9", ec="#94a3b8", alpha=0.95))
     ax2.text(62, max(n) * 0.65, "Discovery Slice\n(44.6k rows / 43.6%)\nHigh-Recall Auditing",
-             ha="center", fontsize=8, color="#b45309", bbox=dict(boxstyle="round,pad=0.3", fc="#fef3c7", ec="#f59e0b"))
+             ha="center", fontsize=8, color="#b45309", bbox=dict(boxstyle="round,pad=0.3", fc="#fef3c7", ec="#f59e0b", alpha=0.95))
     ax2.text(88, max(n) * 0.85, "Analytical Core\n(23.9k rows / 23.4%)\nHigh Precision (Policy)",
-             ha="center", fontsize=8, color="#065f46", bbox=dict(boxstyle="round,pad=0.3", fc="#d1fae5", ec="#10b981"))
+             ha="center", fontsize=8, color="#065f46", bbox=dict(boxstyle="round,pad=0.3", fc="#d1fae5", ec="#10b981", alpha=0.95))
 
     plt.tight_layout()
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)

@@ -58,10 +58,10 @@ def plot_comparison():
     ax2.set_xlabel('Decision Threshold (%)', fontsize=11, fontweight='bold')
     ax2.set_ylabel('F1 Score (Harmonic Mean)', fontsize=11, fontweight='bold')
     ax2.grid(True, linestyle='--', alpha=0.6)
-    ax2.set_ylim(0.05, 0.62)
+    ax2.set_ylim(0.05, 0.64)
     ax2.legend(loc='lower left', fontsize=9.5, framealpha=0.95)
 
-    ax2.annotate('Peak F1 = 0.554\n(t=78%)', xy=(78, 0.554), xytext=(55, 0.44),
+    ax2.annotate('Peak F1 = 0.554\n(t=78%)', xy=(78, 0.554), xytext=(58, 0.57),
                  arrowprops=dict(facecolor='#7c3aed', shrink=0.08, width=1.5, headwidth=7),
                  fontsize=9, fontweight='bold', color='#5b21b6',
                  bbox=dict(boxstyle='round,pad=0.4', fc='#f3e8ff', ec='#7c3aed', alpha=0.95))
